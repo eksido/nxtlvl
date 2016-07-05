@@ -1,0 +1,313 @@
+{% load activelink %}
+{% load mus_tags %}
+{% load staticfiles %}
+{% load i18n %}
+{% language LANGUAGE_CODE %}
+{% in_debug_mode as in_debug %}
+<!DOCTYPE html>
+<html lang="en" ng-app="nxtlvl">
+<head>
+    <meta charset="utf-8" />
+    <title>NXT LVL{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- styles -->
+    <link href="{% static "css/questionnaire.css" %}" rel="stylesheet">
+    <link href="{% static "css/smoothness/jquery-ui-1.10.0.custom.min.css" %}" rel="stylesheet">
+    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" />
+	<script src="{% static "js/jquery-1.11.2.min.js" %}"></script>
+
+    {% block head %}
+    {% endblock %}
+    <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+    html, body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+    }
+
+    /* Wrapper for page content to push down footer */
+    #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -60px;
+    }
+
+    /* Set the fixed height of the footer here */
+    #push,
+    #footer {
+        height: 60px;
+    }
+
+    /* Lastly, apply responsive CSS fixes as necessary */
+    @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+      }
+  }
+  body {
+    background-color: #f5f5f5;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    color: #5D5E5F;
+}
+
+textarea {
+    border: 1px solid #ccc;
+}
+#footer {
+    background-color: #f5f5f5;
+    padding-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    clear: both;
+    background-image: url({% static "img/bg2shadow.png" %});
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+.footer-container {
+    width: 100%;
+    clear: both;
+    background-image: url({% static "img/head2bg.png" %});
+    background-repeat: repeat-x;
+    background-position: top;
+    border-outline-width: 1px;
+    border-outline-style: solid;
+    border-outline-color: #FDFDFD;
+    float: left;
+}
+
+
+.h1, .h2, .h3, .h4 {
+    font-family: 'Merriweather', serif;
+}
+
+.form-signin {
+    max-width: 450px;
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin input[type="text"],
+.form-signin input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+}
+.dropdown-menu>li>form>a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.428571429;
+    color: #333333;
+    white-space: nowrap;
+}
+</style>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!-- Fav and touch icons -->
+    <!--link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../assets/ico/favicon.png"-->
+</head>
+<body>
+    <div id="wrap">
+        <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/" style="padding: 5px 10px 5px 10px;"><img style="height:60px;" src="{% static "img/nxtlvllogo.png" %}"></a>
+        </div>
+        <div class="navbar-collapse collapse" style="margin-top:20px;">
+          <ul class="nav navbar-nav">
+            {% if user.is_authenticated %}
+                {% if user.employee_user.first.getDevelopmentPlans %}
+                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "My Dialogue" %} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li {% ifactive "/developmentplan/" %} class="active"{% endifactive %}><a href="/developmentplan/">{% trans "Preparation guide" %}</a></li>
+                            <li {% ifactive "/action/all" %} class="active"{% endifactive %}><a href="/action/all">{% trans "Contribution key" %}</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/employee/show/{{ user|currentEmployeeId }}">{% trans "My information" %}</a></li>
+                        </ul>
+                    </li>                        
+                {% endif %}
+                {% if user|isManager or user|isCompanySuperUserOrHigher %}                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "My employees" %} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li{% ifactive "/employee/all/" %} class="active"{% endifactive %}><a href="/employee/all/">{% trans "Administrate employees" %}</a></li>
+                            <li{% ifactive "/dashboard" %} class="active"{% endifactive %}><a href="/dashboard">{% trans "My preparation" %}</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
+
+            {% endif %}
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+                <div class="btn-group pull-right" style="margin-right:10px;">
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    <a class="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown" href="#">
+                        {% for language in languages %}
+                        {% if language.code == LANGUAGE_CODE %}
+                        {{ language.name_local|capfirst }} ({{ language.code }})
+                        {% endif %}
+                        {% endfor %}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" style="min-width:120px;">
+                         {% for language in languages %}
+                         {% if language.code != LANGUAGE_CODE %}
+                         <li>
+                            <form name="setLang{{ language.code}}" action="/i18n/setlang/" method="POST">{% csrf_token %}
+                                <input name="next" type="hidden" value="{{ request.path }}" />
+                                <input type="hidden" name="language" value="{{ language.code }}" />
+                                <a href="#" onclick="document.setLang{{ language.code }}.submit();return false;">{{ language.name_local|capfirst }} ({{ language.code }})</a>
+                            </form>
+                        </li>           
+                         {% endif %}                                 
+                         {% endfor %}
+                     </ul>
+                 </div>
+             </li>
+             {% if user.is_authenticated %}
+                 <li>
+                    <div class="btn-group pull-right">
+                        <a class="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-user"></span> {{ user.get_full_name }} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/employee/show/{{ user|currentEmployeeId }}">{% trans "My information" %}</a></li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="{% url 'django.contrib.auth.views.logout' %}">{% trans "Log out" %}</a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            {% else %}
+                <li{% ifactive "/login/" %} class="active"{% endifactive %}><a href="/login/">{% trans "Login" %}</a></li>
+            {% endif %}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+        
+<!--/.nav-collapse -->
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+<!-- /container -->
+
+<div id="push"></div>
+</div>
+
+</div>
+<div class="footer-container">
+    <div id="footer">
+        <div class="container">
+            <p class="muted credit" style="text-align:center">Copyright © 2012 - {% now 'Y' %} Enso · E-mail <a href="mailto:info@enso.dk">info@enso.dk</a></p>
+        </div> 
+    </div>
+</div>
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+<script src="{% static "js/jquery-ui-1.10.0.custom.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.cookie.js" %}"></script>
+{% block js_includes %}
+{% endblock %}
+<script type="text/javascript">
+if (typeof(django) !== 'undefined' && django.jQuery) {
+    var jQuery = django.jQuery.noConflict(true);
+}
+var jq = jQuery.noConflict(true);
+
+window.security = window.security || {};
+(function (security, $, undefined) {
+    'use strict';
+    security.csrftoken = $.cookie('csrftoken');
+    security.csrfSafeMethod = function (method) {
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    };
+    security.sameOrigin = function (url) {
+            // test that a given url is a same-origin URL
+            // url could be relative or scheme relative or absolute
+            var host = document.location.host; // host + port
+            var protocol = document.location.protocol;
+            var sr_origin = '//' + host;
+            var origin = protocol + sr_origin;
+            // Allow absolute or scheme relative URLs to same origin
+            return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+            (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+                // or any other URL that isn't scheme relative or absolute i.e relative.
+                !(/^(\/\/|http:|https:).*/.test(url));
+            };
+        }(window.security = window.security || {}, jq));
+
+
+{% block js_functions %}{% endblock %}
+jq(document).ready(function ($) {
+    $.ajaxSetup({
+        beforeSend: function (xhr, settings) {
+            if (!window.security.csrfSafeMethod(settings.type) && window.security.sameOrigin(settings.url)) {
+                    // Send the token to same-origin, relative URLs only.
+                    // Send the token only if the method warrants CSRF protection
+                    // Using the CSRFToken value acquired earlier
+                    xhr.setRequestHeader("X-CSRFToken", window.security.csrftoken);
+                }
+            }
+        });
+    {% block js_ready %}{% endblock %}
+});
+{% ifequal in_debug False %}
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-53994775-1', 'auto');
+    ga('send', 'pageview');
+
+{% endifequal %}
+
+</script>
+</body>
+</html>
+
+{% endlanguage %}

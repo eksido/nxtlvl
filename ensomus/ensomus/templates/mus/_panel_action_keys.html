@@ -1,0 +1,54 @@
+{% load i18n %}
+{% load mus_tags %}
+
+<div class="panel panel-default">
+	<!-- Default panel contents -->
+	{#<div class="panel-body"></div>#}
+	<!--<div class="panel-heading"> 
+			{% trans "Goals" %} 
+	</div>	-->
+	
+
+	<!-- Table -->
+	<table class="table  table-bordered table-hover">
+		<tr>
+			<th class="col-md-2">{% trans "Headline" %}</th>
+			{#<th>{% trans "Approved" %}</th>#}
+			<th class="col-md-2">{% trans "Type" %}</th>
+			<th class="col-md-2">{% trans "Difficulty" %}</th>
+			<th class="col-md-2">{% trans "Status" %}</th>
+			<th class="col-md-2">{% trans "Follow up at" %}</th>
+
+
+			{% comment "Not wanted anymore" %}
+			<th>{% trans "Comments" %}</th>
+			{% endcomment %}
+		</tr>
+		{% for action in actions %}
+		<tr>
+			<td><a href="/action/{{ action.pk }}">{{ action.title }}</a></td>
+			{#<td>{% if action.approved_at %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</td>#}
+
+			<td>{{ action.getTypeText }}</td>
+			<td>{{ action.getDifficultyText }}</td>
+
+			<td>
+				{% if action.status %}
+					{{ action.status }}
+				{% endif %}
+			</td>
+			<td>{% if action.follow_up_at %}{{ action.follow_up_at }}{% endif %}</td>
+
+			{% comment "Not wanted anymore" %}
+			<td>
+				<a href="/action/{{ action.pk }}#history"><span class="badge">{{ action.comments.count }}</span></a>
+				{% if action.getLatestComment%}
+				{{ action.getLatestComment.text|truncatechars:200 }}
+				{% endif %}					 
+			</td>
+			{% endcomment %}
+		</tr>
+		{% endfor %}
+		</table>
+</div>
+<a href="/action/add/{{ employee.pk }}" class="btn btn-primary">{% trans "Create development goal" %}</a>

@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load mus_tags %}
+{% load i18n %}
+{% block head %}
+    <style type="text/css"> 
+        #ActionCommentForm textarea{
+            width:400px;
+            height:70px;
+        }   
+    </style>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <h2><a href="/action/list/{{ action.employee.pk }}">{% trans "Contribution key" %}</a>  &gt; {{ action.title }} <a class="btn btn-default" href="/action/edit/{{ action.pk }}"><span class="glyphicon glyphicon-cog"></span></a></h2>
+    <table class="table table-striped">
+        <tr>
+            <td class="col-md-2">{% trans "My goal" %}</td>
+            <td>{{ action.description }}</td>
+        </tr>
+        <tr>
+            <td>{% trans "My effort" %}</td>
+            <td>{{ action.my_effort }}</td>
+        </tr>
+        <tr>
+            <td>{% trans "My needs" %}</td>
+            <td>{{ action.my_needs }}</td>
+        </tr>
+        <tr>
+            <td>{% trans "Difficulty" %}</td>
+            <td>{{ action.getDifficultyText }}</td>
+        </tr>
+        <tr>
+            <td>{% trans "Type" %}</td>
+            <td>{{ action.getTypeText }}</td>
+        </tr>
+        <!--<tr>
+            <td>{% trans "Approved" %}</td>
+            <td>{% if action.approved_at %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</td>
+        </tr>-->
+        <tr>
+            <td>{% trans "Status" %}</td>            
+            <td>{{ action.status }}</td>
+        </tr>
+        <tr>
+            <td>{% trans "Follow up at" %}</td>
+            <td>{% if action.follow_up_at %}{{ action.follow_up_at }}{% endif %}</td>
+        </tr>
+        <tr>
+            <td>{% trans "Latest comment" %}</td>
+            <td>{{ action.getLatestComment.text }}</td>
+        </tr>
+    </table>
+    
+    
+    <h3>{% trans "New status" %}</h3>
+    {% if action.status.pk != 5 %}
+     {{ form.non_field_errors }}
+    <form class="form-horizontal" method="post" action="/action/{{ action.pk }}">{% csrf_token %}
+         {% for field in form %}
+            <div class="form-group">
+                <label class="control-label col-md-2" for="{{ field.html_name }}">{{ field.label }}</label>
+                <div class="col-md-3" id="ActionCommentForm">
+                    {{ field }}
+                    {{ field.errors}}
+                </div>
+            </div>
+            {% endfor %}
+            <div class="form-group">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                <input type="submit" class="btn btn-default" value="{% trans "Add" %}" />
+                </div>
+          </div>
+    </form>
+    {% elif action.status.pk == 5 and action.created_by != user %}
+    {{ form.non_field_errors }}
+    <form class="form-horizontal" method="post" action="/action/{{ action.pk }}">{% csrf_token %}
+         {% for field in form %}
+            <div class="form-group">
+                <label class="control-label col-md-2" for="{{ field.html_name }}">{{ field.label }}</label>
+                <div class="col-md-3" id="ActionCommentForm">
+                    {{ field }}
+                    {{ field.errors}}
+                </div>
+            </div>
+            {% endfor %}
+            <div class="form-group">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                <input type="submit" class="btn btn-default" value="{% trans "Add" %}" />
+                </div>
+          </div>
+    </form>
+    {% else %}
+        {% trans "Not yet approved" %}
+    {% endif %}
+
+    <div id="history" class="panel panel-default">
+        <!-- Default panel contents -->
+        {#<div class="panel-body"></div>#}
+        <div class="panel-heading"> 
+                {% trans "History" %} 
+        </div>  
+                <!-- Table -->
+        <table class="table">
+            <tr>
+                <th>{% trans "Status" %}</th>
+                <th>{% trans "Comment" %}</th>
+                <th>{% trans "Follow up at" %}</th>
+                <th>{% trans "Updated by" %}</th>
+                <th>{% trans "Updated at" %}</th>
+            </tr>
+            {% for comment in action.getComments %}
+            <tr>
+                    <td>
+                        {% if comment.status %}
+                        {{comment.status}}
+                        {% endif%}
+                    </td>
+                    <td style="width:650px">
+                        {{comment.text}}
+                    </td>
+                    <td>
+                        {% if comment.follow_up_at %}
+                        {{comment.follow_up_at}}
+                        {% endif%}
+                    </td>
+                    <td>{{comment.created_by.get_full_name}}</td> 
+                    <td>{{comment.created_at}}</td>                    
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+   
+</div>
+{% endblock %}
+
+{% block js_ready %}
+    $("#id_reminder_at").datepicker({
+        dateFormat:"dd-mm-yy"
+    });
+
+    $("#id_follow_up_at").datepicker({
+    dateFormat:"dd-mm-yy"
+});
+{% endblock%}

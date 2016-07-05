@@ -1,0 +1,12 @@
+<div class="row">
+	<h2>{{ trans['Review responses'] }}</h2>
+	<div ng-repeat="competence in plan">
+		<h2>{{ competence.title }}</h2>
+		<div ng-repeat="question in competence.questions">
+			<div data-simplehtml="question.title"></div>
+			<div data-ng-if="question.allow_response">
+			    <textarea class="mus_textarea" data-ng-bind="question.response" disabled="disabled"></textarea>
+			</div>
+		</div>
+	</div>
+</div>

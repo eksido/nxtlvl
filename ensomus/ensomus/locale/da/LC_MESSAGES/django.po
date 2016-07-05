@@ -1,0 +1,1041 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-28 15:09+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: settings.py:41
+msgid "Danish"
+msgstr "Dansk"
+
+#: settings.py:42
+msgid "English"
+msgstr "Engelsk"
+
+#: apps/mus/forms.py:28 apps/mus/forms.py:64 apps/mus/forms.py:154
+#: apps/mus/forms.py:337 templates/mus/create_many_employees_uploaded.html:19
+#: templates/mus/detail.html:27
+msgid "Email"
+msgstr "Email"
+
+#: apps/mus/forms.py:31
+msgid "NXT LVL: new password"
+msgstr "NXT LVL: Nyt kodeord"
+
+#: apps/mus/forms.py:54
+msgid "Unknown email"
+msgstr "Ukendt emailadresse"
+
+#: apps/mus/forms.py:61 apps/mus/forms.py:152 apps/mus/forms.py:334
+#: templates/mus/create_many_employees_uploaded.html:16
+msgid "First name"
+msgstr "Fornavn"
+
+#: apps/mus/forms.py:62 apps/mus/forms.py:153 apps/mus/forms.py:335
+#: templates/mus/create_many_employees_uploaded.html:17
+msgid "Last name"
+msgstr "Efternavn"
+
+#: apps/mus/forms.py:63 apps/mus/forms.py:336
+#: templates/mus/create_many_employees_uploaded.html:20
+msgid "Username"
+msgstr "Brugernavn"
+
+#: apps/mus/forms.py:65
+msgid "Repeat email"
+msgstr "Gentag email"
+
+#: apps/mus/forms.py:66 apps/mus/forms.py:156 apps/mus/forms.py:233
+#: apps/mus/forms.py:339 templates/mus/_panel_action_keys.html:17
+#: templates/mus/_panel_my_development_plans.html:17
+#: templates/mus/action_detail.html:34 templates/mus/all_employees.html:33
+#: templates/mus/detail.html:51
+msgid "Type"
+msgstr "Type"
+
+#: apps/mus/forms.py:66 apps/mus/forms.py:156 apps/mus/forms.py:339
+msgid "choose type"
+msgstr "vælg type"
+
+#: apps/mus/forms.py:67 apps/mus/forms.py:155 apps/mus/forms.py:338
+#: templates/mus/_panel_my_development_plans.html:18
+msgid "Language"
+msgstr "Sprog"
+
+#: apps/mus/forms.py:68 apps/mus/forms.py:160 apps/mus/forms.py:376
+#: apps/mus/models.py:97 templates/mus/detail.html:67
+msgid "Manager"
+msgstr "Leder"
+
+#: apps/mus/forms.py:68 apps/mus/forms.py:160 apps/mus/forms.py:376
+msgid "choose manager"
+msgstr "vælg leder"
+
+#: apps/mus/forms.py:69
+msgid "Create as manager"
+msgstr "Tilføj som leder"
+
+#: apps/mus/forms.py:141
+msgid "The emails are not equal"
+msgstr "De angivet email er ikke ens"
+
+#: apps/mus/forms.py:143 apps/mus/forms.py:210
+msgid "A user with the given email already exists"
+msgstr "En bruger med den samme email findes allerede"
+
+#: apps/mus/forms.py:145
+msgid "A user with the given username already exists"
+msgstr "En bruger med det angivet brugernavn findes allerede"
+
+#: apps/mus/forms.py:157
+msgid "Password"
+msgstr "Kodeord"
+
+#: apps/mus/forms.py:158
+msgid "New password"
+msgstr "Ny kodeord"
+
+#: apps/mus/forms.py:159
+msgid "Repeat password"
+msgstr "Gentag kodeord"
+
+#: apps/mus/forms.py:203
+msgid "The passwords are not equal"
+msgstr "Kodeordene angivet er ikke ens"
+
+#: apps/mus/forms.py:206
+msgid "Wrong password given"
+msgstr "Forkert kodeord angivet"
+
+#: apps/mus/forms.py:208
+msgid "The password need to have be at least 6 characters"
+msgstr "Kodeordet skal mindst være 6 karakterer langt"
+
+#: apps/mus/forms.py:216
+msgid "Add a personal message (optional)"
+msgstr "Tilføj en personlig besked (valgfrit)"
+
+#: apps/mus/forms.py:217
+msgid "Template"
+msgstr "Skabelon"
+
+#: apps/mus/forms.py:229 templates/mus/action_detail.html:18
+msgid "My goal"
+msgstr "Mit udviklingsmål"
+
+#: apps/mus/forms.py:232 templates/mus/_panel_action_keys.html:18
+#: templates/mus/action_detail.html:30 templates/mus/leader_model_pdf.html:186
+msgid "Difficulty"
+msgstr "Sværhedsgrad"
+
+#: apps/mus/forms.py:322
+msgid "An user with the given email already exists"
+msgstr "En bruger med den angivet email findes allerede"
+
+#: apps/mus/forms.py:329
+msgid "An user with the given username already exists"
+msgstr "En bruger med det angivet brugernavn findes allerede"
+
+#: apps/mus/forms.py:340
+msgid "Is manager"
+msgstr "Er leder"
+
+#: apps/mus/forms.py:375
+msgid "Employee"
+msgstr "Medarbejder"
+
+#: apps/mus/forms.py:404 apps/mus/models.py:62 apps/mus/models.py:78
+#: apps/mus/models.py:376 apps/mus/models.py:407
+msgid "company"
+msgstr "virksomhed"
+
+#: apps/mus/forms.py:414
+msgid "Notes"
+msgstr "Noter"
+
+#: apps/mus/models.py:29 apps/mus/models.py:369
+msgid "name"
+msgstr "navn"
+
+#: apps/mus/models.py:30 apps/mus/models.py:49 apps/mus/models.py:79
+#: apps/mus/models.py:370 apps/mus/models.py:409 apps/mus/models.py:483
+#: apps/mus/models.py:582 apps/mus/models.py:711 apps/mus/models.py:787
+#: apps/mus/models.py:828 apps/mus/models.py:1159 apps/mus/models.py:1258
+msgid "created at"
+msgstr "oprettelsesdato"
+
+#: apps/mus/models.py:31 apps/mus/models.py:50 apps/mus/models.py:80
+#: apps/mus/models.py:371 apps/mus/models.py:410 apps/mus/models.py:484
+#: apps/mus/models.py:583 apps/mus/models.py:712 apps/mus/models.py:788
+#: apps/mus/models.py:829 apps/mus/models.py:1160 apps/mus/models.py:1259
+msgid "created by"
+msgstr "oprettet af"
+
+#: apps/mus/models.py:32 apps/mus/models.py:81 apps/mus/models.py:372
+#: apps/mus/models.py:411 apps/mus/models.py:485 apps/mus/models.py:584
+#: apps/mus/models.py:713 apps/mus/models.py:789 apps/mus/models.py:1260
+msgid "updated at"
+msgstr "opdateringsdato"
+
+#: apps/mus/models.py:33 apps/mus/models.py:82 apps/mus/models.py:373
+#: apps/mus/models.py:412 apps/mus/models.py:486 apps/mus/models.py:585
+#: apps/mus/models.py:714 apps/mus/models.py:790 apps/mus/models.py:1261
+msgid "updated by"
+msgstr "opdateret af"
+
+#: apps/mus/models.py:36 apps/mus/models.py:48
+msgid "role"
+msgstr "rolle"
+
+#: apps/mus/models.py:37
+msgid "roles"
+msgstr "roller"
+
+#: apps/mus/models.py:47 apps/mus/models.py:92 apps/mus/models.py:580
+#: templates/mus/leader_model_pdf.html:195
+msgid "employee"
+msgstr "medarbejder"
+
+#: apps/mus/models.py:53
+msgid "employee role"
+msgstr "medarbejderrolle"
+
+#: apps/mus/models.py:54
+msgid "employee roles"
+msgstr "medarbejderroller"
+
+#: apps/mus/models.py:73 apps/mus/models.py:825
+msgid "user"
+msgstr "bruger"
+
+#: apps/mus/models.py:75
+msgid "newest_development_plan"
+msgstr "nyeste forberedelsesguide"
+
+#: apps/mus/models.py:76 apps/mus/models.py:423
+msgid "manager"
+msgstr "leder"
+
+#: apps/mus/models.py:77
+msgid "is manager"
+msgstr "er leder"
+
+#: apps/mus/models.py:83 apps/mus/models.py:415 apps/mus/models.py:1143
+msgid "language"
+msgstr "sprog"
+
+#: apps/mus/models.py:93
+msgid "employees"
+msgstr "medarbejdere"
+
+#: apps/mus/models.py:348
+msgid "Complete: Currently no issues"
+msgstr "Afsluttet: Ingen problemer"
+
+#: apps/mus/models.py:351
+msgid "No actions exists"
+msgstr "Ingen indsatser findes"
+
+#: apps/mus/models.py:354
+msgid "Actions not approved"
+msgstr "Indsatser ikke godkendt"
+
+#: apps/mus/models.py:377
+msgid "companies"
+msgstr "virksomheder"
+
+#: apps/mus/models.py:405 apps/mus/models.py:479 apps/mus/models.py:573
+#: apps/mus/models.py:785
+msgid "title"
+msgstr "titel"
+
+#: apps/mus/models.py:406 apps/mus/models.py:480 apps/mus/models.py:574
+msgid "description"
+msgstr "beskrivelse"
+
+#: apps/mus/models.py:408
+msgid "is system"
+msgstr "er system"
+
+#: apps/mus/models.py:413
+msgid "parent"
+msgstr "forælder"
+
+#: apps/mus/models.py:416
+msgid "for manager"
+msgstr "for leder"
+
+#: apps/mus/models.py:417 apps/mus/models.py:482 apps/mus/models.py:581
+#: apps/mus/models.py:791
+msgid "sort order"
+msgstr "sorteringsorden"
+
+#: apps/mus/models.py:419 apps/mus/models.py:481
+msgid "competence field"
+msgstr "kompetencefelt"
+
+#: apps/mus/models.py:420 apps/mus/models.py:1156
+msgid "competence fields"
+msgstr "kompetencefelter"
+
+#: apps/mus/models.py:489 apps/mus/models.py:786
+msgid "competence"
+msgstr "kompetence"
+
+#: apps/mus/models.py:490
+msgid "competences"
+msgstr "kompetencer"
+
+#: apps/mus/models.py:553
+msgid "name_da"
+msgstr "navn da"
+
+#: apps/mus/models.py:554
+msgid "name_en"
+msgstr "navn en"
+
+#: apps/mus/models.py:556
+msgid "action status"
+msgstr "indsatsstatus"
+
+#: apps/mus/models.py:557
+msgid "action statuses"
+msgstr "indsatsstatus"
+
+#: apps/mus/models.py:575
+msgid "my contribution"
+msgstr "Min indsats"
+
+#: apps/mus/models.py:576
+msgid "my need for support"
+msgstr "mit behov for opbakning"
+
+#: apps/mus/models.py:577
+msgid "approved at"
+msgstr "godkendelsesdato"
+
+#: apps/mus/models.py:578 apps/mus/models.py:715
+msgid "follow up at"
+msgstr "opfølgningsdato"
+
+#: apps/mus/models.py:579 apps/mus/models.py:716
+msgid "status"
+msgstr "status"
+
+#: apps/mus/models.py:599 apps/mus/models.py:709
+#: templates/mus/leader_model_pdf.html:196
+msgid "action"
+msgstr "indsats"
+
+#: apps/mus/models.py:600
+msgid "actions"
+msgstr "indsatser"
+
+#: apps/mus/models.py:673 apps/mus/models.py:690
+msgid "Low"
+msgstr "Lav"
+
+#: apps/mus/models.py:674 apps/mus/models.py:691
+msgid "Medium"
+msgstr "Middel"
+
+#: apps/mus/models.py:675 apps/mus/models.py:692
+msgid "High"
+msgstr "Høj"
+
+#: apps/mus/models.py:681 apps/mus/models.py:699
+msgid "Action type A"
+msgstr "A (høj nyhedsværdi)"
+
+#: apps/mus/models.py:682 apps/mus/models.py:700
+msgid "Action type B"
+msgstr "B (middel nyhedsværdi)"
+
+#: apps/mus/models.py:683 apps/mus/models.py:701
+msgid "Action type C"
+msgstr "C (lav nyhedsværdi)"
+
+#: apps/mus/models.py:710 apps/mus/models.py:1256
+msgid "text"
+msgstr "tekst"
+
+#: apps/mus/models.py:718
+msgid "action comment"
+msgstr "indsatskommentar"
+
+#: apps/mus/models.py:719
+msgid "action comments"
+msgstr "indsatskommentarer"
+
+#: apps/mus/models.py:792
+msgid "allow response"
+msgstr "tillad svar"
+
+#: apps/mus/models.py:794 apps/mus/models.py:1250
+msgid "question"
+msgstr "spørgsmål"
+
+#: apps/mus/models.py:795
+msgid "questions"
+msgstr "spørgsmål"
+
+#: apps/mus/models.py:826
+msgid "finished at"
+msgstr "afslutningsdato"
+
+#: apps/mus/models.py:827
+msgid "is private"
+msgstr "er privat"
+
+#: apps/mus/models.py:832 apps/mus/models.py:1253
+msgid "development plan to user relation"
+msgstr "forberedelsesguide til bruger relation"
+
+#: apps/mus/models.py:833
+msgid "development plan to user relations"
+msgstr "forberedelsesguide til bruger relationer"
+
+#: apps/mus/models.py:845
+msgid "Hidden"
+msgstr "Skjult"
+
+#: apps/mus/models.py:908
+msgid "competence key"
+msgstr "kompetencenøgle"
+
+#: apps/mus/models.py:919
+msgid "end"
+msgstr "afslut"
+
+#: apps/mus/models.py:1115
+msgid "Complete"
+msgstr "Afsluttet"
+
+#: apps/mus/models.py:1117
+msgid "Incomplete"
+msgstr "Ikke afsluttet"
+
+#: apps/mus/models.py:1122
+msgid "page link"
+msgstr ""
+
+#: apps/mus/models.py:1123
+#, fuzzy
+msgid "development plan relation"
+msgstr "forberedelsesguide til bruger relation"
+
+#: apps/mus/models.py:1127
+msgid "Unread"
+msgstr ""
+
+#: apps/mus/models.py:1128
+msgid "Read"
+msgstr ""
+
+#: apps/mus/models.py:1141
+msgid "owner"
+msgstr "ejer"
+
+#: apps/mus/models.py:1142
+msgid "type"
+msgstr "type"
+
+#: apps/mus/models.py:1146
+msgid "manager response relation"
+msgstr "leder svar relation"
+
+#: apps/mus/models.py:1151
+msgid "employee response relation"
+msgstr "medarbejder svar relation"
+
+#: apps/mus/models.py:1161
+msgid "deleted"
+msgstr "slettet"
+
+#: apps/mus/models.py:1164
+msgid "development plan"
+msgstr "forberedelsesguide"
+
+#: apps/mus/models.py:1165
+msgid "development plans"
+msgstr "forberedelsesguides"
+
+#: apps/mus/models.py:1257
+msgid "client timestamp"
+msgstr "klient tidsstempel"
+
+#: apps/mus/models.py:1264
+msgid "response"
+msgstr "svar"
+
+#: apps/mus/models.py:1265
+msgid "responses"
+msgstr "svar"
+
+#: apps/mus/views.py:703
+msgid "Expecting preparation guides from"
+msgstr "Afventer forberedelsesguides fra"
+
+#: apps/mus/views.py:708
+msgid "Preparation guides to do"
+msgstr "Forberedelsesguides to do"
+
+#: templates/base.html:156
+msgid "About NXT LVL"
+msgstr "Om NXT LVL"
+
+#: templates/base.html:157
+msgid "Contact"
+msgstr "Kontakt"
+
+#: templates/base.html:161
+msgid "My Dialogue"
+msgstr "Min Samtale"
+
+#: templates/base.html:163 templates/mus/_panel_my_development_plans.html:2
+#: templates/mus/all_employees.html:35
+#: templates/mus/development_plan_pdf.html:177
+msgid "Preparation guide"
+msgstr "Forberedelsesguide"
+
+#: templates/base.html:164 templates/mus/action_detail.html:15
+#: templates/mus/action_list.html:8 templates/mus/all_employees.html:36
+#: templates/mus/detail.html:76
+msgid "Contribution key"
+msgstr "Indsatsnøgle"
+
+#: templates/base.html:166 templates/base.html.py:216
+msgid "My information"
+msgstr "Mine oplysninger"
+
+#: templates/base.html:172
+msgid "My employees"
+msgstr "Mine medarbejdere"
+
+#: templates/base.html:174 templates/mus/action_list.html:7
+#: templates/mus/all_employees.html:18 templates/mus/detail.html:10
+msgid "Administrate employees"
+msgstr "Administrer medarbejdere"
+
+#: templates/base.html:175 templates/mus/dashboard.html:22
+msgid "My preparation"
+msgstr "Min forberedelse"
+
+#: templates/base.html:219
+msgid "Log out"
+msgstr "Log ud"
+
+#: templates/base.html:226 templates/login.html:19
+msgid "Login"
+msgstr "Log ind"
+
+#: templates/login.html:11
+msgid "Login error, try again"
+msgstr "Fejl i log ind, prøv igen"
+
+#: templates/login.html:17
+msgid "Remember me"
+msgstr "Husk mig"
+
+#: templates/login.html:20
+msgid "Forgotten password"
+msgstr "Glemt kodeord"
+
+#: templates/reset.html:9
+msgid "Reset password"
+msgstr "Nulstil kodeord"
+
+#: templates/reset.html:12
+msgid "Reset"
+msgstr "Nulstil"
+
+#: templates/reset_done.html:6
+msgid ""
+"Your password has been reset and an email with a new password has been sent "
+"to you"
+msgstr ""
+"Dit kodeord er blevet nulstillet og en email med det nye kodeord er blevet "
+"sendt til dig"
+
+#: templates/mus/_panel_action_keys.html:8
+msgid "Goals"
+msgstr "Mål"
+
+#: templates/mus/_panel_action_keys.html:15
+msgid "Headline"
+msgstr "Overskrift"
+
+#: templates/mus/_panel_action_keys.html:19
+#: templates/mus/action_detail.html:46 templates/mus/action_detail.html:110
+msgid "Follow up at"
+msgstr "Opfølgningsdato"
+
+#: templates/mus/_panel_action_keys.html:23
+msgid "Comments"
+msgstr "Kommentarer"
+
+#: templates/mus/_panel_action_keys.html:53
+msgid "Create development goal"
+msgstr "Tilføj udviklingsmål"
+
+#: templates/mus/_panel_my_development_plans.html:9
+msgid "Development plans"
+msgstr "Forberedelsesguides"
+
+#: templates/mus/_panel_my_development_plans.html:16
+msgid "Created at"
+msgstr "Oprettelsesdato"
+
+#: templates/mus/_panel_my_development_plans.html:26
+#: templates/mus/_panel_my_development_plans.html:28
+#: templates/mus/action_detail.html:42 templates/mus/action_detail.html:108
+msgid "Status"
+msgstr "Status"
+
+#: templates/mus/_panel_my_development_plans.html:27
+#: templates/mus/_panel_my_development_plans.html:29
+msgid "View / Edit"
+msgstr "Vis / Rediger"
+
+#: templates/mus/_panel_my_development_plans.html:46
+#: templates/mus/_panel_my_development_plans.html:72
+msgid "Finished & hidden"
+msgstr "Afsluttet & skjult"
+
+#: templates/mus/_panel_my_development_plans.html:48
+#: templates/mus/_panel_my_development_plans.html:74
+msgid "Finished & visible"
+msgstr "Afsluttet & synlig"
+
+#: templates/mus/_panel_my_development_plans.html:51
+#: templates/mus/_panel_my_development_plans.html:77
+msgid "Not finished"
+msgstr "Ikke afsluttet"
+
+#: templates/mus/_panel_my_development_plans.html:60
+#: templates/mus/_panel_my_development_plans.html:86
+msgid "Reopen"
+msgstr "Genåbn"
+
+#: templates/mus/_panel_my_development_plans.html:65
+#: templates/mus/_panel_my_development_plans.html:91
+#: templates/mus/_widget_my_developmentplans.html:10
+#: templates/mus/all_employees.html:182
+msgid "Fill out"
+msgstr "Udfyld"
+
+#: templates/mus/_pdf_competence.html:13
+msgid "No answer"
+msgstr "Intet svar"
+
+#: templates/mus/_widget_my_developmentplans.html:5
+msgid "Date"
+msgstr "Dato"
+
+#: templates/mus/_widget_my_developmentplans.html:5
+msgid "Mine"
+msgstr "Min"
+
+#: templates/mus/_widget_my_developmentplans.html:5
+msgid "My manager's"
+msgstr "Min leders"
+
+#: templates/mus/_widget_my_developmentplans.html:16
+msgid "None available"
+msgstr "Ingen tilgængelig"
+
+#: templates/mus/_widget_todo_developmentplans.html:12
+#: templates/mus/_widget_waiting_developmentplans.html:10
+msgid "Waiting for noone"
+msgstr "Afventer ingen"
+
+#: templates/mus/action_detail.html:22
+msgid "My effort"
+msgstr "Min indsats"
+
+#: templates/mus/action_detail.html:26
+msgid "My needs"
+msgstr "Mine behov"
+
+#: templates/mus/action_detail.html:38
+msgid "Approved"
+msgstr "Godkendt"
+
+#: templates/mus/action_detail.html:39 templates/mus/detail.html:70
+#: templates/mus/development_plan.html:66
+msgid "Yes"
+msgstr "Ja"
+
+#: templates/mus/action_detail.html:39 templates/mus/detail.html:70
+#: templates/mus/development_plan.html:67
+msgid "No"
+msgstr "Nej"
+
+#: templates/mus/action_detail.html:50
+msgid "Latest comment"
+msgstr "Sidste kommentar"
+
+#: templates/mus/action_detail.html:56
+msgid "New status"
+msgstr "Ny status"
+
+#: templates/mus/action_detail.html:72 templates/mus/action_detail.html:91
+#: templates/mus/action_edit.html:29
+#: templates/mus/create_employee_form.html:31
+msgid "Add"
+msgstr "Tilføj"
+
+#: templates/mus/action_detail.html:96
+msgid "Not yet approved"
+msgstr "Ikke godkendt endnu"
+
+#: templates/mus/action_detail.html:103
+msgid "History"
+msgstr "Historik"
+
+#: templates/mus/action_detail.html:109
+msgid "Comment"
+msgstr "Kommentar"
+
+#: templates/mus/action_detail.html:111
+msgid "Updated by"
+msgstr "Opdateret af"
+
+#: templates/mus/action_detail.html:112
+msgid "Updated at"
+msgstr "Opdateringsdato"
+
+#: templates/mus/action_edit.html:29
+#: templates/mus/create_many_employees_manager.html:39
+#: templates/mus/detail.html:97 templates/mus/development_plan.html:72
+#: templates/mus/edit_employee_form.html:25
+msgid "Save"
+msgstr "Gem"
+
+#: templates/mus/action_list.html:10
+msgid "for"
+msgstr "for"
+
+#: templates/mus/all_employees.html:31 templates/mus/detail.html:19
+msgid "Name"
+msgstr "Navn"
+
+#: templates/mus/all_employees.html:39
+msgid "Search"
+msgstr "Søg"
+
+#: templates/mus/all_employees.html:42
+msgid "Employee's"
+msgstr "Medarbejders"
+
+#: templates/mus/all_employees.html:43
+msgid "Manager's"
+msgstr "Leders"
+
+#: templates/mus/all_employees.html:44
+msgid "Options"
+msgstr "Muligheder"
+
+#: templates/mus/all_employees.html:109
+msgid "Add employee"
+msgstr "Tilføj medarbejder"
+
+#: templates/mus/all_employees.html:110
+#: templates/mus/create_many_employees.html:6
+msgid "Add many employees"
+msgstr "Tilføj flere medarbejdere"
+
+#: templates/mus/all_employees.html:111
+#: templates/mus/attach_development_plan.html:47
+msgid "Attach preparation guide"
+msgstr "Tilknyt forberedelsesguide"
+
+#: templates/mus/all_employees.html:112
+#: templates/mus/create_leader_model.html:21
+msgid "Create leader model"
+msgstr "Opret ledermodel"
+
+#: templates/mus/all_employees.html:128
+msgid "Are you sure?"
+msgstr "Er du sikker?"
+
+#: templates/mus/all_employees.html:183
+msgid "Remove"
+msgstr "Fjern"
+
+#: templates/mus/all_employees.html:184
+msgid "and hidden"
+msgstr "og skjult"
+
+#: templates/mus/attach_development_plan.html:51
+msgid "Step 1 - Associate competence fields"
+msgstr "Trin 1 - Tilknyt kompetencefelter"
+
+#: templates/mus/attach_development_plan.html:65
+msgid "Drag and drop from here"
+msgstr "Træk og slip fra her"
+
+#: templates/mus/attach_development_plan.html:81
+msgid "To here"
+msgstr "Til her"
+
+#: templates/mus/attach_development_plan.html:98
+msgid "Step 2 - Associate employees"
+msgstr "Trin 2 - Tilknyt medarbejdere"
+
+#: templates/mus/attach_development_plan.html:112
+msgid "Step 3 - Attach an e-mail"
+msgstr "Trin 3 - Tilknyt en email"
+
+#: templates/mus/attach_development_plan.html:119
+msgid "Choose e-mail template"
+msgstr "Vælg emailskabelon"
+
+#: templates/mus/attach_development_plan.html:168
+#: templates/mus/create_leader_model.html:39
+msgid "Attach"
+msgstr "Tilknyt"
+
+#: templates/mus/create_employee_form.html:8
+msgid "Add employee for"
+msgstr "Tilføj medarbejder til"
+
+#: templates/mus/create_leader_model.html:28
+msgid "Choose employees help text"
+msgstr "Vælg de medarbejdere der skal indgå i ledermodellen"
+
+#: templates/mus/create_many_employees.html:28
+msgid "Upload"
+msgstr "Upload"
+
+#: templates/mus/create_many_employees.html:31
+msgid "NOTE: only .csv files are accepted"
+msgstr "Bemærk: kun .csv-filer er tillladt"
+
+#: templates/mus/create_many_employees_form.html:18
+msgid "Fill out the rest"
+msgstr "Udfyld resten"
+
+#: templates/mus/create_many_employees_form.html:41
+#: templates/mus/create_many_employees_uploaded.html:34
+#: templates/mus/development_plan.html:33
+msgid "Next"
+msgstr "Næste"
+
+#: templates/mus/create_many_employees_manager.html:18
+msgid "Choose manager"
+msgstr "Vælg leder"
+
+#: templates/mus/create_many_employees_uploaded.html:9
+msgid "Choose fields"
+msgstr "Vælg felter"
+
+#: templates/mus/create_many_employees_uploaded.html:15
+msgid "Choose field"
+msgstr "Vælg felt"
+
+#: templates/mus/create_many_employees_uploaded.html:18
+msgid "Full name"
+msgstr "Fulde navn"
+
+#: templates/mus/detail.html:10
+msgid "Profile for "
+msgstr "Profil for "
+
+#: templates/mus/detail.html:35
+msgid "Company"
+msgstr "Virksomhed"
+
+#: templates/mus/detail.html:43
+msgid "Under"
+msgstr "Under"
+
+#: templates/mus/detail.html:59
+msgid "Prefered language"
+msgstr "Foretrukkent sprog"
+
+#: templates/mus/development_plan.html:30
+msgid "Save and log out"
+msgstr "Gem og log ud"
+
+#: templates/mus/development_plan.html:32
+msgid "Previous"
+msgstr "Forrige"
+
+#: templates/mus/development_plan.html:65
+msgid "Make development plan visible to others"
+msgstr "Gør forberedelsesguiden synlig for andre"
+
+#: templates/mus/development_plan.html:68
+msgid "The preparation guide is locked and"
+msgstr "Forberedelsesguiden er låst og"
+
+#: templates/mus/development_plan.html:69
+msgid "hidden"
+msgstr "sjult"
+
+#: templates/mus/development_plan.html:70
+msgid "visible "
+msgstr "synlig "
+
+#: templates/mus/development_plan.html:71
+msgid "Approved and lock"
+msgstr "Godkend og lås"
+
+#: templates/mus/development_plan.html:73
+msgid "for others"
+msgstr "for andre"
+
+#: templates/mus/development_plan.html:74
+msgid "Review responses"
+msgstr "Gennemse svar"
+
+#: templates/mus/development_plan_pdf.html:174
+msgid "Competence Development Dialogue"
+msgstr "Kompetenceudviklingssamtale"
+
+#: templates/mus/edit_employee_form.html:8
+msgid "Edit"
+msgstr "Rediger"
+
+#: templates/mus/leader_model_pdf.html:149
+#: templates/mus/leader_model_pdf.html:174
+msgid "Leader model"
+msgstr "Ledermodel"
+
+#: templates/mus/leader_model_pdf.html:189
+msgid "News value"
+msgstr "Nyhedsværdi"
+
+#~ msgid "Title"
+#~ msgstr "Titel"
+
+#~ msgid "Description"
+#~ msgstr "Beskrivelse"
+
+#~ msgid "Attach development plan"
+#~ msgstr "Tilknyt forberedelsesguide"
+
+#~ msgid "Create contribution key"
+#~ msgstr "Tilføj indsatsnøgle"
+
+#~ msgid "The password needs to be at least 6 characters"
+#~ msgstr "Koderordet skal mindst være 6 karakterer langt"
+
+#~ msgid "Filter"
+#~ msgstr "Filtrer"
+
+#~ msgid "Page"
+#~ msgstr "Side"
+
+#~ msgid "assignment key"
+#~ msgstr "opgavenøgle"
+
+#~ msgid "Upload a csv file"
+#~ msgstr "Upload en csv fil"
+
+#~ msgid "Development plan to do"
+#~ msgstr "Forberedelsesguides to do"
+
+#~ msgid "My development plan"
+#~ msgstr "Min forberedelsesguide"
+
+#~ msgid "Overview"
+#~ msgstr "Overblik"
+
+#~ msgid "Development plan"
+#~ msgstr "Forberedelsesguide"
+
+#~ msgid "My development plans"
+#~ msgstr "Mine forberedelsguides"
+
+#~ msgid "open"
+#~ msgstr "åben"
+
+#~ msgid "Language code"
+#~ msgstr "Sprogkode"
+
+#~ msgid "language code"
+#~ msgstr "sprogkode"
+
+#~ msgid "Start"
+#~ msgstr "Start"
+
+#~ msgid "Help"
+#~ msgstr "Hjælp"
+
+#~ msgid "Repeat new password"
+#~ msgstr "Gentag nyt kodeord"
+
+#~ msgid "Employee's development plan"
+#~ msgstr "Medarbejders forberedelsesguide"
+
+#~ msgid "Manager's development plan"
+#~ msgstr "Leders forberedelsesguide"
+
+#~ msgid "There is an error with this development plan"
+#~ msgstr "Der er en fejl ved denne forberedelsesguide"
+
+#~ msgid "Show"
+#~ msgstr "Vis"
+
+#~ msgid "My skills key"
+#~ msgstr "Min kompetencenøgle"
+
+#~ msgid "Skills key"
+#~ msgstr "Kompetencenøgle"
+
+#~ msgid "Create skills key"
+#~ msgstr "Ny kompetencenøgle"
+
+#~ msgid "follow_up_at"
+#~ msgstr "opfølgningsdato"
+
+#~ msgid "Send"
+#~ msgstr "Send"
+
+#~ msgid "wrote"
+#~ msgstr "skrev"
+
+msgid "Task"
+msgstr "Opgave"
+
+msgid "These employees do not have any actions"
+msgstr "Disse medarbejdere mangler indsatsnøgler"
+
+msgid "NOTE: only .png, .jpg, .doc and .pdf files are accepted"
+msgstr "NOTE: Kun .png, .jpg, .doc and .pdf filer er accepteret"
+
+msgid "Files"
+msgstr "Filer"
+
+msgid "File name"
+msgstr "Filnavn"
+
+msgid "Invalid username format. Accepted characters are A-Z,a-z,0-9,_-,."
+msgstr "Fejl i brugernavn. Accepterede tegn er A-Z,a-z,0-9,_-,."
+
+msgid "Your file was successfully uploaded"
+msgstr "Du har nu succesfuldt uploaded din fil"
+
+msgid "Are you sure you want to delete this file?"
+msgstr "Er du sikker på du vil slette denne fil?"
+
+msgid "Your own CDD"
+msgstr "Ansattes forberedelsesguide"
+
+msgid "Your manager's CDD"
+msgstr "Leders forberedelsesguide"

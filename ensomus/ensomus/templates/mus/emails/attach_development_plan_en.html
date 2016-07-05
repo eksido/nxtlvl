@@ -1,0 +1,19 @@
+<p>Dear {{ user.get_full_name }}</p>
+<p>
+Welcome to your annual Competence Development Dialogue. You are now set up in the NXT LVL CDD system. 
+</p>
+<p>
+In this regard, we ask you to do the following: 
+</p>
+<ul>
+	<li>Log in directly to your preparation guide at https://sys.nxtlvl.dk/accesscode/{{ user.employee_user.first.getAccessCode }}.</li>
+	<li>Or go to https://sys.nxtlvl.dk and log in using the following <b>username:</b> <i>{{ user.username }}</i> and <b>code:</b> <i>{{ password }}</i>. You can customize your personal code under my information.</li>
+	<li>Once you are logged in, you will find your preparation guide under "My CDD “.</li>
+</ul>
+<p>
+Take your time and reflect on the questions that are applicable in the preparation guide, as it is important for your future development. 
+</p>
+<p>
+	{{ text }}
+</p>
+

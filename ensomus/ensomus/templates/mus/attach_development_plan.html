@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% load mus_tags %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'lib/multiselect/css/ui.multiselect.css' %}" />
+<style>
+	#id_employees {
+		width: 460px;
+		height: 200px;
+	}
+#competenceFieldFrom, #competenceFieldTo {
+	width:  453px;
+	height: 230px;
+	list-style-type: none;
+}
+#competenceFieldFrom >li, #competenceFieldTo >li {
+	cursor: move;
+	float:left;
+	min-width: 150px;
+	min-height: 75px;
+	font-size: 0.9em;
+	background: none;
+	border: 1px solid #ccc;
+	line-height: 70px;
+	text-align: center;
+	color: white;
+
+}
+#competenceFieldFrom >li:empty, #competenceFieldTo >li:empty {
+	cursor: default;
+
+}
+.ui-draggable-dragging {
+	z-index: 1000;
+}
+  
+#emailCommentForm textarea{
+	width:600px;
+    height:70px;
+}   
+  
+</style>
+{% endblock %}
+{% block content %}
+<div class="row">
+	<h2>{% trans "Attach preparation guide" %}</h2>
+	<form action="/employee/attach/{{ company.pk }}" method="post">{% csrf_token %}
+
+	{{ form.non_field_errors }}
+	<h3>{% trans "Step 1 - Associate competence fields" %}</h3>
+	<p>
+		{% if LANGUAGE_CODE == "da" %}
+			Her tilføjer du de valgte kompetencefelter til årets MUS
+		{% elif LANGUAGE_CODE == "en" %}
+			Please choose the competence fields to be considered for this year's dialogue.
+		{% endif %}
+	</p>
+	<div style="display:none">
+		{{ form.competence_fields }}
+	</div>
+	<div class="row">		
+		{{ form.competence_fields.errors }}
+		<div class="col-md-5">
+			{% trans "Drag and drop from here" %}
+		<ul id="competenceFieldFrom" class="ui-helper-reset">
+		{% for i in 3|range %}
+			{% for j in 3|range %}
+				{% if competence_fields|key_exists:j and competence_fields|key:j|key_exists:i %}
+					{% with item=competence_fields|key:j|key:i %}
+					<li data-id="{% if item.field.parent %}{{ item.field.parent.id }}{% else %}{{ item.field.id }}{% endif %}" style="background-color: {{ item.color }}" class="ui-widget-content">{{ item.field.title }}</li>
+					{% endwith %}
+				{% else %}
+					<li data-id="" class="ui-widget-content"></li>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+		</ul>
+		</div>
+		<div class="col-md-5">
+			{% trans "To here" %}
+			<ul id="competenceFieldTo" class="ui-helper-reset">
+				{% for i in 3|range %}
+					{% for j in 3|range %}
+						{% if competence_fields|key_exists:j and competence_fields|key:j|key_exists:i %}
+							{% with item=competence_fields|key:j|key:i %}
+							<li data-id="{% if item.field.parent %}{{ item.field.parent.id }}{% else %}{{ item.field.id }}{% endif %}" class="ui-widget-content"></li>
+							{% endwith %}
+						{% else %}
+							<li data-id="" class="ui-widget-content"></li>
+						{% endif %}
+					{% endfor %}
+				{% endfor %}
+			</ul>
+		</div>
+
+	</div>
+	<h3>{% trans "Step 2 - Associate employees" %}</h3>
+	<p>
+		{% if LANGUAGE_CODE == "da" %}
+			Her tilføjer du den eller de medarbejder(e) der skal tilknyttes til denne forberedelsesguide
+		{% elif LANGUAGE_CODE == "en" %}
+			Please choose the employee(s) who will be attached to this preparation guide.
+		{% endif %}
+	</p>
+	<div class="row">
+		{{ form.employees.errors }}
+		<div class="col-md-4">
+				{{ form.employees }}
+		</div>
+	</div>
+	<h3>{% trans "Step 3 - Attach an e-mail" %}</h3>
+		<div class="row" data-ng-controller="attachDevelopmentplanController">
+			
+			
+			<div class="col-md-4 col-md-offset-1">
+				<div class="form-horizontal" role="form">
+					<div class="form-group">
+						<label >{% trans "Choose e-mail template" %} </label>
+						{{ form.template|attr:"data-ng-model=template" }}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="well">
+					<div data-ng-if="template=='da'">
+						<p>Kære &lt;Medarbejder&gt;</p>
+						<p>
+							Velkommen til din årlige kompetenceudviklingssamtale. Du er nu blevet oprettet i NXT LVL  systemet.
+						</p>
+						<p>
+							I den forbindelse vil vi bede dig om at gøre følgende:
+						</p>
+						<ul>
+							<li>Gå ind på følgende hjemmeside: <a href="https://sys.nxtlvl.dk">https://sys.nxtlvl.dk</a>.</li>
+								<li>Log ind med følgende <b>brugernavn:</b> <i>&lt;Brugernavn&gt;</i> og <b>kode:</b> <i>&lt;Kodeord&gt;</i>. Du kan herefter selv tilpasse din personlige kode under ”Mine oplysninger”.</li>
+								<li>Når du er logget ind, kan du finde din forberedelsesguide under ”Min Samtale”. </li>
+						</ul>
+						<p>
+							Tag dig god tid og reflektér over de spørgsmål, som er gældende i forberedelsen, det gælder
+							din fremtidige udvikling.
+						</p>
+					</div>
+					<div data-ng-if="template=='en'">
+						<p>Dear &lt;Employee&gt;</p>
+						<p>
+						Welcome to your annual Competence Development Dialogue. You are now set up in the NXT LVL CDD system. 
+						</p>
+						<p>
+						In this regard, we ask you to do the following: 
+						</p>
+						<ul>
+							<li>Go the following website: <a href="https://sys.nxtlvl.dk">https://sys.nxtlvl.dk</a>.</li>
+							<li>Log in using the following <b>username:</b> <i>&lt;Username&gt;</i> and <b>code:</b> <i>&lt;Password&gt;</i>. You can customize your personal code under my information.</li>
+							<li>Once you are logged in, you will find your preparation guide under "My CDD “.</li>
+						</ul>
+						<p>
+						Take your time and reflect on the questions that are applicable in the preparation guide, as it is important for your future development. 
+						</p>
+					</div>
+					<div id="emailCommentForm">					
+						{{ form.email_text }}	
+					</div>		
+						{{ form.email_text.errors }}
+				</div>
+		</div>
+		<div class="col-md-12">
+			<input class="btn btn-primary" type="submit" value="{% trans "Attach" %}"/>
+		</div>
+	</div>
+	</form>
+</div>
+
+{% endblock %}
+{% block js_ready %}
+$("#competenceFieldTo > li").draggable({
+	revert: 'invalid',
+	helper: 'clone',
+	cancel: ':empty'
+});
+$("#competenceFieldFrom > li").draggable({
+	revert: 'invalid',
+	helper: 'clone',
+	cancel: ':empty'
+});
+$("#competenceFieldTo").droppable({
+	  activeClass: "ui-state-default",
+	  hoverClass: "ui-state-hover",
+	  accept: "#competenceFieldFrom > li",
+	  drop: function( event, ui ) {
+	  	if (ui.draggable.text()=='') return;
+	  	var id = ui.draggable.attr("data-id");
+	    $item = $( this ).find( "[data-id="+id +"]" );
+	   	$item.text( ui.draggable.text() );
+	   	var tmp = $item.css('backgroundColor');
+	   	$item.css('backgroundColor',ui.draggable.css('backgroundColor'));
+	   	ui.draggable.css('backgroundColor',tmp);
+	    ui.draggable.text('');
+	    $("#id_competence_fields option[value='"+id+"']").attr('selected',true);
+	  }
+});
+$("#competenceFieldFrom").droppable({
+	  activeClass: "ui-state-default",
+	  hoverClass: "ui-state-hover",
+	  accept: "#competenceFieldTo > li",
+	  drop: function( event, ui ) {
+	  	if (ui.draggable.text()=='') return;
+	  	var id = ui.draggable.attr("data-id");
+	    $item = $( this ).find( "[data-id="+id +"]" );
+	   	$item.text( ui.draggable.text() );
+	   	var tmp = $item.css('backgroundColor');
+	   	$item.css('backgroundColor',ui.draggable.css('backgroundColor'));
+	   	ui.draggable.css('backgroundColor',tmp);
+	    ui.draggable.text('');
+	    $("#id_competence_fields option[value="+id+"]").attr('selected',false);
+	  }
+});
+$.localise('ui-multiselect',{language: 'ja', path : '/static/lib/multiselect/js/locale/'})
+$('#id_employees').multiselect();
+{% endblock %}
+{% block js_includes %}
+<script type="text/javascript" src="{% static "lib/multiselect/js/plugins/localisation/jquery.localisation-min.js" %}"></script>
+<script type="text/javascript" src="{% static "lib/multiselect/js/ui.multiselect.js" %}"></script>
+<script src="{% static "app/js/lib/angular/angular.min.js" %}"></script>
+<script src="{% static "app/js/lib/angular/angular-route.min.js" %}"></script>
+<script src="{% static "app/js/lib/angular/angular-sanitize.min.js" %}"></script>
+<script src="{% static "app/js/lib/angular/angular-cookies.min.js" %}"></script>
+<script src="{% static "app/js/app.js" %}"></script>
+<script src="{% static "app/js/controllers/attach.developmentplan.controller.js" %}"></script>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block head %}
+<style>
+#myform td {
+	vertical-align: top;
+}
+</style>
+{% endblock %}
+{% block content %}
+
+<form action="/employee/create-many/{{ company.pk }}" method="post">{% csrf_token %}
+{{ formset.management_form }}
+<div class="panel panel-default">
+        <!-- Default panel contents -->
+        {#<div class="panel-body"></div>#}
+        <div class="panel-heading"> 
+                {% trans "Fill out the rest" %} 
+        </div>
+
+
+<table id="myform" class="table">	
+{% for form in formset %}
+	{% if forloop.first %}
+	<thead>
+		<tr>
+			{% for field in form.visible_fields %}
+			<th>{{ field.label }}</th>
+			{% endfor %}
+		</tr>
+	</thead>
+	{% endif %}
+	<tbody>
+		<tr>
+			<td colspan="*">{{ form.non_field_errors }}</td>
+		</tr>
+		<tr>
+			{% for field in form.visible_fields %}
+			<td>{{ field }}{{ field.errors.as_ul }}</td>
+			{% endfor %}
+		</tr>
+	</tbody>
+{% endfor %}
+</table>
+</div>
+<input type="submit" class="btn btn-primary" name="next2" value="{% trans "Next" %}" />
+</form>
+{% endblock %}

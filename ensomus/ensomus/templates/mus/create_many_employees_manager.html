@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block head %}
+<style>
+#myform td {
+	vertical-align: top;
+}
+</style>
+{% endblock %}
+{% block content %}
+
+<form action="/employee/create-many/{{ company.pk }}" method="post">{% csrf_token %}
+{{ formset.management_form }}
+<div class="panel panel-default">
+        <!-- Default panel contents -->
+        {#<div class="panel-body"></div>#}
+        <div class="panel-heading"> 
+                {% trans "Choose manager" %} 
+        </div>  
+<table id="myform" class="table">	
+{% for form in formset %}
+	{% if forloop.first %}
+	<thead>
+		<tr>
+			<th>{{ form.employee.label }}</th>
+			<th>{{ form.manager.label }}</th>
+		</tr>
+	</thead>
+	{% endif %}
+	<tbody>
+		<tr>
+			<td>{{ form.employee }}</td>
+			<td>{{ form.manager }}{{ form.manager.errors.as_ul }}</td>
+		</tr>
+	</tbody>
+{% endfor %}
+</table>
+</div>
+<input type="submit" class="btn btn-primary" name="next3" value="{% trans "Save" %}" />
+</form>
+{% endblock %}

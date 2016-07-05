@@ -1,0 +1,2 @@
+python ensomus/manage.py schemamigration mus --auto
+python ensomus/manage.py migrate

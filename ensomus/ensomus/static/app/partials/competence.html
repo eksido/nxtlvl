@@ -1,0 +1,16 @@
+<div class="row" >
+	<div ng-if="competence">
+		<h2>{{ competence.title }}</h2>
+		<div data-simplehtml="competence.description" style="text-align: justify"></div>
+		<div data-ng-repeat="question in competence.questions">
+			<div class="questiondiv" data-simplehtml="question.title" style="text-align: justify"></div>
+			<div data-ng-if="question.allow_response">
+		        <textarea class="mus_textarea" rows="6" data-ng-disabled="locked" data-ng-model="question.response" ng-change="answerChange($event, question)"></textarea>
+		    </div>
+		</div>
+	</div>
+	<div ng-if="competence_field">
+		<h2>{{ competence_field.title }}</h2>
+		<div data-simplehtml="competence_field.description" style="text-align: justify"></div>
+	</div>
+</div>

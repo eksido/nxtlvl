@@ -1,0 +1,12 @@
+{% load i18n %}
+<table>
+	{% for employee in  widget.data %}
+		{% if not employee.canAssociateNewPlan %}
+		<tr>
+			<td>{{ employee }}</td>
+		</tr>
+		{% endif %}
+	{% empty %}
+		<tr><td colspan="3">{% trans "Waiting for noone" %}</td></tr>
+	{% endfor %}
+</table>

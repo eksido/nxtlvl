@@ -1,0 +1,14 @@
+{% load i18n %}
+<table>
+	{% for employee in  widget.data %}
+		{% for dp in employee.getDevelopmentPlans %}
+			{% if not dp.manager_response_relation.finished_at %}
+			<tr>
+				<td><a href="/developmentplan/{{ dp.manager_response_relation.pk }}">{{ employee }}</a></td>
+			</tr>
+			{% endif %}
+		{% endfor %}
+	{% empty %}
+		<tr><td colspan="3">{% trans "Waiting for noone" %}</td></tr>
+	{% endfor %}
+</table>

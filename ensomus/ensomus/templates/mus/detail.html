@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load mus_tags %}
+{% load i18n %}
+{% block head %}
+
+{% endblock %}
+{% block content %}
+<div class="row">
+    <h2>{% if request.user|isCompanySuperUserOrHigher or request.user|currentEmployeeId != employee.pk %}<a href="/employee/all/{{ employee.company.pk }}">{% trans "Administrate employees" %}</a> &gt; {% endif %}{% trans "Profile for " %} {{ employee.user.get_full_name }}
+        {% if request.user|isCompanySuperUserOrHigher or request.user|currentEmployeeId == employee.pk or request.user|currentEmployeeId == employee.manager.pk %}
+            <a class="btn btn-default" href="/employee/edit/{{ employee.id }}"><span class="glyphicon glyphicon-cog"></span></a>
+        {% endif %}
+    </h2>
+
+    <table class="table table-striped">
+        <tr>
+            <td>
+                {% trans "Name" %}
+            </td>
+            <td>
+                {{ employee.user.get_full_name }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {% trans "Email" %}
+            </td>
+            <td>
+                {{ employee.user.email }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {% trans "Company" %}
+            </td>
+            <td>
+                {{ employee.company.name }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {% trans "Under" %}
+            </td>
+            <td>
+                {{ employee.manager }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {% trans "Type" %}
+            </td>
+            <td>
+                {{ employee.development_plan_type.name }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {% trans "Prefered language" %}
+            </td>
+            <td>
+                {{ employee.get_language_code_display }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {% trans "Manager" %}
+            </td>
+            <td>
+                {% if employee.is_manager %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}
+            </td>
+        </tr>
+    </table>
+    
+    {% include "mus/_panel_my_development_plans.html" %}
+    <h3>{% trans "Contribution key" %} </h3>
+    {% include "mus/_panel_action_keys.html" %}
+
+
+	<br /><br /><br />
+	<a name="file-list"></a>
+	<h3>{% trans "Files" %}</h3>
+
+	<div class="panel panel-default">
+		<table class="table table-bordered table-hover">
+		<tr>
+			<th class="col-md-2">{% trans "File name" %}</th>
+			<th class="col-md-2">{% trans "Action" %}</th>
+		</tr>
+		{% for file in user_files %}
+			<tr>
+				<td><a href="{% url "employee_download_file" employee.pk file %}">{{ file }}</a></td>
+				<td>
+{#					{% if request.user|isCompanySuperUserOrHigher or request.user|isManager %}#}
+						<a
+							href="{% url "employee_delete_file" employee.pk file %}"
+							class="btn btn-primary" onclick="return deleteFile();"
+							>{% trans "Delete" %}</a>
+{#					{% endif %}#}
+				</td>
+			</tr>
+		{% endfor %}
+		</table>
+	</div>
+
+
+
+	<br />
+
+	<form class="form-horizontal" enctype="multipart/form-data" action="{{ request.path }}" method="post">
+		{% csrf_token %}
+		<div class="form-group">
+			<label class="control-label col-md-2" for="{{ upload_form.file.html_name }}">
+				{{ upload_form.file.label }}
+			</label>
+			<div class="col-md-10">
+				{{ upload_form.file }}
+
+				{{ upload_form.file.errors }}
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-2"></div>
+			<div class="col-md-10">
+				<input type="submit" value="{% trans "Upload" %}" class="btn btn-primary" name="upload" />
+
+				<em style="font-size: 15px; color:red;">
+					{% trans "NOTE: only .png, .jpg, .doc and .pdf files are accepted" %}
+				</em>
+
+				{% if upload_form.upload_status %}
+					<h3 style="color: green">{% trans 'Your file was successfully uploaded' %}</h3>
+				{% endif %}
+			</div>
+		</div>
+
+	</form>
+
+	<br /><hr /><br />
+
+	{% if request.user|isCompanySuperUserOrHigher or request.user|isManager %}
+
+		<form class="form-horizontal" action="{{ request.path }}" method="post">{% csrf_token %}
+		{% for field in form %}
+			<div class="form-group">
+				<label class="control-label col-md-2" for="{{ field.html_name }}">{{ field.label }}</label>
+				<div class="col-md-10">
+					{{ field }}
+					{{ field.errors }}
+				</div>
+			</div>
+		{% endfor %}
+
+		<div class="form-group">
+			<div class="col-md-2"></div>
+			<div class="col-md-10">
+				<input type="submit" class="btn btn-default" value="{% trans "Save" %}" />
+			</div>
+		</div>
+
+		</form>
+
+	{% endif %}
+</div>
+
+<script>
+function deleteFile() {
+	return confirm('{% trans 'Are you sure you want to delete this file?' %}');
+}
+</script>
+
+{% endblock %}

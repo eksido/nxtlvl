@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load mus_tags %}
+{% block content %}
+<div class="row">
+	<h2> 
+		{% if request.user|isCompanySuperUserOrHigher or request.user|currentEmployeeId != employee.pk %}<a href="/employee/all/{{ employee.company.pk }}">{% trans "Administrate employees" %}</a> &gt; {% endif %}
+		{% trans "Contribution key" %} 
+		{% if not employee.user == user %}
+		{% trans "for" %} 
+		{{ employee }}
+		{% endif %}
+	</h2>	
+		<p> 
+			{% if LANGUAGE_CODE == "da" %}
+				Du kan vælge, oprette og ændre i dine udviklingsmål her
+			{% elif LANGUAGE_CODE == 'en' %}
+				You can select, submit and edit your development goals here
+			{% endif%}
+		</p>
+
+	{% include "mus/_panel_action_keys.html" %}
+
+	
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="span12">
+        <h2>Anden del: Kompetencenøglen</h2>
+        <p>
+            Du er nu kommet til anden del af forberedelsesguiden.  Kompetencenøglen er en oversigt over specielt udvalgte kompetencer som en udviklende MUS indeholder.
+        </p>
+        <p>
+            <div class="well">
+            <em>Kompetencer handler om, hvordan medarbejderen anvender sine evner, viden og færdigheder i de daglige arbejdsopgaver. Der er to mulige udviklingsveje, den ene er at blive bedre til noget medarbejderen er god til i forvejen. Den anden er at udvikle helt nye kompetencer som er relevant for arbejdet. Alle er i besiddelse af de kompetencer som er med i oversigten, men det er forskelligt i hvilken grad vi bruger og udnytter dem.</em>
+            </div>
+        </p>
+        <p>
+            Hensigten med kompetencenøglen er at få viden om og indsigt i, hvilke kompetencer, der giver mest mening for medarbejderen at udvikle og sætte fokus på i forhold til sine arbejdsopgaver.
+        </p>
+        <p>
+            Kompetencenøglen indeholder 9 kompetencefelter, som hver indeholder 3 kompetencer. Der er fokus på <span data-ng-bind="getCompetenceFieldCount()"></span> kompetencefelter i årets MUS. Disse vil være den overordnede ramme for forberedelsen og samtalen. De <span data-ng-bind="getCompetenceFieldCount()"></span> kompetencefelter er: <strong><span data-ng-repeat="cf in getCompetenceFields()"><span data-ng-if="!$last && !$first">,&nbsp;</span><span data-ng-if="$last">&nbsp;&amp;&nbsp;</span>{{ cf.name}}</span>.</strong>
+        </p>
+        <p>
+            Kompetencerne i søjle 1 og søjle 2 (personlige og sociale kompetencer) kan anvendes generelt for alle arbejdsområder og virksomheder, hvorimod kompetencerne i søjle 3 (virksomhedsmæssige kompetencer) er specielle for netop din virksomhed.
+        </p>
+        <p>
+            I nedenstående oversigt over søjler og kompetencer vises alle 9 kompetencefelter. Da kompetencefelterne kan overlappe hinanden, vises alle kompetencefelterne, men du og medarbejderen skal kun forberede jer ud fra de <span data-ng-bind="getCompetenceFieldCount()"></span> udvalgte kompetencefelter.
+        </p>
+        <h3>Oversigt over søjler og kompetencer</h3>
+        <img src="http://test.nxtlvl.dk/static/img/kompetencer.png" alt="Kompetencer" />
+        <h3>Forberedelse med udgangspunkt i kompetencer</h3>
+        <p>
+            Forberedelsen har til hensigt at få dig og medarbejderen til at reflektere over kompetencer i forhold til nuværende og fremtidige arbejdsopgaver, så de kan få det fokus, det kræver for at udvikle dem og løse opgaverne endnu bedre. 
+        </p>
+        <p>
+            <b>Bemærk<b/> at medarbejderen ikke altid skal skrue op for kompetencerne, men også godt kan være i en situation, hvor medarbejderen skal skrue ned for kompetencerne, det afhænger helt af erfaring, personlighed og opgavens karakter.
+        </p>
+        <p>
+            Du bedes nu udfylde kompetencenøglen ud fra de <span data-ng-bind="getCompetenceFieldCount()"></span> kompetencefelter, som er sat i fokus i dette års MUS.<br />
+        </p>
+    </div>
+</div>
+ 
+

@@ -1,0 +1,52 @@
+<div class="row">
+	<div data-ng-if="LANGUAGE_CODE=='da'">
+		<h2>Afslut</h2>
+			<h3>
+				Du er nu på den afsluttende del af forberedelsesguiden. 
+			</h3>
+			<p>
+				Du har nu mulighed for enten at 
+				<ul>
+					<li><b>Gemme</b> og vende tilbage for at redigere og afslutte forberedelsesguiden på et senere tidspunkt</li>
+					<li><b>Låse</b> og afslutte forberedelsesguiden (Bemærk: Du får ikke længere lov til at rette i guiden)</li>
+				</ul>
+				Når du låser din forberedelse guide bedes du enten vælge om du vil gøre din forberedelse synlig eller beholde den usynlig for andre.
+			</p>	
+	</div>
+	<div data-ng-if="LANGUAGE_CODE=='en'">
+		<h2>Finish</h2>
+			<h3>
+				You are now in the final page of the preparation guide.
+			</h3>
+			<p>
+				You can either 
+				<ul>
+					<li><b>Save</b> and come back to edit and finalize the preparation guide on a later time </li>
+					<li><b>Lock</b> and finish the preparation (Note: You will no longer be able to edit the preparation) </li>
+				</ul>
+				When you lock your preparation guide you can choose to either keep it hidden or make it visible for others in your organisation.
+			</p>			
+	</div>
+	
+			
+	<div style="text-align:center; margin-top:50px;" >
+		<div data-ng-if="!locked">			
+			<div class="control-group">
+				<label class="control-label" for="is_private"><strong> {{ trans['Make development plan visible to others'] }}?</strong></label>
+				<div class="controls">
+					<input type="radio" data-ng-model="data.is_private" name="is_private" value="false" /> {{ trans['Yes'] }}<br />
+					<input type="radio" data-ng-model="data.is_private" name="is_private" value="true" /> {{ trans['No'] }}
+				</div>
+			</div>
+			<div class="control-group" style="padding: 10px;">
+				<div class="controls">
+					<a href="/" class="btn btn-default">{{ trans['Save'] }}</a>
+					<button data-ng-disabled="lockdisabled" class="btn btn-primary" data-ng-click="finish()">{{ trans['Approved and lock'] }}</button>					
+				</div>		
+			</div>
+		</div>
+		<div data-ng-if="locked">
+			<h3>{{ trans['The development plan is locked and'] }} <span data-ng-if="is_private">{{ trans['hidden'] }}</span><span data-ng-if="!is_private">{{ trans['visible'] }}</span> {{ trans['for others'] }}.</h3>
+		</div>
+	</div>
+</div>

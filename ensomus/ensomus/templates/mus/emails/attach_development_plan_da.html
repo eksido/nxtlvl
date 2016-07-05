@@ -1,0 +1,19 @@
+<p>Kære {{ user.get_full_name }}</p>
+<p>
+Velkommen til din årlige kompetenceudviklingssamtale. Du er nu blevet oprettet i NXT LVL systemet.
+</p>
+<p>
+I den forbindelse vil vi bede dig om at gøre følgende:
+</p>
+<ul>
+	<li>Du kan logge direkte ind til din forberedelsesguide på https://sys.nxtlvl.dk/accesscode/{{ user.employee_user.first.getAccessCode }}.</li>
+	<li>Eller du kan logge ind på https://sys.nxtlvl.dk med følgende <b>brugernavn:</b> <i>{{ user.username }}</i> og <b>kode:</b> <i>{{ password }}</i>. Du kan herefter selv tilpasse din personlige kode under ”Mine oplysninger”.</li>
+	<li>Når du er logget ind, kan du finde din forberedelsesguide under ”Min Samtale”. </li>
+</ul>
+<p>
+Tag dig god tid og reflektér over de spørgsmål, som er gældende i forberedelsen, det gælder
+din fremtidige udvikling.
+</p>
+<p>
+	{{ text }}
+</p>

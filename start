@@ -1,0 +1,2 @@
+export DATABASE_URL="mysql://nxtlvl:FrynJap9@localhost:16903/nxtlvl_test"
+python ensomus/manage.py runserver

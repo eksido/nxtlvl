@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<form method="post" action="/employee/create-many/{{ company.pk }}">{% csrf_token %}
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    {#<div class="panel-body"></div>#}
+    <div class="panel-heading"> 
+            {% trans "Choose fields" %} 
+    </div>  
+<table class="table">
+	<tr>
+		{% for item in data|first %}
+			<td><select name="field[]">
+				<option value="0">{% trans "Choose field" %}</option>
+				<option value="1">{% trans "First name" %}</option>
+				<option value="2">{% trans "Last name" %}</option>
+				<option value="3">{% trans "Full name" %}</option>
+				<option value="4">{% trans "Email" %}</option>
+				<option value="5">{% trans "Username" %}</option>
+			</select></td>
+		{% endfor %}
+	</tr>
+	</td>
+	{% for row in data %}
+	<tr>
+		{% for item in row %}
+			<td>{{ item }}</td>
+		{% endfor %}
+	</tr>
+	{% endfor %}
+</table>
+</div>
+<input type="submit" class="btn btn-primary" name="next" value="{% trans "Next" %}" />
+</form>
+{% endblock %}
