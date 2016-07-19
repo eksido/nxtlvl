@@ -6,7 +6,6 @@ import datetime
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
     ]
 
@@ -35,7 +34,8 @@ class Migration(migrations.Migration):
             name='Log',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('result', models.PositiveSmallIntegerField(choices=[(0, b'success'), (1, b'not sent (blacklisted)'), (2, b'failure')])),
+                ('result', models.PositiveSmallIntegerField(
+                    choices=[(0, b'success'), (1, b'not sent (blacklisted)'), (2, b'failure')])),
                 ('date', models.DateTimeField(default=datetime.datetime.now)),
                 ('log_message', models.TextField()),
             ],
@@ -63,7 +63,8 @@ class Migration(migrations.Migration):
             name='QueuedMessage',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('priority', models.PositiveSmallIntegerField(default=3, choices=[(1, b'high'), (3, b'normal'), (5, b'low')])),
+                ('priority',
+                 models.PositiveSmallIntegerField(default=3, choices=[(1, b'high'), (3, b'normal'), (5, b'low')])),
                 ('deferred', models.DateTimeField(null=True, blank=True)),
                 ('retries', models.PositiveIntegerField(default=0)),
                 ('date_queued', models.DateTimeField(default=datetime.datetime.now)),

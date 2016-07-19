@@ -3,349 +3,431 @@
 {% load mus_tags %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>My Title</title>
-{#        <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>#}
-{#    	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>#}
-{#        <link href='http://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>#}
-{#        <script src="http://cufon.shoqolate.com/js/cufon-yui.js" type="text/javascript"></script>#}
-{#        <script src="cambria.cufonfonts.js" type="text/javascript"></script>#}
-{#        <script type="text/javascript">#}
-{#        Cufon.replace('.cambria_bold_italic', { fontFamily: 'Cambria Bold Italic', hover: true }); #}
-{#        Cufon.replace('.cambria_italic', { fontFamily: 'Cambria Italic', hover: true }); #}
-{#        Cufon.replace('.cambria_bold', { fontFamily: 'Cambria Bold', hover: true }); #}
-{#        Cufon.replace('.cambria', { fontFamily: 'Cambria', hover: true }); #}
-{#        </script>#}
-        <style type="text/css">
-            @page {
-                size: A4;
-                margin: 2.5cm;
-                @frame footer {
-                    -pdf-frame-content: footerContent;
-                    bottom: 0.7cm;
-                    margin-left: 9cm;
-                    margin-right: 9cm;
-                    height: 1cm;
-                }
-                @frame header {
-                    -pdf-frame-content: headerContent;
-                    top:0.8cm;
-                    margin-right:0.8cm;                    
-                }
-            }
-            body {
-                /*font-family: 'Crimson Text', serif;*/
-	            font-family: droid-serif, serif;
-	            font-weight: 400;
-	            font-size: 12px;
-	            line-height: 20px;
-	        }
-
-            .page-break {
-            	page-break-after: always;
-            }
-
-            h2 {
-                font-size: 30px;
-                font-style: italic;
-            }
-
-            h1 {
-                font-size: 30px;
-                font-style: italic;
-            }
-            #introhtml strong {
-                color: #0088ca;              
-            }
-
-            #task h2{
-                font-size: 30px;
-                font-style: italic;
-            }
-
-
-            #frontpage {
-                padding-top:4cm;
-                text-align: right;                
-            }
-            #frontpage h1{
-                font-size: 35px;
-                font-weight: bold;
-                font-style: normal;
-            }
-            #frontpage tr{
-                padding-top: 0.3cm;
-            }
-            #frontpage td{
-                width:4cm;
-                text-align: left;
-            }
-            #frontpage_info {
-                font-size: 13px;
-                padding-top: 10cm;
-                vertical-align: bottom;
-            }
-
-            #headerContent {
-                text-align: right;
-            }
-            #footerContent {
-                text-align: center;
-            }
-
-			.hdr {
-				text-align: left;
-				font-weight: bold;
-			}
-
-			.employee-list {
-				width: 24cm;
-			}
-
-			.employee-list-item {
-				float: left;
-				width: 7cm;
-			}
+<head>
+    <meta charset="utf-8">
+    <title>My Title</title>
+    {#        <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>#}
+    {#    	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>#}
+    {#        <link href='http://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>#}
+    {#        <script src="http://cufon.shoqolate.com/js/cufon-yui.js" type="text/javascript"></script>#}
+    {#        <script src="cambria.cufonfonts.js" type="text/javascript"></script>#}
+    {#        <script type="text/javascript">#}
+    {#        Cufon.replace('.cambria_bold_italic', { fontFamily: 'Cambria Bold Italic', hover: true }); #}
+    {#        Cufon.replace('.cambria_italic', { fontFamily: 'Cambria Italic', hover: true }); #}
+    {#        Cufon.replace('.cambria_bold', { fontFamily: 'Cambria Bold', hover: true }); #}
+    {#        Cufon.replace('.cambria', { fontFamily: 'Cambria', hover: true }); #}
+    {#        </script>#}
+    <style type="text/css">
+        @page {
+            size: A4;
+            margin: 2.5cm;
+            @frame footer {
+        -pdf-frame-content:footerContent;
+            bottom: 0.7cm;
+            margin-left: 9cm;
+            margin-right: 9cm;
+            height: 1cm;
+        }
+        @frame header {
+        -pdf-frame-content:headerContent;
+        top:0.8cm;
+        margin-right:0.8cm;
+        }
+        }
+
+        body {
+            /*font-family: 'Crimson Text', serif;*/
+            font-family: droid-serif, serif;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        h2 {
+            font-size: 30px;
+            font-style: italic;
+        }
+
+        h1 {
+            font-size: 30px;
+            font-style: italic;
+        }
+
+        #introhtml strong {
+            color: #0088ca;
+        }
+
+        #task h2 {
+            font-size: 30px;
+            font-style: italic;
+        }
+
+        #frontpage {
+            padding-top: 4cm;
+            text-align: right;
+        }
+
+        #frontpage h1 {
+            font-size: 35px;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        #frontpage tr {
+            padding-top: 0.3cm;
+        }
+
+        #frontpage td {
+            width: 4cm;
+            text-align: left;
+        }
+
+        #frontpage_info {
+            font-size: 13px;
+            padding-top: 10cm;
+            vertical-align: bottom;
+        }
+
+        #headerContent {
+            text-align: right;
+        }
+
+        #footerContent {
+            text-align: center;
+        }
+
+        .hdr {
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .employee-list {
+            width: 24cm;
+        }
+
+        .employee-list-item {
+            float: left;
+            width: 7cm;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="frontpage">
+    <h1> {{ company }} </h1>
+
+    <br/><br/><br/><br/><br/><br/>
+
+    <table align="right">
+        <tr>
+            <td style="font-size:22px; font-style:italic;">{% trans "Leader model" %}</td>
+        </tr>
+        {#                    <tr>#}
+        {#                        <td style="color: #0088ca; font-weight:bold; font-size:18px">{% trans "Preparation guide" %}</td>#}
+        {#                    </tr>#}
+    </table>
+</div>
+
+<div id="frontpage_info">
+    <p align="left" class="info">
+        Copyright &copy; Enso {% now 'Y' %}<br><br>
+        Enso A/S<br>
+        Ehlersvejs 11<br>
+        2900 Hellerup<br>
+        <a href="www.enso.dk">www.enso.dk</a> / <a href="www.nxtlvl.dk">www.nxtlvl.dk</a>
+    </p>
+</div>
+
+<div class="page-break"></div>
+<div id="introhtml">
 
-        </style>
-    </head>
-    <body>
+    <h2>Introduktion til dine tre lederroller</h2>
 
-		<div id="frontpage">
-			<h1> {{ company }} </h1>
+    <p>Dine medarbejdere lærer forskelligt, de motiveres ikke af det samme – fordi dine briller virker for dig, virker
+        de (nok) ikke for en anden – det er helt individuelt, hvad medarbejderen har brug for i relation til at udvikle
+        og realisere sig.</p>
 
-			<br /><br /><br /><br /><br /><br />
+    <p>Brilleeksemplet er også grunden til, at rigtig mange medarbejdere kan have en oplevelse af ikke at blive
+        forstået. Det kræver indsigt og viden om medarbejderens opgave(r), for derefter at sætte sig ind i
+        medarbejderens oplevelse af opgavens sværhedsgrad og nyhedsværdi. Hele NXT LVL MUS konceptet tilbyder en
+        enestående mulighed for at opnå denne viden og dermed kunne hjælpe dig med at udvikle dine medarbejdere dagen
+        lang, året rundt. Så hvad skal der til?</p>
 
-			<table align="right">
-				<tr>
-					<td style="font-size:22px; font-style:italic;">{% trans "Leader model" %}</td>
-				</tr>
-{#                    <tr>#}
-{#                        <td style="color: #0088ca; font-weight:bold; font-size:18px">{% trans "Preparation guide" %}</td>#}
-{#                    </tr>#}
-			</table>
-		</div>
+    <p>Først og fremmest er det vigtig at du som leder, kan gennemskue din lederrolle overfor den enkelte medarbejder.
+        NXT LVL MUS tager derfor udgangspunkt i to dimensioner, hvorfra du kan identificere, hvilken ledelsesstil
+        medarbejderen har brug for. I nedenstående model vises de to dimensioner.</p>
 
-		<div id="frontpage_info">
-			<p align="left" class="info">
-				Copyright &copy; Enso {% now 'Y' %}<br><br>
-				Enso A/S<br>
-				Ehlersvejs 11<br>
-				2900 Hellerup<br>
-				<a href="www.enso.dk">www.enso.dk</a> / <a href="www.nxtlvl.dk">www.nxtlvl.dk</a>
-			</p>
-		</div>
+    <div><img src="{{ site_url }}{% static 'img/difficulty_news_value.png' %}" alt="" width="100%" height="100%"></div>
 
-		<div class="page-break"></div>
-		<div id="introhtml">
 
-			<h2>Introduktion til dine tre lederroller</h2>
+    <h3>Nyhedsværdi</h3>
 
-			<p>Dine medarbejdere lærer forskelligt, de motiveres ikke af det samme – fordi dine briller virker for dig, virker de (nok) ikke for en anden – det er helt individuelt, hvad medarbejderen har brug for i relation til at udvikle og realisere sig.</p>
-			<p>Brilleeksemplet er også grunden til, at rigtig mange medarbejdere kan have en oplevelse af ikke at blive forstået. Det kræver indsigt og viden om medarbejderens opgave(r), for derefter at sætte sig ind i medarbejderens oplevelse af opgavens sværhedsgrad og nyhedsværdi. Hele NXT LVL MUS konceptet tilbyder en enestående mulighed for at opnå denne viden og dermed kunne hjælpe dig med at udvikle dine medarbejdere dagen lang, året rundt. Så hvad skal der til?</p>
-			<p>Først og fremmest er det vigtig at du som leder, kan gennemskue din lederrolle overfor den enkelte medarbejder. NXT LVL MUS tager derfor udgangspunkt i to dimensioner, hvorfra du kan identificere, hvilken ledelsesstil medarbejderen har brug for. I nedenstående model vises de to dimensioner.</p>
+    <p>For at definere udviklingsopgavens nyhedsværdi tager vi udgangspunkt i tre forskellige opgavetyper:</p>
 
-			<div><img src="{{ site_url }}{% static 'img/difficulty_news_value.png' %}" alt="" width="100%" height="100%"></div>
 
+    <h4>Opgaver med store ændringer (A), f.eks. helt nye opgaver</h4>
 
-			<h3>Nyhedsværdi</h3>
+    <p>Opgaver med store ændringer er nye opgaver, som medarbejderen ikke har stor erfaring med. Opgaver af denne type
+        kan være:</p>
+    <ul>
+        <li>Nyt branchekendskab – man kan være flyttet rundt i en afdeling og have brug for at sætte sig ind i nye
+            faglige termer eller brancher
+        </li>
+        <li>Nye ansvarsområder – det kan være nye produkter, der skal læres at kende, nye markeder som er opkøbt,
+            interne fusioner eller sammenlægninger, der ændrer i opgaverne.
+        </li>
+        <li>Ny som leder – som det at gå fra projektledelse, fagansvar til at blive personaleleder</li>
+    </ul>
+    <p>Disse opgaver kræver stort fokus indenfor kompetenceudvikling, da medarbejderen skal lære nyt og dermed udvikle
+        nye kompetencer.</p>
 
-			<p>For at definere udviklingsopgavens nyhedsværdi tager vi udgangspunkt i tre forskellige opgavetyper:</p>
 
-
-
-			<h4>Opgaver med store ændringer (A), f.eks. helt nye opgaver</h4>
-			<p>Opgaver med store ændringer er nye opgaver, som medarbejderen ikke har stor erfaring med. Opgaver af denne type kan være:</p>
-			<ul>
-				<li>Nyt branchekendskab – man kan være flyttet rundt i en afdeling og have brug for at sætte sig ind i nye faglige termer eller brancher</li>
-				<li>Nye ansvarsområder – det kan være nye produkter, der skal læres at kende, nye markeder som er opkøbt, interne fusioner eller sammenlægninger, der ændrer i opgaverne.</li>
-				<li>Ny som leder – som det at gå fra projektledelse, fagansvar til at blive personaleleder</li>
-			</ul>
-			<p>Disse opgaver kræver stort fokus indenfor kompetenceudvikling, da medarbejderen skal lære nyt og dermed udvikle nye kompetencer.</p>
-
-
-			<h4>Opgaver med moderate ændringer (B), f.eks. et udvidet ansvarsområde</h4>
-			<p>Opgaver med moderate ændringer er opgaver, som medarbejderen løser og som løbende vil ændre sig, enten på grund af et skiftende marked, nye kunder eller udvidelse af igangværende arbejdsopgaver. Opgaver af denne type kan være:</p>
-			<ul>
-				<li>Udvidelse af medarbejderens daglige ansvarsområde – der er kommet flere eller nye produkter til</li>
-				<li>Nye mindre ansvarsområder som det at blive projektleder, eller ansvarlig for forskellige opgaver eller projekter</li>
-			</ul>
-			<p>Disse opgaver kræver fokus på, at medarbejderen bygger mere på en allerede eksisterende kompetence.</p>
-
-
-			<h4>Opgaver uden bemærkelsesværdige ændringer (C)</h4>
-			<p>Opgaver uden bemærkelsesværdige ændringer, er opgaver, der består af rutiner og regelmæssighed. Disse opgaver kommer ikke til at forandre sig meget i måden de udføres på. Opgaver af denne type kunne være: </p>
-			<ul>
-				<li>Driftsvedligeholdelse hvor regelmæssighed og erfaring er vigtigt </li>
-				<li>Opgaver hvor medarbejderens viden og erfaring er så stor, at han/hun kan løse dem uden at skulle udvikle sig</li>
-			</ul>
-			<p>Disse opgaver kan lægge op til at medarbejderen udvikler og forfiner opgaveløsningen. Når I sammen har defineret nyhedsværdien, har I derefter mulighed for at tale om medarbejderens oplevede sværhedsgrad med opgaven.</p>
-
-
-
-
-			<h3>Sværhedsgrad</h3>
-
-			<p>Når sværhedsgraden skal defineres er det medarbejderens oplevede sværhedsgrad, og ikke din opfattelse af sværhedsgraden. Ved at få medarbejderens forståelse af sværhedsgraden, giver det dig en unik mulighed for at tilpasse din ledelsesstil overfor den specifikke medarbejder, ud fra den kombinerede information omkring nyhedsværdi og oplevede sværhedsgrad. For at definere sværhedsgraden for udviklingsopgaven tager vi udgangspunkt i tre forskellige sværhedsgradstyper:</p>
-
-			<h4>1. Høj</h4>
-			<p>Denne sværhedsgrad kan vælges hvis medarbejderen oplever, at det kræver mange ressourcer at løse opgaven. Medarbejderen kan godt have arbejdet med en lignende opgave, men stadig have svært ved at løse den tilfredsstillende, og derfor kræver et stort ledelsesfokus fra din side. </p>
-
-			<h4>2. Middel</h4>
-			<p>Denne sværhedsgrad kan vælges hvis medarbejderen oplever at der kan være uforudsete elementer som han/hun ikke er helt tryg ved. Derfor har medarbejderen brug for at du er opmærksom, og dedikerer din ledelse inden du overlader medarbejderen til sig selv. </p>
-
-			<h4>3. Lav</h4>
-			<p>Denne sværhedsgrad kan vælges, hvis medarbejderen oplever, at det er en opgave, som han/hun godt kan klare alene, men stadigvæk har brug for lidt ledelse til f.eks. sparring. Selvom medarbejderen kategoriserer sværhedsgraden let, er det ikke ensbetydende med, at du skal overlade medarbejderen til sig selv. Her har du nemlig mulighed for at opbygge noget tillid mellem dig og medarbejderen, ved f.eks. at vende tilbage til medarbejderen og følge op.</p>
-
-
-			<p></p>
-			<p>Det er ikke selvsagt at en C-opgave skal have en lav sværhedsgrad.  Medarbejderen kan godt sætte sværhedsgraden høj under en C-opgave hvor nyhedsværdien lille. Omvendt kan medarbejderen også sætte sværhedsgraden lav under en A-opgave. Dette afhænger som tidligere nævnt af medarbejderens oplevede sværhedsgrad. </p>
-			<p>Samtalen er et stort skridt i den rigtige retning, handling det næste syvmileskridt, og her anbefaler vi, at du vælger din ledelsesstil ud fra opgaves nyhedsværdi og medarbejderens oplevede sværhedsgrad. I nedenstående model danner nyhedsværdi og sværhedsgrad rammerne for hvilken lederrolle du kan anlægge. Modellen indeholder lederrollerne: Manager, Coach og Tutor.</p>
-
-			<img src="{{ site_url }}{% static 'img/leadermodel.jpg' %}" />
-
-			<p>Vi definerer de tre lederroller således:</p>
-
-			<p><strong>Tutor:</strong> Du rådgiver eller viser medarbejderen, hvad opgaven handler om. Rollen minder om den gamle mesterlære, hvor mester viser svenden hvordan opgaven skal løses. Afhængig af opgavens kompleksitet, kan du først slippe tutorrollen når du er sikker på, at medarbejderen er klar til at prøve af. </p>
-			<p><strong>Coach:</strong> Du støtter medarbejderen, der er godt på vej, men hvor din støtte er vigtig for udførelsen af opgaven. Du coacher, stiller spørgsmål, du er opmærksom, du lytter og i modsætning til tutor-rollen, tjekker du mere ind og ud, men medarbejderen ved, at du er ”i nærheden”.</p>
-			<p><strong>Manager:</strong> Medarbejderen er i drift, og du sørger for at medarbejderen har de rette rammer og forudsætninger for at løse opgaven. Medarbejderen er måske bedre end dig til at løse opgaven og kan selv, men har brug for, at du viser interesse og påtager dig ansvaret overordnet. </p>
-
-
-
-			<p>Se hvordan du bruger lederrollerne aktivt: </p>
-
-			<p><i>A-opgave - f.eks. helt nye opgaver, med sværhedsgraderne: Svær, Middel og Lav </i></p>
-			<ul>
-				<li><strong>Høj sværhedsgrad:</strong> Du er primært tutor, fordi du ved, hvordan opgaven skal løses, og medarbejderen har behov for det</li>
-				<li><strong>Middel sværhedsgrad:</strong> Du er coach, hvis medarbejderen lærer om opgaven et andet sted og du skal sørge for at opgaven bliver implementeret internt</li>
-				<li><strong>Lav sværhedsgrad:</strong> Du er også lidt manager, hvis du skal sørge for at rammerne er der, således at medarbejderen kan løse opgaven </li>
-			</ul>
-			<p>Derudover skal du ved A-opgaver altid være opmærksom på, hvilke kompetencer, der skal løftes for at medarbejderen kan løse den nye opgave. Mange ledere, som har videntunge medarbejdere kan ikke selv klæde medarbejderen fagligt på. Derfor bliver rollen mere at støtte og skabe rammer for medarbejderen. </p>
-
-			<p><i>B-opgave med moderate ændringer - f.eks. et udvidet ansvarsområde, med sværhedsgraderne: Svær, Middel og Lav </i></p>
-			<ul>
-				<li><strong>Høj sværhedsgrad:</strong> Du er tutor, hvis du viser, hvordan opgaven skal løses</li>
-				<li><strong>Middel sværhedsgrad:</strong> Du er primært coach for medarbejderen, fordi du lytter og følger med i, hvordan medarbejderen håndterer den gradvise forandring, der er forbundet med det nye. </li>
-				<li><strong>Lav sværhedsgrad:</strong> Du er også lidt manager, hvis du sørger for, at der er styr på rammer og overordnet ansvar. </li>
-			</ul>
-
-
-			<p><i>C- opgaver uden bemærkelsesværdige ændringer, med sværhedsgraderne: Svær, Middel og Lav</i></p>
-			<ul>
-				<li><strong>Høj sværhedsgrad:</strong> Du er tutor, hvis du oplever at medarbejderen kan udvikle og forfine en opgave, som de allerede har godt styr på. </li>
-				<li><strong>Middel sværhedsgrad:</strong> Du er coach, hvis din støtte er vigtig for at bevare motivationen støtter, og viser interesse i det daglige</li>
-				<li><strong>Lav sværhedsgrad:</strong> Du er mest manager og sørger for at medarbejderen oplever at du har det overordnede ansvar og skaber de nødvendige rammer. </li>
-			</ul>
-
-			<p>For at danne at danne dig et overblik, over hvordan du kan prioritere dine ledelsesressourcer, kan du indsætte dine lederroller i modellen for den enkelte medarbejder. Dette kan give dig et billede af, hvor meget den enkelte medarbejder har brug for af støtte og feedback.</p>
-
-		</div>
-
-		<div class="page-break"></div>
-		<div id="lmPageImage">
-
-			<img src="{% static lm_filename %}" />
-
-			<br /><br />
-
-			{# Limitations in pisa restricts me from doing this with a simple float:left list	#}
-			<table>
-			<tr>
-				<td valign="top">
-					<ul>
-						{% for empl in legend|slice:"0:11" %}
-							<li style="color: {{ colors|key:empl }}">{{ empl }}</li>
-						{% endfor %}
-					</ul>
-				</td>
-				<td valign="top">
-					<ul>
-						{% for empl in legend|slice:"11:22" %}
-							<li style="color: {{ colors|key:empl }}">{{ empl }}</li>
-						{% endfor %}
-					</ul>
-				</td>
-				<td valign="top">
-					<ul>
-						{% for empl in legend|slice:"22:33" %}
-							<li style="color: {{ colors|key:empl }}">{{ empl }}</li>
-						{% endfor %}
-					</ul>
-				</td>
-			</tr>
-			</table>
-
-		</div>
-
-		<div class="page-break"></div>
-		<div id="lmPageLegend">
-
-			{% for empl,circles in employee_actions.items %}
-
-				<h2 style="color: {{ colors|key:empl }}">{{ empl }}</h2>
-
-				<ol>
-
-					{% for circles, action_data in circles.items %}
-
-						<li>{{ action_data.name }}</li>
-						<ul>
-							<li><strong>Type:</strong> {{ action_data.type }} {% trans "Task" %} ({{ action_data.difficulty }} {% trans "Difficulty" %})</li>
-							<li><strong>Status: </strong> {{ action_data.comment.status }}</li>
-							<li><strong>Opfølgningsdato: </strong>{{ action_data.comment.follow_up_at }}</li>
-							<li><strong>Kommentar: </strong>{{ action_data.comment.text }}</li>
-						</ul>
-
-					{% endfor %}
-
-				</ol>
-
-
-
-			{% endfor %}
-
-{#			{% for adiff, atypes in legend.items %}#}
-{##}
-{#				<h2>{% trans "Difficulty" %} : {{ adiff }}</h2>#}
-{##}
-{#				{% for atypename, numbers in atypes.items %}#}
-{#					<h3>{% trans "News value" %} : {{ atypename }}</h3>#}
-{##}
-{#					<table class="actiontbl">#}
-{#					<thead>#}
-{#						<tr>#}
-{#							<th class="hdr" width="5%">#</th>#}
-{#							<th class="hdr">{% trans "employee" %}</th>#}
-{#							<th class="hdr">{% trans "action" %}</th>#}
-{#						</tr>#}
-{#					</thead>#}
-{#					<tbody>#}
-{#						{% for number, action in numbers.items %}#}
-{##}
-{#							<tr>#}
-{#								<td style="color: {{ action.2 }};">{{ number }}</td>#}
-{#								<td>{{ action.0 }} </td>#}
-{#								<td>{{ action.1 }}</td>#}
-{#							</tr>#}
-{#						{% endfor %}#}
-{#					</tbody>#}
-{#					</table>#}
-{#				{% endfor %}#}
-{##}
-{#			{% endfor %}#}
-		</div>
-
-
-        <div id="headerContent">
-            {% block page_head %}
-                <img width="60" src="{{ site_url }}{% static 'img/nxt_lvl_logo.png' %}" />
-            {% endblock %}
-		</div>
-        <div id="footerContent">
-            {% block page_foot %}
-                 <pdf:pagenumber>
-            {% endblock %}
-        </div>
-    </body>
+    <h4>Opgaver med moderate ændringer (B), f.eks. et udvidet ansvarsområde</h4>
+
+    <p>Opgaver med moderate ændringer er opgaver, som medarbejderen løser og som løbende vil ændre sig, enten på grund
+        af et skiftende marked, nye kunder eller udvidelse af igangværende arbejdsopgaver. Opgaver af denne type kan
+        være:</p>
+    <ul>
+        <li>Udvidelse af medarbejderens daglige ansvarsområde – der er kommet flere eller nye produkter til</li>
+        <li>Nye mindre ansvarsområder som det at blive projektleder, eller ansvarlig for forskellige opgaver eller
+            projekter
+        </li>
+    </ul>
+    <p>Disse opgaver kræver fokus på, at medarbejderen bygger mere på en allerede eksisterende kompetence.</p>
+
+
+    <h4>Opgaver uden bemærkelsesværdige ændringer (C)</h4>
+
+    <p>Opgaver uden bemærkelsesværdige ændringer, er opgaver, der består af rutiner og regelmæssighed. Disse opgaver
+        kommer ikke til at forandre sig meget i måden de udføres på. Opgaver af denne type kunne være: </p>
+    <ul>
+        <li>Driftsvedligeholdelse hvor regelmæssighed og erfaring er vigtigt</li>
+        <li>Opgaver hvor medarbejderens viden og erfaring er så stor, at han/hun kan løse dem uden at skulle udvikle
+            sig
+        </li>
+    </ul>
+    <p>Disse opgaver kan lægge op til at medarbejderen udvikler og forfiner opgaveløsningen. Når I sammen har defineret
+        nyhedsværdien, har I derefter mulighed for at tale om medarbejderens oplevede sværhedsgrad med opgaven.</p>
+
+
+    <h3>Sværhedsgrad</h3>
+
+    <p>Når sværhedsgraden skal defineres er det medarbejderens oplevede sværhedsgrad, og ikke din opfattelse af
+        sværhedsgraden. Ved at få medarbejderens forståelse af sværhedsgraden, giver det dig en unik mulighed for at
+        tilpasse din ledelsesstil overfor den specifikke medarbejder, ud fra den kombinerede information omkring
+        nyhedsværdi og oplevede sværhedsgrad. For at definere sværhedsgraden for udviklingsopgaven tager vi udgangspunkt
+        i tre forskellige sværhedsgradstyper:</p>
+
+    <h4>1. Høj</h4>
+
+    <p>Denne sværhedsgrad kan vælges hvis medarbejderen oplever, at det kræver mange ressourcer at løse opgaven.
+        Medarbejderen kan godt have arbejdet med en lignende opgave, men stadig have svært ved at løse den
+        tilfredsstillende, og derfor kræver et stort ledelsesfokus fra din side. </p>
+
+    <h4>2. Middel</h4>
+
+    <p>Denne sværhedsgrad kan vælges hvis medarbejderen oplever at der kan være uforudsete elementer som han/hun ikke er
+        helt tryg ved. Derfor har medarbejderen brug for at du er opmærksom, og dedikerer din ledelse inden du overlader
+        medarbejderen til sig selv. </p>
+
+    <h4>3. Lav</h4>
+
+    <p>Denne sværhedsgrad kan vælges, hvis medarbejderen oplever, at det er en opgave, som han/hun godt kan klare alene,
+        men stadigvæk har brug for lidt ledelse til f.eks. sparring. Selvom medarbejderen kategoriserer sværhedsgraden
+        let, er det ikke ensbetydende med, at du skal overlade medarbejderen til sig selv. Her har du nemlig mulighed
+        for at opbygge noget tillid mellem dig og medarbejderen, ved f.eks. at vende tilbage til medarbejderen og følge
+        op.</p>
+
+
+    <p></p>
+
+    <p>Det er ikke selvsagt at en C-opgave skal have en lav sværhedsgrad. Medarbejderen kan godt sætte sværhedsgraden
+        høj under en C-opgave hvor nyhedsværdien lille. Omvendt kan medarbejderen også sætte sværhedsgraden lav under en
+        A-opgave. Dette afhænger som tidligere nævnt af medarbejderens oplevede sværhedsgrad. </p>
+
+    <p>Samtalen er et stort skridt i den rigtige retning, handling det næste syvmileskridt, og her anbefaler vi, at du
+        vælger din ledelsesstil ud fra opgaves nyhedsværdi og medarbejderens oplevede sværhedsgrad. I nedenstående model
+        danner nyhedsværdi og sværhedsgrad rammerne for hvilken lederrolle du kan anlægge. Modellen indeholder
+        lederrollerne: Manager, Coach og Tutor.</p>
+
+    <img src="{{ site_url }}{% static 'img/leadermodel.jpg' %}"/>
+
+    <p>Vi definerer de tre lederroller således:</p>
+
+    <p><strong>Tutor:</strong> Du rådgiver eller viser medarbejderen, hvad opgaven handler om. Rollen minder om den
+        gamle mesterlære, hvor mester viser svenden hvordan opgaven skal løses. Afhængig af opgavens kompleksitet, kan
+        du først slippe tutorrollen når du er sikker på, at medarbejderen er klar til at prøve af. </p>
+
+    <p><strong>Coach:</strong> Du støtter medarbejderen, der er godt på vej, men hvor din støtte er vigtig for
+        udførelsen af opgaven. Du coacher, stiller spørgsmål, du er opmærksom, du lytter og i modsætning til
+        tutor-rollen, tjekker du mere ind og ud, men medarbejderen ved, at du er ”i nærheden”.</p>
+
+    <p><strong>Manager:</strong> Medarbejderen er i drift, og du sørger for at medarbejderen har de rette rammer og
+        forudsætninger for at løse opgaven. Medarbejderen er måske bedre end dig til at løse opgaven og kan selv, men
+        har brug for, at du viser interesse og påtager dig ansvaret overordnet. </p>
+
+
+    <p>Se hvordan du bruger lederrollerne aktivt: </p>
+
+    <p><i>A-opgave - f.eks. helt nye opgaver, med sværhedsgraderne: Svær, Middel og Lav </i></p>
+    <ul>
+        <li><strong>Høj sværhedsgrad:</strong> Du er primært tutor, fordi du ved, hvordan opgaven skal løses, og
+            medarbejderen har behov for det
+        </li>
+        <li><strong>Middel sværhedsgrad:</strong> Du er coach, hvis medarbejderen lærer om opgaven et andet sted og du
+            skal sørge for at opgaven bliver implementeret internt
+        </li>
+        <li><strong>Lav sværhedsgrad:</strong> Du er også lidt manager, hvis du skal sørge for at rammerne er der,
+            således at medarbejderen kan løse opgaven
+        </li>
+    </ul>
+    <p>Derudover skal du ved A-opgaver altid være opmærksom på, hvilke kompetencer, der skal løftes for at medarbejderen
+        kan løse den nye opgave. Mange ledere, som har videntunge medarbejdere kan ikke selv klæde medarbejderen fagligt
+        på. Derfor bliver rollen mere at støtte og skabe rammer for medarbejderen. </p>
+
+    <p><i>B-opgave med moderate ændringer - f.eks. et udvidet ansvarsområde, med sværhedsgraderne: Svær, Middel og
+        Lav </i></p>
+    <ul>
+        <li><strong>Høj sværhedsgrad:</strong> Du er tutor, hvis du viser, hvordan opgaven skal løses</li>
+        <li><strong>Middel sværhedsgrad:</strong> Du er primært coach for medarbejderen, fordi du lytter og følger med
+            i, hvordan medarbejderen håndterer den gradvise forandring, der er forbundet med det nye.
+        </li>
+        <li><strong>Lav sværhedsgrad:</strong> Du er også lidt manager, hvis du sørger for, at der er styr på rammer og
+            overordnet ansvar.
+        </li>
+    </ul>
+
+
+    <p><i>C- opgaver uden bemærkelsesværdige ændringer, med sværhedsgraderne: Svær, Middel og Lav</i></p>
+    <ul>
+        <li><strong>Høj sværhedsgrad:</strong> Du er tutor, hvis du oplever at medarbejderen kan udvikle og forfine en
+            opgave, som de allerede har godt styr på.
+        </li>
+        <li><strong>Middel sværhedsgrad:</strong> Du er coach, hvis din støtte er vigtig for at bevare motivationen
+            støtter, og viser interesse i det daglige
+        </li>
+        <li><strong>Lav sværhedsgrad:</strong> Du er mest manager og sørger for at medarbejderen oplever at du har det
+            overordnede ansvar og skaber de nødvendige rammer.
+        </li>
+    </ul>
+
+    <p>For at danne at danne dig et overblik, over hvordan du kan prioritere dine ledelsesressourcer, kan du indsætte
+        dine lederroller i modellen for den enkelte medarbejder. Dette kan give dig et billede af, hvor meget den
+        enkelte medarbejder har brug for af støtte og feedback.</p>
+
+</div>
+
+<div class="page-break"></div>
+<div id="lmPageImage">
+
+    <img src="{% static lm_filename %}"/>
+
+    <br/><br/>
+
+    {# Limitations in pisa restricts me from doing this with a simple float:left list	#}
+    <table>
+        <tr>
+            <td valign="top">
+                <ul>
+                    {% for empl in legend|slice:"0:11" %}
+                        <li style="color: {{ colors|key:empl }}">{{ empl }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td valign="top">
+                <ul>
+                    {% for empl in legend|slice:"11:22" %}
+                        <li style="color: {{ colors|key:empl }}">{{ empl }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td valign="top">
+                <ul>
+                    {% for empl in legend|slice:"22:33" %}
+                        <li style="color: {{ colors|key:empl }}">{{ empl }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+<div class="page-break"></div>
+<div id="lmPageLegend">
+
+    {% for empl,circles in employee_actions.items %}
+
+        <h2 style="color: {{ colors|key:empl }}">{{ empl }}</h2>
+
+        <ol>
+
+            {% for circles, action_data in circles.items %}
+
+                <li>{{ action_data.name }}</li>
+                <ul>
+                    <li><strong>Type:</strong> {{ action_data.type }} {% trans "Task" %}
+                        ({{ action_data.difficulty }} {% trans "Difficulty" %})
+                    </li>
+                    <li><strong>Status: </strong> {{ action_data.comment.status }}</li>
+                    <li><strong>Opfølgningsdato: </strong>{{ action_data.comment.follow_up_at }}</li>
+                    <li><strong>Kommentar: </strong>{{ action_data.comment.text }}</li>
+                </ul>
+
+            {% endfor %}
+
+        </ol>
+
+
+
+    {% endfor %}
+
+    {#			{% for adiff, atypes in legend.items %}#}
+    {##}
+    {#				<h2>{% trans "Difficulty" %} : {{ adiff }}</h2>#}
+    {##}
+    {#				{% for atypename, numbers in atypes.items %}#}
+    {#					<h3>{% trans "News value" %} : {{ atypename }}</h3>#}
+    {##}
+    {#					<table class="actiontbl">#}
+    {#					<thead>#}
+    {#						<tr>#}
+    {#							<th class="hdr" width="5%">#</th>#}
+    {#							<th class="hdr">{% trans "employee" %}</th>#}
+    {#							<th class="hdr">{% trans "action" %}</th>#}
+    {#						</tr>#}
+    {#					</thead>#}
+    {#					<tbody>#}
+    {#						{% for number, action in numbers.items %}#}
+    {##}
+    {#							<tr>#}
+    {#								<td style="color: {{ action.2 }};">{{ number }}</td>#}
+    {#								<td>{{ action.0 }} </td>#}
+    {#								<td>{{ action.1 }}</td>#}
+    {#							</tr>#}
+    {#						{% endfor %}#}
+    {#					</tbody>#}
+    {#					</table>#}
+    {#				{% endfor %}#}
+    {##}
+    {#			{% endfor %}#}
+</div>
+
+
+<div id="headerContent">
+    {% block page_head %}
+        <img width="60" src="{{ site_url }}{% static 'img/nxt_lvl_logo.png' %}"/>
+    {% endblock %}
+</div>
+<div id="footerContent">
+    {% block page_foot %}
+        <pdf:pagenumber>
+    {% endblock %}
+</div>
+</body>
 </html>

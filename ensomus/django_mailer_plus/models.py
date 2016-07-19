@@ -15,6 +15,7 @@ RESULT_CODES = (
     (constants.RESULT_FAILED, 'failure'),
 )
 
+
 class Attachment(models.Model):
     """
     A message attachment
@@ -23,6 +24,7 @@ class Attachment(models.Model):
 
     class Meta:
         app_label = 'django_mailer_plus'
+
 
 class Message(models.Model):
     """
@@ -50,6 +52,7 @@ class Message(models.Model):
     def __unicode__(self):
         return '%s: %s' % (self.to_address, self.subject)
 
+
 class QueuedMessage(models.Model):
     """
     A queued message.
@@ -60,7 +63,7 @@ class QueuedMessage(models.Model):
     """
     message = models.OneToOneField(Message, editable=False)
     priority = models.PositiveSmallIntegerField(choices=PRIORITIES,
-                                            default=constants.PRIORITY_NORMAL)
+                                                default=constants.PRIORITY_NORMAL)
     deferred = models.DateTimeField(null=True, blank=True)
     retries = models.PositiveIntegerField(default=0)
     date_queued = models.DateTimeField(default=datetime.datetime.now)

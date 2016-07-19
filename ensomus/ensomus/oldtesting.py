@@ -2,6 +2,7 @@
 
 from django.test.simple import DjangoTestSuiteRunner
 
+
 class DatabaseLessTestRunner(DjangoTestSuiteRunner):
     """A test suite runner that does not set up and tear down a database."""
 

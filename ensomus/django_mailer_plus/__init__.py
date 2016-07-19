@@ -17,10 +17,12 @@ class CustomEmailMessage(EmailMessage):
     We do this so we can store a clean message body into the database from which we can later
     create a new EmailMessage without having double headers.
     """
+
     def message(self):
         msg = self.body
 
         return msg
+
 
 def get_version():
     if VERSION[3] != "final":
@@ -44,7 +46,7 @@ def send_mail(subject, message, from_email, recipient_list, attachment=None, htm
     """
     subject = force_unicode(subject)
     email_message = CustomEmailMessage(subject, message, from_email,
-                                 recipient_list)
+                                       recipient_list)
     queue_email_message(email_message, priority=priority, attachment=attachment, html_message=html_message)
 
 
@@ -117,13 +119,13 @@ def queue_email_message(email_message, attachment=None, html_message=None, fail_
     if attachment:
         for to_email in email_message.recipients():
             message = models.Message.objects.create(
-            to_address=to_email, from_address=email_message.from_email,
-            subject=email_message.subject,
-            encoded_message=email_message.message(),
-            html_message=html_message)
+                to_address=to_email, from_address=email_message.from_email,
+                subject=email_message.subject,
+                encoded_message=email_message.message(),
+                html_message=html_message)
             for file in attachment:
                 attach = models.Attachment.objects.create(
-                filename=file)
+                    filename=file)
                 message.attachment.add(attach)
             queued_message = models.QueuedMessage(message=message)
             if priority:
@@ -133,10 +135,10 @@ def queue_email_message(email_message, attachment=None, html_message=None, fail_
     else:
         for to_email in email_message.recipients():
             message = models.Message.objects.create(
-            to_address=to_email, from_address=email_message.from_email,
-            subject=email_message.subject,
-            encoded_message=email_message.message(),
-            html_message=html_message)
+                to_address=to_email, from_address=email_message.from_email,
+                subject=email_message.subject,
+                encoded_message=email_message.message(),
+                html_message=html_message)
             queued_message = models.QueuedMessage(message=message)
             if priority:
                 queued_message.priority = priority

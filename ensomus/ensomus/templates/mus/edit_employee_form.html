@@ -3,27 +3,29 @@
 {% load i18n %}
 {% block content %}
 
-<div class="row">
-    <h2>{% trans "Edit" %} {{ name }}</h2>
-    {{ edit_employee_form.non_field_errors }}
-    <form class="form-horizontal" action="{% url 'ensomus.apps.mus.views.update_employee' employee_id %}" method="post">
-        {% csrf_token %}
-        {% for field in edit_employee_form %}
-        <div class="form-group">
-            <label class="control-label col-md-2" for="{{ field.html_name }}">{{ field.label }}</label>
-        	<div class="col-md-4">
-                {{ field }}
-                {{ field.errors }}
-        	</div>
-        </div>
-        {% endfor %}
-        <div class="form-group">
-        	<div class="col-md-2"></div>
-            <div class="col-md-4">
-                
-            <input type="submit" class="btn btn-primary" value="{% trans "Save" %}" />
+    <div class="row">
+        <h2>{% trans "Edit" %} {{ name }}</h2>
+        {{ edit_employee_form.non_field_errors }}
+        <form class="form-horizontal" action="{% url 'ensomus.apps.mus.views.update_employee' employee_id %}"
+              method="post">
+            {% csrf_token %}
+            {% for field in edit_employee_form %}
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="{{ field.html_name }}">{{ field.label }}</label>
+
+                    <div class="col-md-4">
+                        {{ field }}
+                        {{ field.errors }}
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="form-group">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+
+                    <input type="submit" class="btn btn-primary" value="{% trans "Save" %}"/>
+                </div>
             </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 {% endblock %}

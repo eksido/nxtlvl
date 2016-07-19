@@ -2,88 +2,94 @@
 {% load static %}
 {% load i18n %}
 {% block head %}
-<link href="{% static "css/developmentplan.css" %}" rel="stylesheet" />
+    <link href="{% static "css/developmentplan.css" %}" rel="stylesheet"/>
 {% endblock %}
 {% block content %}
-<div data-ng-controller="developmentPlanProgressbarController" class="ng-cloak" data-ng-cloak>
-	{% verbatim %}
-	<div class="row">
-		<span class="vr"></span>
-		<div class="state" data-ng-repeat="state in states">
+    <div data-ng-controller="developmentPlanProgressbarController" class="ng-cloak" data-ng-cloak>
+        {% verbatim %}
+            <div class="row">
+                <span class="vr"></span>
+
+                <div class="state" data-ng-repeat="state in states">
 			<span style="display: inline-block">
-				{{ state.name }} <br />
+				{{ state.name }} <br/>
 				<span data-ng-repeat="status in state.status">
-					<span data-ng-class="isActive(status.link) ? 'activebullet' : 'bullet'+status.value" data-ng-click="goto(status.link)"></span>
+					<span data-ng-class="isActive(status.link) ? 'activebullet' : 'bullet'+status.value"
+                          data-ng-click="goto(status.link)"></span>
 				</span>
 			</span>
-			<span class="vr"></span>
-		</div>
+                    <span class="vr"></span>
+                </div>
 
-	</div>
-	{% endverbatim %}
-	<div data-ng-view>
+            </div>
+        {% endverbatim %}
+        <div data-ng-view>
 
-	</div>
-	<br />
-	<div class="row" >
-	    <div class="span12" style="text-align:right">
-			<button class="btn btn-default" onclick="window.location.href='/logout/'" style="margin-right: 40px;">{% trans "Save and log out" %}</button>
+        </div>
+        <br/>
 
-	        <button class="btn btn-default" data-ng-show="!first" data-ng-click="rewind()">{% trans "Previous" %}</button>
-	        <button class="btn btn-default" data-ng-show="!last" data-ng-click="forward()">{% trans "Next" %}</button>
-	    </div>
-	</div>
-	<br />
+        <div class="row">
+            <div class="span12" style="text-align:right">
+                <button class="btn btn-default" onclick="window.location.href='/logout/'"
+                        style="margin-right: 40px;">{% trans "Save and log out" %}</button>
 
-</div>
+                <button class="btn btn-default" data-ng-show="!first"
+                        data-ng-click="rewind()">{% trans "Previous" %}</button>
+                <button class="btn btn-default" data-ng-show="!last"
+                        data-ng-click="forward()">{% trans "Next" %}</button>
+            </div>
+        </div>
+        <br/>
+
+    </div>
 {% endblock %}
 {% block js_includes %}
-<script src="{% static "app/js/lib/angular/angular.min.js" %}"></script>
-<script src="{% static "app/js/lib/angular/angular-route.min.js" %}"></script>
-<script src="{% static "app/js/lib/angular/angular-sanitize.min.js" %}"></script>
-<script src="{% static "app/js/lib/angular/angular-cookies.min.js" %}"></script>
-<script src="{% static "app/js/app.js" %}"></script>
-<script>
-{% with type=development_plan_user.getDevelopmentPlan.type|lower|slice:":-3" language=development_plan_user.getDevelopmentPlan.language_code|lower %}
-angular.module('nxtlvl').constant('urls', {
-    intro: "{% static "app/partials/intro_"|add:language|add:"_"|add:type %}{% if development_plan_user.isManagers %}_manager{% endif %}.html",
-    assignmentkey : "{% static "app/partials/assignmentKey.html" %}",
-    competence: "{% static "app/partials/competence.html" %}",
-    competenceintro: "{% static "app/partials/competenceIntro_"|add:language|add:"_"|add:type %}{% if development_plan_user.isManagers %}_manager{% endif %}.html",
-    summary: "{% static "app/partials/summary.html" %}",
-    end: "{% static "app/partials/end.html" %}",
-});
-var developmentplan_user_id = {{ development_plan_user.pk }};
-var locked = {% if development_plan_user.finished_at %}true{% else %}false{%endif%};
-var competence_id=null;
-var competence_field_id=null;
-var LANGUAGE_CODE = '{{ language }}';
-var owner_name = '{{ development_plan_user.getDevelopmentPlan.owner.user.get_full_name|title }}';
+    <script src="{% static "app/js/lib/angular/angular.min.js" %}"></script>
+    <script src="{% static "app/js/lib/angular/angular-route.min.js" %}"></script>
+    <script src="{% static "app/js/lib/angular/angular-sanitize.min.js" %}"></script>
+    <script src="{% static "app/js/lib/angular/angular-cookies.min.js" %}"></script>
+    <script src="{% static "app/js/app.js" %}"></script>
+    <script>
+        {% with type=development_plan_user.getDevelopmentPlan.type|lower|slice:":-3" language=development_plan_user.getDevelopmentPlan.language_code|lower %}
+            angular.module('nxtlvl').constant('urls', {
+                intro: "{% static "app/partials/intro_"|add:language|add:"_"|add:type %}{% if development_plan_user.isManagers %}_manager{% endif %}.html",
+                assignmentkey: "{% static "app/partials/assignmentKey.html" %}",
+                competence: "{% static "app/partials/competence.html" %}",
+                competenceintro: "{% static "app/partials/competenceIntro_"|add:language|add:"_"|add:type %}{% if development_plan_user.isManagers %}_manager{% endif %}.html",
+                summary: "{% static "app/partials/summary.html" %}",
+                end: "{% static "app/partials/end.html" %}",
+            });
+            var developmentplan_user_id = {{ development_plan_user.pk }};
+            var locked = {% if development_plan_user.finished_at %}true{% else %}false{%endif%};
+            var competence_id = null;
+            var competence_field_id = null;
+            var LANGUAGE_CODE = '{{ language }}';
+            var owner_name = '{{ development_plan_user.getDevelopmentPlan.owner.user.get_full_name|title }}';
 
-{% language language %}
-var trans = {
-	'Make development plan visible to others' : '{% trans "Make development plan visible to others" %}',
-	'Yes' : '{% trans "Yes" %}',
-	'No' : '{% trans "No" %}',
-	'The development plan is locked and' : '{% trans "The preparation guide is locked and" %}',
-	'hidden' : '{% trans "hidden" %}',
-	'visible' : '{% trans "visible " %}',
-	'Approved and lock': '{% trans "Approved and lock" %}',
-	'Save' : '{% trans "Save" %}',
-	'for others' : '{% trans "for others" %}',
-	'Review responses' : '{% trans "Review responses" %}'
-};
-{% endlanguage %}
-{% endwith %}
-</script>
-<script src="{% static "app/js/config.js" %}"></script>
-<script src="{% static "app/js/directives/simplehtml.directive.js" %}"></script>
-<script src="{% static "app/js/services/developmentplan.service.js" %}"></script>
-<script src="{% static "app/js/controllers/developmentplan.controller.js" %}"></script>
-<script src="{% static "app/js/controllers/developmentplan.competence.controller.js" %}"></script>
-<script src="{% static "app/js/controllers/developmentplan.competenceintro.controller.js" %}"></script>
-<script src="{% static "app/js/controllers/developmentplan.summary.controller.js" %}"></script>
-<script src="{% static "app/js/controllers/developmentplan.end.controller.js" %}"></script>
-<script src="{% static "app/js/controllers/developmentplan.assignmentkey.controller.js" %}"></script>
-<script src="{% static "app/js/controllers/developmentplan.progressbar.controller.js" %}"></script>
+            {% language language %}
+                var trans = {
+                    'Make development plan visible to others': '{% trans "Make development plan visible to others" %}',
+                    'Yes': '{% trans "Yes" %}',
+                    'No': '{% trans "No" %}',
+                    'The development plan is locked and': '{% trans "The preparation guide is locked and" %}',
+                    'hidden': '{% trans "hidden" %}',
+                    'visible': '{% trans "visible " %}',
+                    'Approved and lock': '{% trans "Approved and lock" %}',
+                    'Save': '{% trans "Save" %}',
+                    'for others': '{% trans "for others" %}',
+                    'Review responses': '{% trans "Review responses" %}'
+                };
+            {% endlanguage %}
+        {% endwith %}
+    </script>
+    <script src="{% static "app/js/config.js" %}"></script>
+    <script src="{% static "app/js/directives/simplehtml.directive.js" %}"></script>
+    <script src="{% static "app/js/services/developmentplan.service.js" %}"></script>
+    <script src="{% static "app/js/controllers/developmentplan.controller.js" %}"></script>
+    <script src="{% static "app/js/controllers/developmentplan.competence.controller.js" %}"></script>
+    <script src="{% static "app/js/controllers/developmentplan.competenceintro.controller.js" %}"></script>
+    <script src="{% static "app/js/controllers/developmentplan.summary.controller.js" %}"></script>
+    <script src="{% static "app/js/controllers/developmentplan.end.controller.js" %}"></script>
+    <script src="{% static "app/js/controllers/developmentplan.assignmentkey.controller.js" %}"></script>
+    <script src="{% static "app/js/controllers/developmentplan.progressbar.controller.js" %}"></script>
 {% endblock %}

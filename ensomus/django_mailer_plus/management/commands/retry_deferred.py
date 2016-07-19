@@ -9,8 +9,8 @@ class Command(NoArgsCommand):
     help = 'Place deferred messages back in the queue.'
     option_list = NoArgsCommand.option_list + (
         make_option('-m', '--max-retries', type='int',
-            help="Don't reset deferred messages with more than this many "
-                "retries."),
+                    help="Don't reset deferred messages with more than this many "
+                         "retries."),
     )
 
     def handle_noargs(self, verbosity, max_retries=None, **options):
@@ -18,6 +18,6 @@ class Command(NoArgsCommand):
         logger = logging.getLogger('django_mailer_plus')
 
         count = models.QueuedMessage.objects.retry_deferred(
-                                                    max_retries=max_retries)
+            max_retries=max_retries)
         logger.info("%s deferred message%s placed back in the queue" %
-                       (count, count != 1 and 's' or ''))
+                    (count, count != 1 and 's' or ''))

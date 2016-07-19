@@ -8,75 +8,72 @@ import django
 django.setup()
 
 # class mEmployee:
-# 	pass
+# pass
 
 # noinspection PyUnresolvedReferences
 class DevelopmentPlanTest(unittest.TestCase):
+    def test_canManageIsEnsoUser(self):
 
-	def test_canManageIsEnsoUser(self):
+        emps = models.Employee.objects.all()
+        print(emps)
 
-		emps = models.Employee.objects.all()
-		print(emps)
+        return
 
-		return
+        currentCompany = models.Company()
+        currentCompany.pk = 1
+        currentEmpl = models.Employee()
+        currentEmpl.isEnsoUser = Mock(return_value=False)
+        currentEmpl.company = currentCompany
 
+        targetCompany = models.Company()
+        targetCompany.pk = 2
 
-		currentCompany = models.Company()
-		currentCompany.pk = 1
-		currentEmpl = models.Employee()
-		currentEmpl.isEnsoUser = Mock(return_value=False)
-		currentEmpl.company = currentCompany
+        targetEmpl = models.Employee()
+        muser = Mock(spec=User)
+        muser._state = Mock()
+        muser.id = 1
+        try:
+            targetEmpl.user = muser
+        except ValueError:
+            pass
 
+        targetEmpl.company = targetCompany
 
-		targetCompany = models.Company()
-		targetCompany.pk = 2
+        devplan = models.DevelopmentPlan()
+        devplan.owner = targetEmpl
 
-		targetEmpl = models.Employee()
-		muser = Mock(spec=User)
-		muser._state = Mock()
-		muser.id = 1
-		try:
-			targetEmpl.user = muser
-		except ValueError:
-			pass
+        self.assertTrue(devplan.canManage(currentEmpl))
 
-		targetEmpl.company = targetCompany
-
-		devplan = models.DevelopmentPlan()
-		devplan.owner = targetEmpl
-
-		self.assertTrue(devplan.canManage(currentEmpl))
-
-		currentEmpl.isEnsoUser.assert_called_once_with()
-		currentEmpl.isManager.assert_called_once_with()
+        currentEmpl.isEnsoUser.assert_called_once_with()
+        currentEmpl.isManager.assert_called_once_with()
 
 
-		# currentCompany = models.Company()
-		# currentCompany.pk = 1
-		# currentEmpl = models.Employee()
-		# currentEmpl.isEnsoUser = Mock(return_value=False)
-		# currentEmpl.company = currentCompany
-		#
-		# targetCompany = models.Company()
-		# targetCompany.pk = 2
-		#
-		# targetEmpl = models.Employee()
-		# muser = Mock(spec=User)
-		# muser._state = Mock()
-		# muser.id = 1
-		# try:
-		# 	targetEmpl.user = muser
-		# except ValueError:
-		# 	pass
-		#
-		# targetEmpl.company = targetCompany
-		#
-		# devplan = models.DevelopmentPlan()
-		# devplan.owner = targetEmpl
-		#
-		# self.assertTrue(devplan.canManage(currentEmpl))
-		#
-		# currentEmpl.isEnsoUser.assert_called_once_with()
-		# currentEmpl.isManager.assert_called_once_with()
+        # currentCompany = models.Company()
+        # currentCompany.pk = 1
+        # currentEmpl = models.Employee()
+        # currentEmpl.isEnsoUser = Mock(return_value=False)
+        # currentEmpl.company = currentCompany
+        #
+        # targetCompany = models.Company()
+        # targetCompany.pk = 2
+        #
+        # targetEmpl = models.Employee()
+        # muser = Mock(spec=User)
+        # muser._state = Mock()
+        # muser.id = 1
+        # try:
+        # targetEmpl.user = muser
+        # except ValueError:
+        # pass
+        #
+        # targetEmpl.company = targetCompany
+        #
+        # devplan = models.DevelopmentPlan()
+        # devplan.owner = targetEmpl
+        #
+        # self.assertTrue(devplan.canManage(currentEmpl))
+        #
+        # currentEmpl.isEnsoUser.assert_called_once_with()
+        # currentEmpl.isManager.assert_called_once_with()
 
 

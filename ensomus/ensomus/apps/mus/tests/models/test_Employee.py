@@ -9,141 +9,138 @@ django.setup()
 
 # noinspection PyUnresolvedReferences
 class EmployeeTest(unittest.TestCase):
+    def test_isEnsoUserSuccess(self):
 
-	def test_isEnsoUserSuccess(self):
+        currentEmpl = models.Employee()
 
-		currentEmpl = models.Employee()
+        with patch.object(models.Employee, 'roles') as mock_roles:
+            mock_roles.count.return_value = 1
 
-		with patch.object(models.Employee, 'roles') as mock_roles:
+            mock_filter = Mock()
+            mock_filter.exists.return_value = True
+            mock_roles.filter.return_value = mock_filter
 
-			mock_roles.count.return_value = 1
+            self.assertTrue(currentEmpl.isEnsoUser())
+            mock_roles.filter.assert_called_with(name=u'Enso-bruger')
 
-			mock_filter = Mock()
-			mock_filter.exists.return_value = True
-			mock_roles.filter.return_value = mock_filter
+    def test_isEnsoUserFalseWrongRole(self):
 
-			self.assertTrue(currentEmpl.isEnsoUser())
-			mock_roles.filter.assert_called_with(name = u'Enso-bruger')
+        currentEmpl = models.Employee()
 
-	def test_isEnsoUserFalseWrongRole(self):
+        with patch.object(models.Employee, 'roles') as mock_roles:
+            mock_roles.count.return_value = 1
 
-		currentEmpl = models.Employee()
+            mock_filter = Mock()
+            mock_filter.exists.return_value = False
+            mock_roles.filter.return_value = mock_filter
 
-		with patch.object(models.Employee, 'roles') as mock_roles:
-
-			mock_roles.count.return_value = 1
-
-			mock_filter = Mock()
-			mock_filter.exists.return_value = False
-			mock_roles.filter.return_value = mock_filter
-
-			self.assertFalse(currentEmpl.isEnsoUser())
-			mock_roles.filter.assert_called_with(name = u'Enso-bruger')
+            self.assertFalse(currentEmpl.isEnsoUser())
+            mock_roles.filter.assert_called_with(name=u'Enso-bruger')
 
 
-	def test_isEnsoUserFalseZeroRoles(self):
+    def test_isEnsoUserFalseZeroRoles(self):
 
-		currentEmpl = models.Employee()
+        currentEmpl = models.Employee()
 
-		with patch.object(models.Employee, 'roles') as mock_roles:
-			mock_roles.count.return_value = 0
-			self.assertFalse(currentEmpl.isEnsoUser())
+        with patch.object(models.Employee, 'roles') as mock_roles:
+            mock_roles.count.return_value = 0
+            self.assertFalse(currentEmpl.isEnsoUser())
 
-	def test_isCompanySuperUserOrHigherFalseZeroRoles(self):
+    def test_isCompanySuperUserOrHigherFalseZeroRoles(self):
 
-		currentEmpl = models.Employee()
+        currentEmpl = models.Employee()
 
-		with patch.object(models.Employee, 'roles') as mock_roles:
-			mock_roles.count.return_value = 0
-			self.assertFalse(currentEmpl.isCompanySuperUserOrHigher())
+        with patch.object(models.Employee, 'roles') as mock_roles:
+            mock_roles.count.return_value = 0
+            self.assertFalse(currentEmpl.isCompanySuperUserOrHigher())
 
-	def test_isCompanySuperUserOrHigherSuccess(self):
+    def test_isCompanySuperUserOrHigherSuccess(self):
 
-		currentEmpl = models.Employee()
+        currentEmpl = models.Employee()
 
-		with patch.object(models.Employee, 'roles') as mock_roles:
-			mock_roles.count.return_value = 1
-			self.assertTrue(currentEmpl.isCompanySuperUserOrHigher())
-
-
-	def test_hasAccessSuccessToIsEnsoUser(self):
-
-		currentEmpl = models.Employee()
-		currentEmpl.isEnsoUser = Mock(return_value=True)
-		self.assertTrue(currentEmpl.hasAccessTo(None))
+        with patch.object(models.Employee, 'roles') as mock_roles:
+            mock_roles.count.return_value = 1
+            self.assertTrue(currentEmpl.isCompanySuperUserOrHigher())
 
 
-	def test_hasAccessSuccessTargetIsCurrentUser(self):
+    def test_hasAccessSuccessToIsEnsoUser(self):
 
-		currentEmpl = models.Employee()
-		currentEmpl.pk = 1
-		currentEmpl.isEnsoUser = Mock(return_value=False)
-
-		targetEmpl = models.Employee()
-		targetEmpl.pk = 1
-
-		self.assertTrue(currentEmpl.hasAccessTo(targetEmpl))
+        currentEmpl = models.Employee()
+        currentEmpl.isEnsoUser = Mock(return_value=True)
+        self.assertTrue(currentEmpl.hasAccessTo(None))
 
 
-	def test_hasAccessSuccessIsManagerInSameCompany(self):
+    def test_hasAccessSuccessTargetIsCurrentUser(self):
 
-		comp = models.Company(pk=1)
+        currentEmpl = models.Employee()
+        currentEmpl.pk = 1
+        currentEmpl.isEnsoUser = Mock(return_value=False)
 
-		currentEmpl = models.Employee(pk=1, company=comp, is_manager=True)
-		currentEmpl.isEnsoUser = Mock(return_value=False)
+        targetEmpl = models.Employee()
+        targetEmpl.pk = 1
 
-		targetEmpl = models.Employee(pk=2, company=comp)
-
-		self.assertTrue(currentEmpl.hasAccessTo(targetEmpl))
-
-	def test_hasAccessSuccessIsSuperUserOrHigher(self):
-
-		comp = models.Company(pk=1)
-
-		currentEmpl = models.Employee(pk=1, company=comp, is_manager=False)
-		currentEmpl.isEnsoUser = Mock(return_value=False)
-		currentEmpl.isCompanySuperUserOrHigher = Mock(return_value=True)
-
-		tarcomp = models.Company(pk=2)
-		targetEmpl = models.Employee(pk=2, company=tarcomp)
-
-		self.assertTrue(currentEmpl.hasAccessTo(targetEmpl))
+        self.assertTrue(currentEmpl.hasAccessTo(targetEmpl))
 
 
-	def test_hasAccessFailureIsManagerButNotSameCompany(self):
+    def test_hasAccessSuccessIsManagerInSameCompany(self):
 
-		comp = models.Company(pk=1)
+        comp = models.Company(pk=1)
 
-		currentEmpl = models.Employee(pk=1, company=comp, is_manager=True)
-		currentEmpl.isEnsoUser = Mock(return_value=False)
-		currentEmpl.isCompanySuperUserOrHigher = Mock(return_value=False)
+        currentEmpl = models.Employee(pk=1, company=comp, is_manager=True)
+        currentEmpl.isEnsoUser = Mock(return_value=False)
 
-		tarcomp = models.Company(pk=2)
-		targetEmpl = models.Employee(pk=2, company=tarcomp)
+        targetEmpl = models.Employee(pk=2, company=comp)
 
-		self.assertFalse(currentEmpl.hasAccessTo(targetEmpl))
+        self.assertTrue(currentEmpl.hasAccessTo(targetEmpl))
 
-	def test_isValidUsername(self):
+    def test_hasAccessSuccessIsSuperUserOrHigher(self):
 
-		invalidUnicodeChars = [
-			"\xc2", "\xc3", "\xa8", "\xa5",
-			"\xe6", "\xf8", "\xe5", # danish ae, oe, aa
-		]
+        comp = models.Company(pk=1)
 
-		validASCIICodes = [45, 46] + range(48, 58) + range(65, 91) + [95] + range(97, 123)
+        currentEmpl = models.Employee(pk=1, company=comp, is_manager=False)
+        currentEmpl.isEnsoUser = Mock(return_value=False)
+        currentEmpl.isCompanySuperUserOrHigher = Mock(return_value=True)
 
-		for char in invalidUnicodeChars:
-			self.assertFalse(models.Employee.isValidUsername(char))
+        tarcomp = models.Company(pk=2)
+        targetEmpl = models.Employee(pk=2, company=tarcomp)
 
-		for i in range(0, 256):
-			if i in validASCIICodes:
-				self.assertTrue(models.Employee.isValidUsername(
-					chr(i)), "char: '{}' ASCII: '{}' was invalid.".format(chr(i), i)
-				)
-			else:
-				self.assertFalse(models.Employee.isValidUsername(
-					chr(i)), "char: '{}' ASCII: '{}' was valid".format(chr(i), i)
-				)
+        self.assertTrue(currentEmpl.hasAccessTo(targetEmpl))
+
+
+    def test_hasAccessFailureIsManagerButNotSameCompany(self):
+
+        comp = models.Company(pk=1)
+
+        currentEmpl = models.Employee(pk=1, company=comp, is_manager=True)
+        currentEmpl.isEnsoUser = Mock(return_value=False)
+        currentEmpl.isCompanySuperUserOrHigher = Mock(return_value=False)
+
+        tarcomp = models.Company(pk=2)
+        targetEmpl = models.Employee(pk=2, company=tarcomp)
+
+        self.assertFalse(currentEmpl.hasAccessTo(targetEmpl))
+
+    def test_isValidUsername(self):
+
+        invalidUnicodeChars = [
+            "\xc2", "\xc3", "\xa8", "\xa5",
+            "\xe6", "\xf8", "\xe5",  # danish ae, oe, aa
+        ]
+
+        validASCIICodes = [45, 46] + range(48, 58) + range(65, 91) + [95] + range(97, 123)
+
+        for char in invalidUnicodeChars:
+            self.assertFalse(models.Employee.isValidUsername(char))
+
+        for i in range(0, 256):
+            if i in validASCIICodes:
+                self.assertTrue(models.Employee.isValidUsername(
+                    chr(i)), "char: '{}' ASCII: '{}' was invalid.".format(chr(i), i)
+                )
+            else:
+                self.assertFalse(models.Employee.isValidUsername(
+                    chr(i)), "char: '{}' ASCII: '{}' was valid".format(chr(i), i)
+                )
 
 
 

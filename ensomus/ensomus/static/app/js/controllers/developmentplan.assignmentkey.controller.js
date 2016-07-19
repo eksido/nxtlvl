@@ -1,8 +1,8 @@
 controllers.controller('developmentPlanAssignmentKeyController', ['$scope', '$timeout', function ($scope, $timeout) {
-	$scope.privateText = '';
+    $scope.privateText = '';
 
-	$scope.init = function() {
-		
-	};
-	
+    $scope.init = function () {
+
+    };
+
 }]);

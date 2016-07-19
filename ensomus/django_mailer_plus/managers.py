@@ -61,7 +61,7 @@ class QueueQuerySet(QueueMethods, models.query.QuerySet):
 class QueueManager(QueueMethods, models.Manager):
     use_for_related_fields = True
 
-    #def get_query_set(self):
+    # def get_query_set(self):
     def get_queryset(self):
         return QueueQuerySet(self.model, using=self._db)
 
@@ -82,7 +82,7 @@ class QueueManager(QueueMethods, models.Manager):
         if max_retries:
             queryset = queryset.filter(retries__lte=max_retries)
         count = queryset.count()
-        update_kwargs = dict(deferred=None, retries=models.F('retries')+1)
+        update_kwargs = dict(deferred=None, retries=models.F('retries') + 1)
         if new_priority is not None:
             update_kwargs['priority'] = new_priority
         queryset.update(**update_kwargs)

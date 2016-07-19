@@ -7,8 +7,8 @@
 
 
 # class CompanyMock(Company):
-#     def __init__(self, *args, **kwargs):
-#         self.competence_field_collection_to_company_relations = list()
+# def __init__(self, *args, **kwargs):
+# self.competence_field_collection_to_company_relations = list()
 #         Company.__init__(self, *args, **kwargs)
 
 #     def addCompetenceFieldCollectionToCompanyRelation(self, competence_field_collection_to_company_relation):

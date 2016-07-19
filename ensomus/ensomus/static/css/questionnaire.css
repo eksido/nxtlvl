@@ -2,16 +2,20 @@
     border-bottom: 2px solid black;
     height: 30px;
 }
+
 pre.response {
-  padding-left: 10px;
-  font-family: 'Lato', sans serif;
+    padding-left: 10px;
+    font-family: 'Lato', sans serif;
 }
+
 .question {
-  min-height: 250px;
+    min-height: 250px;
 }
+
 .questiontext {
     margin-top: 20px;
 }
+
 .errorlist {
-	color: red;
+    color: red;
 }

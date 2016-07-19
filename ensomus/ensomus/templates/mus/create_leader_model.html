@@ -3,73 +3,75 @@
 {% load static %}
 {% load mus_tags %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'lib/multiselect/css/ui.multiselect.css' %}" />
-<style>
+    <link rel="stylesheet" href="{% static 'lib/multiselect/css/ui.multiselect.css' %}"/>
+    <style>
 
-	#id_employees {
-		width: 460px;
-		height: 200px;
-	}
+        #id_employees {
+            width: 460px;
+            height: 200px;
+        }
 
-	.ui-draggable-dragging {
-		z-index: 1000;
-	}
-</style>
+        .ui-draggable-dragging {
+            z-index: 1000;
+        }
+    </style>
 {% endblock %}
 {% block content %}
-<div class="row">
-	<h2>{% trans "Create leader model" %}</h2>
-	<form action="{% url 'ensomus.apps.mus.views.create_leader_model' company_id=company.pk %}" method="post">
-		{% csrf_token %}
+    <div class="row">
+        <h2>{% trans "Create leader model" %}</h2>
 
-		{{ form.non_field_errors }}
+        <form action="{% url 'ensomus.apps.mus.views.create_leader_model' company_id=company.pk %}" method="post">
+            {% csrf_token %}
 
-		{% if errors.noactions %}
+            {{ form.non_field_errors }}
 
-			<h4 style="margin: 30px 0 10px 0; color:maroon">
-				{% trans "These employees do not have any actions" %}:
-			</h4>
+            {% if errors.noactions %}
 
-			{% for empl in errors.noactions %}
-				{{ empl }}
-			{% endfor %}
+                <h4 style="margin: 30px 0 10px 0; color:maroon">
+                    {% trans "These employees do not have any actions" %}:
+                </h4>
 
-			<br /><br /><br />
-		{% endif %}
+                {% for empl in errors.noactions %}
+                    {{ empl }}
+                {% endfor %}
 
-		<p>
-			{% trans "Choose employees help text" %}
-		</p>
+                <br/><br/><br/>
+            {% endif %}
 
-		<div class="row">
-			{{ form.employees.errors }}
-			<div class="col-md-4">
-				{{ form.employees }}
-			</div>
-		</div>
+            <p>
+                {% trans "Choose employees help text" %}
+            </p>
 
-		<div class="row">
-			<input class="btn btn-primary" type="submit" value="{% trans "Attach" %}"/>
-		</div>
+            <div class="row">
+                {{ form.employees.errors }}
+                <div class="col-md-4">
+                    {{ form.employees }}
+                </div>
+            </div>
 
-	</form>
-</div>
+            <div class="row">
+                <input class="btn btn-primary" type="submit" value="{% trans "Attach" %}"/>
+            </div>
+
+        </form>
+    </div>
 
 {% endblock %}
 {% block js_ready %}
 
-$.localise('ui-multiselect',{language: 'ja', path : '/static/lib/multiselect/js/locale/'})
-$('#id_employees').multiselect();
+    $.localise('ui-multiselect',{language: 'ja', path : '/static/lib/multiselect/js/locale/'})
+    $('#id_employees').multiselect();
 {% endblock %}
 {% block js_includes %}
 
-<script type="text/javascript" src="{% static "lib/multiselect/js/plugins/localisation/jquery.localisation-min.js" %}"></script>
-<script type="text/javascript" src="{% static "lib/multiselect/js/ui.multiselect.js" %}"></script>
-<script src="{% static "app/js/lib/angular/angular.min.js" %}"></script>
-<script src="{% static "app/js/lib/angular/angular-route.min.js" %}"></script>
-<script src="{% static "app/js/lib/angular/angular-sanitize.min.js" %}"></script>
-<script src="{% static "app/js/lib/angular/angular-cookies.min.js" %}"></script>
-<script src="{% static "app/js/app.js" %}"></script>
-<script src="{% static "app/js/controllers/attach.developmentplan.controller.js" %}"></script>
+    <script type="text/javascript"
+            src="{% static "lib/multiselect/js/plugins/localisation/jquery.localisation-min.js" %}"></script>
+    <script type="text/javascript" src="{% static "lib/multiselect/js/ui.multiselect.js" %}"></script>
+    <script src="{% static "app/js/lib/angular/angular.min.js" %}"></script>
+    <script src="{% static "app/js/lib/angular/angular-route.min.js" %}"></script>
+    <script src="{% static "app/js/lib/angular/angular-sanitize.min.js" %}"></script>
+    <script src="{% static "app/js/lib/angular/angular-cookies.min.js" %}"></script>
+    <script src="{% static "app/js/app.js" %}"></script>
+    <script src="{% static "app/js/controllers/attach.developmentplan.controller.js" %}"></script>
 
 {% endblock %}

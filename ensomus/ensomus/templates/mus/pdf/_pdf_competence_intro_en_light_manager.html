@@ -1,39 +1,54 @@
-
-        <h2>Part 2: Skills Key</h2>
-        <p>
-            You have now come to the second part of the preparation guide. The Skills Key is a list of specially selected skills that the development dialogue contains. 
-        </p>
-        <p>
-            <div class="well">
-            <em>
-                Skills are about how the employees uses their abilities, knowledge and proficiencies in the daily work tasks. There are two possible development paths; one is to get better at something the employee is already good at and the other is to develop completely new skills that are relevant to the work. Everybody possess the skills that are listed, but it differs to what extent we use and utilise them. 
-			</em>
-            </div>
-        </p>
-        <p>            
-			The purpose of the Skills Key is to gain knowledge and understanding of the skills that make the most sense for the employee to develop and focus on in relation to their work.
-        </p>
-        <p>
-             The Skills Key contains 9 skills fields, where each field contains 3 skills. YThe focus in this year’s dialogue is on {{ competence_fields|length }} fields of competences. These will be the overall framework for the preparation and the dialogue. The {{ competence_fields|length }} skills fields are: <strong>{% for competence_field in competence_fields %}{% if forloop.last %} &amp; {% elif not forloop.first%}, {% endif %}{{ competence_field.title }}{% endfor %}.</strong>
-        </p>
-        <p>
-            The skills in column 1 and column 2 (personal and social skills) are generally applicable to all work areas and companies, while the skills in column 3 (professional skills) are specific to the company.
-        </p>
-        <p>
-        	 The following list of columns and skills shows all 9 skills fields. Since skills fields may overlap each other, all skills fields are shown, but you and the employee must prepare based on the {{ competence_fields|length }}  selected skills fields.
-        </p>
-        <h3>Summary of columns and skills</h3>
-        <center>
-            <img src="http://test.nxtlvl.dk/static/img/kompetencer_en.png" width="350" alt="Kompetencer" />
-        </center>
-        <div class="page-break"></div>
-        <h4>Preparation based on skills </h4>
-        <p>
-			The preparation is intended to get you and the employee to reflect on your skills in relation to current and future work tasks, so they can get the focus it takes to develop them and solve tasks in an even better way. 
-		</p>
-		<p>
-			<b>Note</b> that the employee does not always have to increase their skills, but they may well be in a situation where they have to ease off their skills, it all depends on their experience, their personality and the nature of the task.
-        </p>
-        <p> 
-        	Now please answer the following questions in relation to the {{ competence_fields|length }} skills that are this year's focus.            
-        </p>
+<h2>Part 2: Skills Key</h2>
+<p>
+    You have now come to the second part of the preparation guide. The Skills Key is a list of specially selected skills
+    that the development dialogue contains.
+</p>
+<p>
+<div class="well">
+    <em>
+        Skills are about how the employees uses their abilities, knowledge and proficiencies in the daily work tasks.
+        There are two possible development paths; one is to get better at something the employee is already good at and
+        the other is to develop completely new skills that are relevant to the work. Everybody possess the skills that
+        are listed, but it differs to what extent we use and utilise them.
+    </em>
+</div>
+</p>
+<p>
+    The purpose of the Skills Key is to gain knowledge and understanding of the skills that make the most sense for the
+    employee to develop and focus on in relation to their work.
+</p>
+<p>
+    The Skills Key contains 9 skills fields, where each field contains 3 skills. YThe focus in this year’s dialogue is
+    on {{ competence_fields|length }} fields of competences. These will be the overall framework for the preparation and
+    the dialogue. The {{ competence_fields|length }} skills fields are: <strong>
+    {% for competence_field in competence_fields %}{% if forloop.last %} &amp; {% elif not forloop.first %}, {% endif %}
+        {{ competence_field.title }}{% endfor %}.</strong>
+</p>
+<p>
+    The skills in column 1 and column 2 (personal and social skills) are generally applicable to all work areas and
+    companies, while the skills in column 3 (professional skills) are specific to the company.
+</p>
+<p>
+    The following list of columns and skills shows all 9 skills fields. Since skills fields may overlap each other, all
+    skills fields are shown, but you and the employee must prepare based on the {{ competence_fields|length }} selected
+    skills fields.
+</p>
+<h3>Summary of columns and skills</h3>
+<center>
+    <img src="http://test.nxtlvl.dk/static/img/kompetencer_en.png" width="350" alt="Kompetencer"/>
+</center>
+<div class="page-break"></div>
+<h4>Preparation based on skills </h4>
+<p>
+    The preparation is intended to get you and the employee to reflect on your skills in relation to current and future
+    work tasks, so they can get the focus it takes to develop them and solve tasks in an even better way.
+</p>
+<p>
+    <b>Note</b> that the employee does not always have to increase their skills, but they may well be in a situation
+    where they have to ease off their skills, it all depends on their experience, their personality and the nature of
+    the task.
+</p>
+<p>
+    Now please answer the following questions in relation to the {{ competence_fields|length }} skills that are this
+    year's focus.
+</p>

@@ -9,17 +9,17 @@
         <div class="span11">
             <table class="table table-striped">
                 <thead>
-                    <tr>
-                        <th>Navn</th>
-                        <th>Oprettet</th>
-                    </tr>
-                </thead>
-            {% for file in files %}
                 <tr>
-                    <td><a href="/files/get/{{ file.pk }}">{{ file.file_name }}</a></td>
-                    <td>{{ file.created_at }}</td>
+                    <th>Navn</th>
+                    <th>Oprettet</th>
                 </tr>
-            {% endfor %}
+                </thead>
+                {% for file in files %}
+                    <tr>
+                        <td><a href="/files/get/{{ file.pk }}">{{ file.file_name }}</a></td>
+                        <td>{{ file.created_at }}</td>
+                    </tr>
+                {% endfor %}
             </table>
         </div>
     </div>

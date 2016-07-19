@@ -7,16 +7,16 @@
         <h2 class="form-signin-heading">NXT LVL</h2>
 
         {% if form.errors %}
-        <p class="errorlist">{% trans "Login error, try again" %}</p>
+            <p class="errorlist">{% trans "Login error, try again" %}</p>
         {% endif %}
 
-        {{ form.username|attr:"class:input-block-level"|attr:"placeholder:login"  }}<br />
+        {{ form.username|attr:"class:input-block-level"|attr:"placeholder:login"  }}<br/>
         {{ form.password|attr:"class:input-block-level"|attr:"placeholder:kode" }}
         <label class="checkbox">
             <input type="checkbox" value="remember-me"> {% trans "Remember me" %}
         </label>
         <button class="btn btn-primary" type="submit">{% trans "Login" %}</button>
         <a href="/password_reset/" class="btn">{% trans "Forgotten password" %}</a>
-        <input type="hidden" name="next" value="/" />
+        <input type="hidden" name="next" value="/"/>
     </form>
 {% endblock %}

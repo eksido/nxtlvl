@@ -9,8 +9,8 @@ import exceptions
 
 __author__ = 'tl'
 
-class Command(BaseCommand):
 
+class Command(BaseCommand):
     args = 'lol'
     help = 'Check and send out reminders'
 
@@ -18,7 +18,6 @@ class Command(BaseCommand):
         print('{} - {}'.format(datetime.utcnow(), msg))
 
     def handle(self, *args, **options):
-
         self.debug('Handling reminders command')
 
         # self.createMockups()

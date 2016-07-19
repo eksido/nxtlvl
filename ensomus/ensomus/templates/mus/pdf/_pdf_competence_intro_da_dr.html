@@ -1,36 +1,51 @@
 {% load static %}
 {% load i18n %}
-        <h2>Anden del: Kompetencenøglen</h2>
-        <p>
-           	Du er nu kommet til anden del af forberedelsesguiden. Kompetencenøglen er en oversigt over specielt udvalgte kompetencer som en udviklende L.U.S.  indeholder. 
-        </p>
-        <p>
-            <div class="well">
-            <em>Kompetencer handler om, hvordan du anvender dine evner, viden og færdigheder i de daglige arbejdsopgaver. Der er to mulige udviklingsveje, den ene er at blive bedre til noget du er god til i forvejen. Den anden er at udvikle helt nye kompetencer som er relevant for dit arbejde. Alle er i besiddelse af de kompetencer som er med i oversigten, men det er forskelligt i hvilken grad vi bruger og udnytter dem. </em>
-            </div>
-        </p>
-        <p>
-            Hensigten med kompetencenøglen er at få viden om og indsigt i, hvilke kompetencer, der giver mest mening for dig at udvikle og sætte fokus på i forhold til dine arbejdsopgaver.
-        </p>
-        <p>
-            Kompetencenøglen indeholder 9 kompetencefelter, hvor hvert felt indeholder 3 kompetencer. DR Medieproduktionen har valgt at sætte fokus på {{ competence_fields|length }} kompetencefelter i årets L.U.S.. Disse vil være den overordnede ramme for forberedelsen og samtalen. De {{ competence_fields|length }} kompetencefelter er: <strong>
-    		{% for competence_field in competence_fields %}{% if forloop.last %} &amp; {% elif not forloop.first%}, {% endif %}{{ competence_field.title }}{% endfor %}.</strong>
-        </p>
-        <p>
-            Kompetencerne i søjle 1 og søjle 2 (personlige og sociale kompetencer) kan anvendes generelt for alle arbejdsområder og virksomheder, hvorimod kompetencerne i søjle 3 (virksomhedsmæssige kompetencer) er specielle for netop din virksomhed.
-        </p>
-        <p>
-            I nedenstående oversigt over søjler og kompetencer vises alle 9 kompetencefelter. De resterende kompetencefelter vises, da de vil have et mindre fokus under samtalen. Du skal  kun forberede dig ud fra de {{ competence_fields|length }} udvalgte kompetencefelter.
-        </p>
-        <h3>Oversigt over søjler og kompetencer</h3>
-        <center>
-            <img src="http://test.nxtlvl.dk/static/img/kompetencer.png" width="350" alt="Kompetencer" />
-        </center>
-        <div class="page-break"></div>
-        <h4>Forberedelse med udgangspunkt i kompetencer</h4>
-        <p>
-            Forberedelsen har til hensigt at få dig til at reflektere over dine kompetencer i forhold til nuværende og fremtidige arbejdsopgaver, så de kan få det fokus, det kræver for at udvikle dem og løse dine opgaver endnu bedre. Bemærk at du ikke altid skal skure op for kompetencerne, men at du godt kan være i en situation, hvor du skal skrue ned for kompetencerne, det afhænger helt af din erfaring, din personlighed og opgavens karakter.
-        </p>
-        <p>
-            Du bedes nu besvare de følgende spørgsmål, i forhold til de kompetencer som har årets fokus.
-        </p>
+<h2>Anden del: Kompetencenøglen</h2>
+<p>
+    Du er nu kommet til anden del af forberedelsesguiden. Kompetencenøglen er en oversigt over specielt udvalgte
+    kompetencer som en udviklende L.U.S. indeholder.
+</p>
+<p>
+<div class="well">
+    <em>Kompetencer handler om, hvordan du anvender dine evner, viden og færdigheder i de daglige arbejdsopgaver. Der er
+        to mulige udviklingsveje, den ene er at blive bedre til noget du er god til i forvejen. Den anden er at udvikle
+        helt nye kompetencer som er relevant for dit arbejde. Alle er i besiddelse af de kompetencer som er med i
+        oversigten, men det er forskelligt i hvilken grad vi bruger og udnytter dem. </em>
+</div>
+</p>
+<p>
+    Hensigten med kompetencenøglen er at få viden om og indsigt i, hvilke kompetencer, der giver mest mening for dig at
+    udvikle og sætte fokus på i forhold til dine arbejdsopgaver.
+</p>
+<p>
+    Kompetencenøglen indeholder 9 kompetencefelter, hvor hvert felt indeholder 3 kompetencer. DR Medieproduktionen har
+    valgt at sætte fokus på {{ competence_fields|length }} kompetencefelter i årets L.U.S.. Disse vil være den
+    overordnede ramme for forberedelsen og samtalen. De {{ competence_fields|length }} kompetencefelter er: <strong>
+    {% for competence_field in competence_fields %}{% if forloop.last %} &amp; {% elif not forloop.first %}, {% endif %}
+        {{ competence_field.title }}{% endfor %}.</strong>
+</p>
+<p>
+    Kompetencerne i søjle 1 og søjle 2 (personlige og sociale kompetencer) kan anvendes generelt for alle arbejdsområder
+    og virksomheder, hvorimod kompetencerne i søjle 3 (virksomhedsmæssige kompetencer) er specielle for netop din
+    virksomhed.
+</p>
+<p>
+    I nedenstående oversigt over søjler og kompetencer vises alle 9 kompetencefelter. De resterende kompetencefelter
+    vises, da de vil have et mindre fokus under samtalen. Du skal kun forberede dig ud fra
+    de {{ competence_fields|length }} udvalgte kompetencefelter.
+</p>
+<h3>Oversigt over søjler og kompetencer</h3>
+<center>
+    <img src="http://test.nxtlvl.dk/static/img/kompetencer.png" width="350" alt="Kompetencer"/>
+</center>
+<div class="page-break"></div>
+<h4>Forberedelse med udgangspunkt i kompetencer</h4>
+<p>
+    Forberedelsen har til hensigt at få dig til at reflektere over dine kompetencer i forhold til nuværende og
+    fremtidige arbejdsopgaver, så de kan få det fokus, det kræver for at udvikle dem og løse dine opgaver endnu bedre.
+    Bemærk at du ikke altid skal skure op for kompetencerne, men at du godt kan være i en situation, hvor du skal skrue
+    ned for kompetencerne, det afhænger helt af din erfaring, din personlighed og opgavens karakter.
+</p>
+<p>
+    Du bedes nu besvare de følgende spørgsmål, i forhold til de kompetencer som har årets fokus.
+</p>

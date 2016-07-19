@@ -2,36 +2,39 @@
 {% load i18n %}
 {% block content %}
 
-<div class="row">
-	<h3>{% trans "Add many employees" %}</h3>
-	<p>{% if LANGUAGE_CODE == "da" %}
-		Upload en .csv fil indeholdende data på de medarbejdere du ønsker at tilføje.
-		{% elif LANGUAGE_CODE == "en" %}
-		Upload a .csv file containing the data of the employees you want to add.
-		{% endif %}
-	</p>
+    <div class="row">
+        <h3>{% trans "Add many employees" %}</h3>
 
-	<div class="form-group">
-		<form class="form-horizontal" method="post" action="/employee/create-many/{{ company.pk }}" enctype="multipart/form-data">{% csrf_token %}
-			{% for field in form %}
-		        <div class="form-group">
-		            <label class="control-label col-md-2" for="{{ field.html_name }}">{{ field.label }}</label>
-		        	<div class="col-md-4">
-		                {{ field }}
-		                {{ field.errors }}
-		        	</div>
-		        </div>
-		    {% endfor %}
-			<div class="form-group">
-	        	<div class="col-md-2"></div>
-	            <div class="col-md-4">                
-	            	<input type="submit" value="{% trans "Upload" %}" class="btn btn-primary" name="upload" />
-	            </div>	           
-	        </div>
-	         <p><em style="font-size:15px; color:red;"> {% trans "NOTE: only .csv files are accepted" %}</em></p>
-		</form>
-	</div>
-</div>
+        <p>{% if LANGUAGE_CODE == "da" %}
+            Upload en .csv fil indeholdende data på de medarbejdere du ønsker at tilføje.
+        {% elif LANGUAGE_CODE == "en" %}
+            Upload a .csv file containing the data of the employees you want to add.
+        {% endif %}
+        </p>
+
+        <div class="form-group">
+            <form class="form-horizontal" method="post" action="/employee/create-many/{{ company.pk }}"
+                  enctype="multipart/form-data">{% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="{{ field.html_name }}">{{ field.label }}</label>
+
+                        <div class="col-md-4">
+                            {{ field }}
+                            {{ field.errors }}
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="form-group">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <input type="submit" value="{% trans "Upload" %}" class="btn btn-primary" name="upload"/>
+                    </div>
+                </div>
+                <p><em style="font-size:15px; color:red;"> {% trans "NOTE: only .csv files are accepted" %}</em></p>
+            </form>
+        </div>
+    </div>
 
 
 {% endblock %}

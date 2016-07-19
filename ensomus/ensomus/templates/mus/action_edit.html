@@ -1,34 +1,37 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block head %}
-<style>
-textarea {
-	height: 50px;
-	width: 500px;
-}
-.help-inline {
-	color:red;
-}
-</style>
+    <style>
+        textarea {
+            height: 50px;
+            width: 500px;
+        }
+
+        .help-inline {
+            color: red;
+        }
+    </style>
 {% endblock %}
 {% block content %}
-<div class="row">
-	<form class="form-horizontal" action="{{ request.path }}" method="post">{% csrf_token %}
-    {% for field in form %}
-    <div class="form-group">
-                <label class="control-label col-md-2" for="{{ field.html_name }}">{{ field.label }}</label>
-                <div class="col-md-4">
-                    {{ field }}
-                    {{ field.errors }}
+    <div class="row">
+        <form class="form-horizontal" action="{{ request.path }}" method="post">{% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="{{ field.html_name }}">{{ field.label }}</label>
+
+                    <div class="col-md-4">
+                        {{ field }}
+                        {{ field.errors }}
+                    </div>
                 </div>
-            </div>
             {% endfor %}
             <div class="form-group">
                 <div class="col-md-2"></div>
                 <div class="col-md-4">
-	                <input type="submit" class="btn btn-default" value="{% if edit %}{% trans "Save" %}	{% else %}{% trans "Add" %}{% endif %}" />
+                    <input type="submit" class="btn btn-default"
+                           value="{% if edit %}{% trans "Save" %}	{% else %}{% trans "Add" %}{% endif %}"/>
                 </div>
             </div>
-	</form>
-</div>
+        </form>
+    </div>
 {% endblock %}

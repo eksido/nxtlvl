@@ -1,33 +1,32 @@
 .bullet2 {
-    width:20px;
-    height:18px;
+    width: 20px;
+    height: 18px;
     background: url('../img/bullets.png') no-repeat 0px 0px;
-    display:inline-block;
+    display: inline-block;
 }
+
 .bullet0 {
-    width:20px;
-    height:18px;
+    width: 20px;
+    height: 18px;
     background: url('../img/bullets.png') no-repeat 0px -54px;
-    display:inline-block;
+    display: inline-block;
 }
+
 .bullet1 {
-    width:20px;
-    height:18px;
+    width: 20px;
+    height: 18px;
     background: url('../img/bullets.png') no-repeat 0px -18px;
-    display:inline-block;
+    display: inline-block;
 }
 
-
-
-
-.tooltip2{
+.tooltip2 {
     display: inline;
     position: relative;
 }
 
-.tooltip2:hover:after{
+.tooltip2:hover:after {
     background: #333;
-    background: rgba(0,0,0,.8);
+    background: rgba(0, 0, 0, .8);
     border-radius: 5px;
     bottom: 26px;
     color: #fff;
@@ -39,7 +38,7 @@
     width: 220px;
 }
 
-.tooltip2:hover:before{
+.tooltip2:hover:before {
     border: solid;
     border-color: #333 transparent;
     border-width: 6px 6px 0 6px;
@@ -49,49 +48,62 @@
     position: absolute;
     z-index: 99;
 }
+
 tr[data-depth='1'] td:first-child {
     padding-left: 15px;
 }
+
 tr[data-depth='2'] td:first-child {
     padding-left: 30px;
 }
+
 tr[data-depth='3'] td:first-child {
     padding-left: 45px;
 }
+
 tr[data-depth='4'] td:first-child {
     padding-left: 60px;
 }
+
 tr[data-depth='5'] td:first-child {
     padding-left: 75px;
 }
+
 tr[data-depth='6'] td:first-child {
     padding-left: 90px;
 }
+
 tr[data-depth='7'] td:first-child {
     padding-left: 105px;
 }
+
 tr[data-depth='8'] td:first-child {
     padding-left: 120px;
 }
+
 tr[data-depth='9'] td:first-child {
     padding-left: 135px;
 }
+
 tr[data-depth='10'] td:first-child {
     padding-left: 150px;
 }
+
 .mycollapse .toggle:before {
     content: "\2212";
     border-style: dotted;
     border-width: 1px;
-    padding:1px;
+    padding: 1px;
 
 }
+
 .myexpand .toggle:before {
     content: "\2b";
     border-style: dotted;
     border-width: 1px;
-    padding:1px;
+    padding: 1px;
 }
+
 .toggle {
     top: 1px;
     display: inline-block;
@@ -99,5 +111,5 @@ tr[data-depth='10'] td:first-child {
     -webkit-font-smoothing: antialiased;
     font-style: normal;
     font-weight: normal;
-    line-height: 1;  
+    line-height: 1;
 }

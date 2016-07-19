@@ -6,9 +6,9 @@
     <form class="form-signin" method="post" action="{% url 'ensomus.apps.mus.views.password_reset' %}">
         {% csrf_token %}
         <h2 class="form-signin-heading">NXT LVL - {% trans "Reset password" %}</h2>
-    	{{ form.non_field_errors }}
+        {{ form.non_field_errors }}
         {{ form.email|attr:"class:input-block-level"|attr:"placeholder:email"  }}
         <button class="btn btn-primary" type="submit">{% trans "Reset" %}</button>
-        <input type="hidden" name="next" value="{{ next }}" />
+        <input type="hidden" name="next" value="{{ next }}"/>
     </form>
 {% endblock %}

@@ -6,8 +6,10 @@ from django_mailer_plus.management.commands import create_handler
 from optparse import make_option
 import logging
 import sys
+
 try:
     from django.core.mail import get_connection
+
     EMAIL_BACKEND_SUPPORT = True
 except ImportError:
     # Django version < 1.2
@@ -18,12 +20,12 @@ class Command(NoArgsCommand):
     help = 'Iterate the mail queue, attempting to send all mail.'
     option_list = NoArgsCommand.option_list + (
         make_option('-b', '--block-size', default=500, type='int',
-            help='The number of messages to iterate before checking the queue '
-                'again (in case new messages have been added while the queue '
-                'is being cleared).'),
+                    help='The number of messages to iterate before checking the queue '
+                         'again (in case new messages have been added while the queue '
+                         'is being cleared).'),
         make_option('-c', '--count', action='store_true', default=False,
-            help='Return the number of messages in the queue (without '
-                'actually sending any)'),
+                    help='Return the number of messages in the queue (without '
+                         'actually sending any)'),
     )
 
     def handle_noargs(self, verbosity, block_size, count, **options):

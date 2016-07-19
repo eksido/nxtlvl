@@ -5,7 +5,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-   ('Joachim Andersen', 'joachimfandersen@gmail.com'),
+    ('Joachim Andersen', 'joachimfandersen@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -16,7 +16,19 @@ DATABASES = {
     }
 }
 
-DEFAULT_FROM_MAIL = 'info@ensomus.dk'
+# DEFAULT_FROM_MAIL = 'info@ensomus.dk'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+DEFAULT_FROM_MAIL = 'kharenko.send.mail@gmail.com'
+EMAIL_HOST_USER = 'kharenko.send.mail@gmail.com'
+EMAIL_HOST_PASSWORD = '^Work1029Send$'
+EMAIL_PORT = 587
+EMAIL_TIMEOUT = 300
+
+
+
+
 QUESTIONNAIRE_ATTACHED_SUBJECT = 'Enso M.U.S - Udfyld M.U.S skema'
 QUESTIONNAIRE_DONE_SUBJECT = 'Enso M.U.S - M.U.S skema udfyldt'
 WELCOME_MAIL_SUBJECT = 'Velkommen til Enso M.U.S'
@@ -78,7 +90,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -88,7 +100,7 @@ SECRET_KEY = '--1h3olllvq*3(esrmaisz0w1(jdx^ov4@*q&amp;v2m+3^^tzyn$*'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    # 'django.template.loaders.eggs.Loader',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -125,7 +137,6 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, 'templates'),
 )
 
-
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -141,11 +152,11 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'widget_tweaks',
     # 'south',
-    'mus',
+    'ensomus.apps.mus',
     'activelink',
     'tinymce',
     'mail_templated',
-    'mailer',
+    # 'mailer',
 )
 
 
@@ -180,7 +191,7 @@ LOGGING = {
 
 LOGIN_URL = '/login/'
 
-#GROUPS = {
+# GROUPS = {
 #        {'name': 'Enso-bruger', 'rank': 1},
 #        {'name': 'Firma-superbruger', 'rank': 2},
 #        {'name': 'Leder', 'rank': 3},
@@ -196,7 +207,8 @@ TINYMCE_JS_URL = '/static/js/tiny_mce/tiny_mce.js'
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+
+DATABASES['default'] = dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

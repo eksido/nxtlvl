@@ -4,15 +4,18 @@ a:active,
 a:focus {
     outline: none;
 }
+
 body {
     padding-top: 60px;
     padding-bottom: 40px;
 }
+
 @media (max-width: 980) {
     body {
         padding-top: 0;
         padding-bottom: 0;
     }
+
     /*
     th, td {
         margin: 0;
@@ -70,39 +73,49 @@ body {
     }
     */
 }
+
 .sidebar-nav {
     padding: 9px 0;
 }
+
 .control-group input[type=text] {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
     height: 28px;
 }
+
 .control-group select {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
 }
+
 .controls > p {
     padding-top: 5px;
 }
+
 .selector .selector-filter label {
     display: none;
 }
+
 .selector h2 {
     font-size: 100%;
     margin: 0;
 }
+
 .checkbox label {
     margin-bottom: -20px;
 }
+
 fieldset.collapse {
     height: inherit;
 }
+
 .add-row {
     margin-bottom: 20px;
 }
+
 legend a:hover {
     text-decoration: none;
 }
@@ -117,6 +130,6 @@ legend a:hover {
 }
 
 #_changelist .results {
-	width: 100%;
-	clear:both;
+    width: 100%;
+    clear: both;
 }

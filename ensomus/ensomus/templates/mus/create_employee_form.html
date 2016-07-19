@@ -3,33 +3,35 @@
 {% load i18n %}
 {% block content %}
 
-<div class="row">
-    <h2>{% trans "Add employee for" %} {{ company }}</h2>
-    {{ employee_form.non_field_errors }}
-        <form class="form-horizontal" action="{% url 'ensomus.apps.mus.views.add_employee' %}" method="post" autocomplete="off">
-        {% csrf_token %}
-        {{ employee_form.company }}
-        {% for field in employee_form %}
-        {% if field.name != "company" %}
-        <div class="form-group">
-            <label class="control-label col-md-2" for="{{ field.html_name }}">{{ field.label }}</label>
-            <div class="col-md-4">
-        		{{ field }}
-                {% for error in field.errors %}
-                <span class="help-inline">{{ error }}</span>
-                {% endfor %}
-            </div>
-        </div>
+    <div class="row">
+        <h2>{% trans "Add employee for" %} {{ company }}</h2>
+        {{ employee_form.non_field_errors }}
+        <form class="form-horizontal" action="{% url 'ensomus.apps.mus.views.add_employee' %}" method="post"
+              autocomplete="off">
+            {% csrf_token %}
+            {{ employee_form.company }}
+            {% for field in employee_form %}
+                {% if field.name != "company" %}
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="{{ field.html_name }}">{{ field.label }}</label>
 
-        {% endif %}
-        {% endfor %}
-        <div class="form-group">
-            <div class="col-md-2">{{ field.label }}</div>
-            <div class="col-md-4">
-                
-            <input type="submit" class="btn btn-primary" value="{% trans "Add" %}" />
+                        <div class="col-md-4">
+                            {{ field }}
+                            {% for error in field.errors %}
+                                <span class="help-inline">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                {% endif %}
+            {% endfor %}
+            <div class="form-group">
+                <div class="col-md-2">{{ field.label }}</div>
+                <div class="col-md-4">
+
+                    <input type="submit" class="btn btn-primary" value="{% trans "Add" %}"/>
+                </div>
             </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 {% endblock %}

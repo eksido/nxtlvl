@@ -18,6 +18,7 @@ PRIORITY_HEADER = 'X-Mail-Queue-Priority'
 
 try:
     from django.core.mail import get_connection
+
     EMAIL_BACKEND_SUPPORT = True
 except ImportError:
     # Django version < 1.2

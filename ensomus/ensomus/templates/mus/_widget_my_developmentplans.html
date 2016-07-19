@@ -1,17 +1,26 @@
 {% load i18n %}
 {% if widget.data %}
-<table>
-	<tr>
-		<th>{% trans "Date" %}</th><th>{% trans "Mine" %}</th><th>{% trans "My manager's" %}</th>
-	</tr>
-	{% for development_plan in  widget.data %}
-		<tr>
-			<td>{{ development_plan.created_at }}</td>
-			<td>{% if development_plan.employee_response_relation.finished_at %}<a class="btn" href="/developmentplan/{{ development_plan.employee_response_relation.pk }}/pdf">PDF</a>{% else %}<a class="btn" href="/developmentplan/{{ development_plan.employee_response_relation.pk }}">{% trans "Fill out" %}</a>{% endif %}</td>
-			<td>{% if development_plan.manager_response_relation.finished_at and not development_plan.manager_response_relation.is_private %}<a class="btn" href="/developmentplan/{{ development_plan.manager_response_relation.pk }}/pdf">PDF</a>{% endif %}</td>
-		</tr>
-	{% endfor %}
-</table>
+    <table>
+        <tr>
+            <th>{% trans "Date" %}</th>
+            <th>{% trans "Mine" %}</th>
+            <th>{% trans "My manager's" %}</th>
+        </tr>
+        {% for development_plan in  widget.data %}
+            <tr>
+                <td>{{ development_plan.created_at }}</td>
+                <td>{% if development_plan.employee_response_relation.finished_at %}<a class="btn"
+                                                                                       href="/developmentplan/{{ development_plan.employee_response_relation.pk }}/pdf">PDF</a>{% else %}
+                    <a class="btn"
+                       href="/developmentplan/{{ development_plan.employee_response_relation.pk }}">{% trans "Fill out" %}</a>{% endif %}
+                </td>
+                <td>
+                    {% if development_plan.manager_response_relation.finished_at and not development_plan.manager_response_relation.is_private %}
+                        <a class="btn" href="/developmentplan/{{ development_plan.manager_response_relation.pk }}/pdf">PDF</a>{% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
 {% else %}
-{% trans "None available" %}
+    {% trans "None available" %}
 {% endif %}

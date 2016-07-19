@@ -5,7 +5,7 @@
  */
 
 $.extend($.ui.multiselect.locale, {
-	addAll:     'Összes hozzáadása',
-	removeAll:  'Összes eltávolítása',
-	itemsCount: 'kiválasztott elem'
+    addAll: 'Összes hozzáadása',
+    removeAll: 'Összes eltávolítása',
+    itemsCount: 'kiválasztott elem'
 });

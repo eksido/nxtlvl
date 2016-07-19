@@ -2,30 +2,34 @@
 {% load static %}
 {% load i18n %}
 {% block content %}
-{% if LANGUAGE_CODE == "da" %}
-	<h3>Du har nu afsluttet forberedelsesguiden</h3>
-	<p>
-		Du vil nu modtage en kvittering per e-mail.
-	</p>
-	<p>
-		Til MUS samtalen bedes du medbringe et udprint af forberedelsesguiden. 
-	</p>
-	<ul>
-		<li>Du kan enten hente et kopi af forberedelsesguiden her <a class="btn btn-default"  href="/developmentplan/{{ development_plan_user.pk }}/pdf"><span class="glyphicon glyphicon-file"></span></a></li>
-		<li>Eller finde den i kvitteringen som du modtager</li>
-	</ul>
-{% elif LANGUAGE_CODE == 'en' %}
-	<h3>You have now finished the preparation</h3>
-	<p>
-		You will now receive a receipt per e-mail.
-	</p>
-	<p>
-		Before the dialogue interview you are asked to print out and bring the preparation.
-	</p>
-	<ul>
-		<li>You can either download a copy of the preparation here <a class="btn btn-default"  href="/developmentplan/{{ development_plan_user.pk }}/pdf"><span class="glyphicon glyphicon-file"></span></a></li>
-		<li> Or find it attached in the e-mail.</li>
-	</ul>
-{% endif%}
+    {% if LANGUAGE_CODE == "da" %}
+        <h3>Du har nu afsluttet forberedelsesguiden</h3>
+        <p>
+            Du vil nu modtage en kvittering per e-mail.
+        </p>
+        <p>
+            Til MUS samtalen bedes du medbringe et udprint af forberedelsesguiden.
+        </p>
+        <ul>
+            <li>Du kan enten hente et kopi af forberedelsesguiden her <a class="btn btn-default"
+                                                                         href="/developmentplan/{{ development_plan_user.pk }}/pdf"><span
+                    class="glyphicon glyphicon-file"></span></a></li>
+            <li>Eller finde den i kvitteringen som du modtager</li>
+        </ul>
+    {% elif LANGUAGE_CODE == 'en' %}
+        <h3>You have now finished the preparation</h3>
+        <p>
+            You will now receive a receipt per e-mail.
+        </p>
+        <p>
+            Before the dialogue interview you are asked to print out and bring the preparation.
+        </p>
+        <ul>
+            <li>You can either download a copy of the preparation here <a class="btn btn-default"
+                                                                          href="/developmentplan/{{ development_plan_user.pk }}/pdf"><span
+                    class="glyphicon glyphicon-file"></span></a></li>
+            <li> Or find it attached in the e-mail.</li>
+        </ul>
+    {% endif %}
 
 {% endblock %}

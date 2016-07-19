@@ -1,98 +1,105 @@
-  {% load i18n %}
-  <h3>{% trans "Preparation guide" %}{% if development_plans.count > 1 %}{% if LANGUAGE_CODE == "da" %}r{% elif LANGUAGE_CODE == "en" %}s{% endif %}{% endif %}
-  </h3>
-  <div class="panel panel-default">
-        <!-- Default panel contents -->
-        {#<div class="panel-body"></div>#}
-        <!--<div class="panel-heading"> 
+{% load i18n %}
+<h3>{% trans "Preparation guide" %}{% if development_plans.count > 1 %}{% if LANGUAGE_CODE == "da" %}r
+{% elif LANGUAGE_CODE == "en" %}s{% endif %}{% endif %}
+</h3>
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    {#<div class="panel-body"></div>#}
+    <!--<div class="panel-heading">
             <h3 class="panel-title">
             {% trans "Development plans" %} 
             </h3>
         </div>  -->
-        <!-- Table -->
-        <table class="table table-bordered table-hover">
-            <tr>
+    <!-- Table -->
+    <table class="table table-bordered table-hover">
+        <tr>
 
-                <th>{% trans "Created at" %}</th>
-                <th>{% trans "Type" %}</th>
-                <th>{% trans "Language" %}</th>
-                <th colspan="2"> {% trans "Your own CDD"%} </th>
-                <th colspan="2"> {% trans "Your manager's CDD"%} </th>
-            </tr>
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th>{% trans "Status" %}</th>
-                <th>{% trans "View / Edit" %}</th>
-                <th>{% trans "Status" %}</th>
-                <th>{% trans "View / Edit" %}</th>
-            </tr>
-            {% for development_plan in development_plans %}
+            <th>{% trans "Created at" %}</th>
+            <th>{% trans "Type" %}</th>
+            <th>{% trans "Language" %}</th>
+            <th colspan="2"> {% trans "Your own CDD" %} </th>
+            <th colspan="2"> {% trans "Your manager's CDD" %} </th>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>{% trans "Status" %}</th>
+            <th>{% trans "View / Edit" %}</th>
+            <th>{% trans "Status" %}</th>
+            <th>{% trans "View / Edit" %}</th>
+        </tr>
+        {% for development_plan in development_plans %}
 
             <tr>
                 <td>
-                    {{ development_plan.created_at }}                            
-                </td>                
+                    {{ development_plan.created_at }}
+                </td>
                 <td>
-                    {{ development_plan.type }}                            
-                </td>                
+                    {{ development_plan.type }}
+                </td>
                 <td>
-                    {{ development_plan.getLanguage }}                            
-                </td>                
+                    {{ development_plan.getLanguage }}
+                </td>
                 <td>
                     {% if development_plan.employee_response_relation.finished_at %}
                         {% if development_plan.employee_response_relation.is_private %}
                             {% trans "Finished & hidden" %}
-                        {% elif not development_plan.employee_response_relation.is_private %}
+                            {% elif not development_plan.employee_response_relation.is_private %}
                             {% trans "Finished & visible" %}
                         {% endif %}
                     {% elif development_plan.employee_response_relation.finished_at == None %}
-                    {% trans "Not finished" %}
+                        {% trans "Not finished" %}
                     {% endif %}
-                </td>                
+                </td>
                 <td>
                     {% if development_plan.employee_response_relation.finished_at %}
-                        {% if user.pk == development_plan.employee_response_relation.user.pk or not development_plan.employee_response_relation.is_private %}                                 
-                            <a class="btn btn-default" href="/developmentplan/{{ development_plan.employee_response_relation.pk }}/pdf">PDF</a>
-						{% endif %}
-						{% if user.pk == development_plan.manager_response_relation.user.pk %}
-                            <a class="btn btn-default" href="/developmentplan/{{ development_plan.id }}/reopen/false">{% trans "Reopen" %}</a>
+                        {% if user.pk == development_plan.employee_response_relation.user.pk or not development_plan.employee_response_relation.is_private %}
+                            <a class="btn btn-default"
+                               href="/developmentplan/{{ development_plan.employee_response_relation.pk }}/pdf">PDF</a>
                         {% endif %}
-                    {% endif %}                            
+                        {% if user.pk == development_plan.manager_response_relation.user.pk %}
+                            <a class="btn btn-default"
+                               href="/developmentplan/{{ development_plan.id }}/reopen/false">{% trans "Reopen" %}</a>
+                        {% endif %}
+                    {% endif %}
                     {% if not development_plan.employee_response_relation.finished_at %}
-                        {% if user.pk == development_plan.employee_response_relation.user.pk %}                                 
-                            <a class="btn btn-default" href="/developmentplan/{{ development_plan.employee_response_relation.id }}">{% trans 'Fill out' %}</a>
-                        {% endif %} 
-                    {% endif %}                                                        
-                </td>                
-                <td>                            
+                        {% if user.pk == development_plan.employee_response_relation.user.pk %}
+                            <a class="btn btn-default"
+                               href="/developmentplan/{{ development_plan.employee_response_relation.id }}">{% trans 'Fill out' %}</a>
+                        {% endif %}
+                    {% endif %}
+                </td>
+                <td>
                     {% if development_plan.manager_response_relation.finished_at %}
                         {% if development_plan.manager_response_relation.is_private %}
                             {% trans "Finished & hidden" %}
-                        {% elif not development_plan.manager_response_relation.is_private %}
+                            {% elif not development_plan.manager_response_relation.is_private %}
                             {% trans "Finished & visible" %}
                         {% endif %}
-                            {% elif development_plan.manager_response_relation.finished_at == None %}
+                    {% elif development_plan.manager_response_relation.finished_at == None %}
                         {% trans "Not finished" %}
                     {% endif %}
                 </td>
                 <td>
                     {% if development_plan.manager_response_relation.finished_at %}
                         {% if user.pk == development_plan.manager_response_relation.user.pk or not development_plan.manager_response_relation.is_private %}
-                            <a class="btn btn-default" href="/developmentplan/{{ development_plan.manager_response_relation.pk }}/pdf">PDF</a>
+                            <a class="btn btn-default"
+                               href="/developmentplan/{{ development_plan.manager_response_relation.pk }}/pdf">PDF</a>
                         {% endif %}
-						{% if user.pk == development_plan.manager_response_relation.user.pk %}
-							<a class="btn btn-default" href="/developmentplan/{{ development_plan.id }}/reopen/true">{% trans "Reopen" %}</a>
-						{% endif %}
-                    {% endif %}                            
+                        {% if user.pk == development_plan.manager_response_relation.user.pk %}
+                            <a class="btn btn-default"
+                               href="/developmentplan/{{ development_plan.id }}/reopen/true">{% trans "Reopen" %}</a>
+                        {% endif %}
+                    {% endif %}
                     {% if not development_plan.manager_response_relation.finished_at %}
                         {% if user.pk == development_plan.manager_response_relation.user.pk %}
-                            <a class="btn btn-default" href="/developmentplan/{{ development_plan.manager_response_relation.id }}">{% trans 'Fill out' %}</a>
+                            <a class="btn btn-default"
+                               href="/developmentplan/{{ development_plan.manager_response_relation.id }}">{% trans 'Fill out' %}</a>
                         {% endif %}
-                    {% endif %}                                                        
+                    {% endif %}
                 </td>
             </tr>
-            {% endfor %}
-        </table>
-    </div>
+        {% endfor %}
+    </table>
+</div>

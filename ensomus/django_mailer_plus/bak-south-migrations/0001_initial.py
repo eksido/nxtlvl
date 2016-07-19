@@ -4,10 +4,9 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
-class Migration(SchemaMigration):
 
+class Migration(SchemaMigration):
     def forwards(self, orm):
-        
         # Adding model 'Attachment'
         db.create_table('django_mailer_plus_attachment', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -38,7 +37,8 @@ class Migration(SchemaMigration):
         # Adding model 'QueuedMessage'
         db.create_table('django_mailer_plus_queuedmessage', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('message', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['django_mailer_plus.Message'], unique=True)),
+            ('message', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['django_mailer_plus.Message'],
+                                                                                 unique=True)),
             ('priority', self.gf('django.db.models.fields.PositiveSmallIntegerField')(default=3)),
             ('deferred', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
             ('retries', self.gf('django.db.models.fields.PositiveIntegerField')(default=0)),
@@ -66,7 +66,6 @@ class Migration(SchemaMigration):
 
 
     def backwards(self, orm):
-        
         # Deleting model 'Attachment'
         db.delete_table('django_mailer_plus_attachment')
 
@@ -108,7 +107,8 @@ class Migration(SchemaMigration):
         },
         'django_mailer_plus.message': {
             'Meta': {'ordering': "('date_created',)", 'object_name': 'Message'},
-            'attachment': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['django_mailer_plus.Attachment']", 'symmetrical': 'False'}),
+            'attachment': ('django.db.models.fields.related.ManyToManyField', [],
+                           {'to': "orm['django_mailer_plus.Attachment']", 'symmetrical': 'False'}),
             'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
             'encoded_message': ('django.db.models.fields.TextField', [], {}),
             'from_address': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
@@ -122,7 +122,8 @@ class Migration(SchemaMigration):
             'date_queued': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
             'deferred': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'message': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['django_mailer_plus.Message']", 'unique': 'True'}),
+            'message': ('django.db.models.fields.related.OneToOneField', [],
+                        {'to': "orm['django_mailer_plus.Message']", 'unique': 'True'}),
             'priority': ('django.db.models.fields.PositiveSmallIntegerField', [], {'default': '3'}),
             'retries': ('django.db.models.fields.PositiveIntegerField', [], {'default': '0'})
         }

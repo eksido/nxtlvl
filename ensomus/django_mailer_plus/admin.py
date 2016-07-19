@@ -15,20 +15,24 @@ class MessageRelatedModelAdmin(admin.ModelAdmin):
 
     def message__to_address(self, obj):
         return obj.message.to_address
+
     message__to_address.admin_order_field = 'message__to_address'
 
     def message__subject(self, obj):
         return obj.message.subject
+
     message__subject.admin_order_field = 'message__subject'
 
     def message__date_created(self, obj):
         return obj.message.to_address
+
     message__date_created.admin_order_field = 'message__date_created'
 
 
 class QueuedMessage(MessageRelatedModelAdmin):
     def not_deferred(self, obj):
         return not obj.deferred
+
     not_deferred.boolean = True
     not_deferred.admin_order_field = 'deferred'
 

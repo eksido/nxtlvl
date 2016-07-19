@@ -1,22 +1,22 @@
 {% load i18n %}
 <h2>{{ competence.title|safe }}</h2>
 <div>
-	{{ competence.getDescription|safe }}
+    {{ competence.getDescription|safe }}
 </div>
 {% for question in competence.getQuestions %}
-	<h4>{{ question.title|safe }}</h4>
-	{% if question.allow_response %}
-		<div class="well2">
-		{% for response in responses %}
-			{% if question.pk == response.pk %}
-				{% if not response.text %}
-					{% trans "No answer" %}
-				{% else %}				
-					{{ response.text }}&nbsp;
-				{% endif %}
-			{% endif %}
-		{% endfor %}
-		</div>
-	{% endif %}
+    <h4>{{ question.title|safe }}</h4>
+    {% if question.allow_response %}
+        <div class="well2">
+            {% for response in responses %}
+                {% if question.pk == response.pk %}
+                    {% if not response.text %}
+                        {% trans "No answer" %}
+                    {% else %}
+                        {{ response.text }}&nbsp;
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endfor %}
 <div class="page-break"></div>

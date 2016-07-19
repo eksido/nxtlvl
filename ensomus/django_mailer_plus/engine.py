@@ -20,7 +20,7 @@ else:
     from django.core.mail import SMTPConnection as get_connection
 
 LOCK_PATH = settings.LOCK_PATH or os.path.join(tempfile.gettempdir(),
-                                               'send_mail')
+    'send_mail')
 
 logger = logging.getLogger('django_mailer_plus')
 
@@ -34,11 +34,13 @@ def _message_queue(block_size):
     To avoid an infinite loop, yielded messages *must* be deleted or deferred.
 
     """
+
     def get_block():
         queue = models.QueuedMessage.objects.non_deferred().select_related()
         if block_size:
             queue = queue[:block_size]
         return queue
+
     queue = get_block()
     while queue:
         for message in queue:
@@ -66,7 +68,7 @@ def send_all(block_size=500, backend=None):
         # is the default if it's not provided) systems which use a LinkFileLock
         # so ensure that it is never a negative number.
         lock.acquire(settings.LOCK_WAIT_TIMEOUT or 0)
-        #lock.acquire(settings.LOCK_WAIT_TIMEOUT)
+        # lock.acquire(settings.LOCK_WAIT_TIMEOUT)
     except AlreadyLocked:
         logger.debug("Lock already in place. Exiting.")
         return
@@ -88,7 +90,7 @@ def send_all(block_size=500, backend=None):
         connection.open()
         for message in _message_queue(block_size):
             result = send_queued_message(message, smtp_connection=connection,
-                                  blacklist=blacklist)
+                                         blacklist=blacklist)
             if result == constants.RESULT_SENT:
                 sent += 1
             elif result == constants.RESULT_FAILED:
@@ -124,13 +126,13 @@ def send_loop(empty_queue_sleep=None):
     while True:
         while not models.QueuedMessage.objects.all():
             logger.debug("Sleeping for %s seconds before checking queue "
-                          "again." % empty_queue_sleep)
+                         "again." % empty_queue_sleep)
             time.sleep(empty_queue_sleep)
         send_all()
 
 
 def send_queued_message(queued_message, smtp_connection=None, blacklist=None,
-                 log=True):
+                        log=True):
     """
     Send a queued message, returning a response code as to the action taken.
 
@@ -166,19 +168,19 @@ def send_queued_message(queued_message, smtp_connection=None, blacklist=None,
     log_message = ''
     if blacklisted:
         logger.info("Not sending to blacklisted email: %s" %
-                     message.to_address.encode("utf-8"))
+                    message.to_address.encode("utf-8"))
         queued_message.delete()
         result = constants.RESULT_SKIPPED
     else:
         try:
             logger.info("Sending message to %s: %s" %
-                         (message.to_address.encode("utf-8"),
-                          message.subject.encode("utf-8")))
+                        (message.to_address.encode("utf-8"),
+                         message.subject.encode("utf-8")))
             opened_connection = smtp_connection.open()
             attached_message = EmailMultiAlternatives(message.subject,
-                                            message.encoded_message,
-                                            message.from_address,
-                                            [message.to_address], connection=smtp_connection)
+                                                      message.encoded_message,
+                                                      message.from_address,
+                                                      [message.to_address], connection=smtp_connection)
             if message.html_message:
                 attached_message.attach_alternative(message.html_message, "text/html")
             if message.attachment:
@@ -187,7 +189,7 @@ def send_queued_message(queued_message, smtp_connection=None, blacklist=None,
             attached_message.send()
 
             # Normal django-mailer behaviour:
-            #smtp_connection.connection.sendmail(message.from_address,
+            # smtp_connection.connection.sendmail(message.from_address,
             #                                    [message.to_address],
             #                                    message.encoded_message)
 
@@ -198,7 +200,7 @@ def send_queued_message(queued_message, smtp_connection=None, blacklist=None,
                 smtplib.SMTPAuthenticationError), err:
             queued_message.defer()
             logger.warning("Message to %s deferred due to failure: %s" %
-                            (message.to_address.encode("utf-8"), err))
+                           (message.to_address.encode("utf-8"), err))
             log_message = unicode(err)
             result = constants.RESULT_FAILED
     if log:
@@ -233,16 +235,16 @@ def send_message(email_message, smtp_connection=None):
     try:
         opened_connection = smtp_connection.open()
         attached_message = EmailMultiAlternatives(message.subject,
-                                        message.encoded_message,
-                                        message.from_address,
-                                        [message.to_address], connection=smtp_connection)
+                                                  message.encoded_message,
+                                                  message.from_address,
+                                                  [message.to_address], connection=smtp_connection)
         if message.html_message:
             attached_message.attach_alternative(message.html_message)
         if message.attachment:
             for attachment in message.attachment.all():
                 attached_message.attach_file(attachment.filename)
         attached_message.send()
-        #smtp_connection.connection.sendmail(message.from_email,
+        # smtp_connection.connection.sendmail(message.from_email,
         #            message.recipients(),
         #            message.message().as_string())
         result = constants.RESULT_SENT
