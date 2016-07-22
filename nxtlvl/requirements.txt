@@ -1,4 +1,3 @@
-django-mailer
 psycopg2==2.5
 dj-database-url==0.3.0
 Django==1.8.3
