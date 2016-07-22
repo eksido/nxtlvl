@@ -51,7 +51,6 @@ SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -61,6 +60,9 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'ensomus',
     'tinymce',
+    'bootstrap3',
+    'django_admin_bootstrapped',
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE_CLASSES = [
