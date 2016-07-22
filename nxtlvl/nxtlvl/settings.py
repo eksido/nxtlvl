@@ -41,6 +41,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+PROJECT_DIR = os.path.dirname(__file__)
+
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+
+SITE_ID = 1
 
 # Application definition
 
@@ -51,6 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.flatpages',
+    'django.contrib.sites',
     'ensomus',
     'tinymce',
 ]
@@ -64,6 +71,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
 ROOT_URLCONF = 'nxtlvl.urls'
@@ -94,7 +102,6 @@ WSGI_APPLICATION = 'nxtlvl.wsgi.application'
 #
 # CREATE DATABASE nxtlvl_db CHARACTER SET utf8 COLLATE utf8_general_ci;
 # CREATE USER 'nxtlvl_user' IDENTIFIED BY '1q2w3e4r';
-# GRANT ALL ON nxtlvl_db.* TO nxtlvl_user@localhost IDENTIFIED BY '';
 # GRANT ALL ON nxtlvl_db.* TO 'nxtlvl_user'@'localhost';
 #
 # Define DATABASE_URL in your local environment by running:
@@ -104,9 +111,9 @@ WSGI_APPLICATION = 'nxtlvl.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'nxtlvl_db',
-        'USER': 'nxtlvl_user',
-        'PASSWORD': '1q2w3e4r',
+        'NAME': 'testf',
+        'USER': 'root',
+        'PASSWORD': '1q2w3e4r5t',
 
     },
     'reference': {

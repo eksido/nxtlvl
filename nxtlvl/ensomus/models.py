@@ -49,8 +49,8 @@ class EmployeeRole(models.Model):
     """
     Employee/Role relation
     """
-    employee = models.ForeignKey('mus.Employee', verbose_name=_(u"employee"))
-    role = models.ForeignKey('mus.Role', verbose_name=_(u"role"))
+    employee = models.ForeignKey('Employee', verbose_name=_(u"employee"))
+    role = models.ForeignKey('Role', verbose_name=_(u"role"))
     created_at = models.DateTimeField(verbose_name=_(u"created at"), auto_now_add=True)
     created_by = models.ForeignKey(User, verbose_name=_(u"created by"), related_name='employee_role_created_by',
                                    blank=True, null=True, on_delete=models.SET_NULL)
@@ -89,7 +89,7 @@ class Employee(models.Model):
                                                 null=True, blank=True)
     manager = models.ForeignKey('self', verbose_name=_(u"manager"), null=True, blank=True)
     is_manager = models.BooleanField(verbose_name=_(u"is manager"), default=False)
-    company = models.ForeignKey('mus.Company', verbose_name=_(u"company"))
+    company = models.ForeignKey('Company', verbose_name=_(u"company"))
     created_at = models.DateTimeField(verbose_name=_(u"created at"), auto_now_add=True)
     created_by = models.ForeignKey(User, verbose_name=_(u"created by"), related_name='employee_created_by', blank=True,
                                    null=True, on_delete=models.SET_NULL)
