@@ -45,6 +45,7 @@ PROJECT_DIR = os.path.dirname(__file__)
 
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
+
 SITE_ID = 1
 
 # Application definition
