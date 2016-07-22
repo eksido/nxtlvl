@@ -45,7 +45,6 @@ PROJECT_DIR = os.path.dirname(__file__)
 
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
-
 SITE_ID = 1
 
 # Application definition
@@ -105,20 +104,15 @@ WSGI_APPLICATION = 'nxtlvl.wsgi.application'
 #
 # CREATE DATABASE nxtlvl_db CHARACTER SET utf8 COLLATE utf8_general_ci;
 # CREATE USER 'nxtlvl_user' IDENTIFIED BY '1q2w3e4r';
-# GRANT ALL ON nxtlvl_db.* TO 'nxtlvl_user'@'localhost';
+# GRANT ALL ON nxtlvl_db.* TO 'nxtlvl_user'@'localhost' IDENTIFIED BY '1q2w3e4r';
+# GRANT ALL ON nxtlvl_db.* TO 'nxtlvl_user'@'%' IDENTIFIED BY '1q2w3e4r';
+# FLUSH PRIVILEGES;
 #
 # Define DATABASE_URL in your local environment by running:
 #
-# export DATABASE_URL="mysql://nxtlvl_user:1q2w3e4r@localhost:16903/nxtlvl_db"
+# export DATABASE_URL="mysql://nxtlvl_user:1q2w3e4r@localhost:3306/nxtlvl_db"
 #
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'testf',
-        'USER': 'root',
-        'PASSWORD': '1q2w3e4r5t',
-
-    },
     'reference': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'nxtlvl_test',
@@ -136,7 +130,8 @@ DATABASES = {
 # Overwriting `default` from environment's DATABASE_URL
 if environ('DATABASE_URL'):
     DATABASES['default'] = dburl.config()
-
+else:
+    raise Exception('Database settings not found. Please add DATABASE_URL to your environment')
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
