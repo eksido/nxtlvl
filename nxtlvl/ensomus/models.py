@@ -4,7 +4,8 @@ This module contains the models for NXT LVL
 from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
-from django_mailer_plus import send_mail
+# from django_mailer_plus import send_mail
+from mailer import send_mail
 import datetime
 from django.conf import settings
 from django.template import loader, Context
@@ -12,7 +13,7 @@ import base64
 from django.db.models import Q
 from django.db import transaction
 from django.utils.encoding import smart_str
-from common.util import safeHtmlString, replaceAllText, my_decrypt, write_pdf, generate_password, my_encrypt
+from util import safeHtmlString, replaceAllText, my_decrypt, write_pdf, generate_password, my_encrypt
 from django.utils.translation import ugettext_lazy as _, get_language, activate
 from django.utils import translation
 from django.conf import settings
