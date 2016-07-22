@@ -19,3 +19,4 @@ pisa==3.0.33
 reportlab==3.2.0
 django-threadlocals==0.7.2
 django-bootstrap3==6.2.2
+django-mailer==1.2.1
