@@ -171,10 +171,20 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+STATICFILES_DIRS = (
+    os.path.join(STATIC_ROOT, 'styles'),
+    os.path.join(STATIC_ROOT, 'scripts'),
+)
+
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+)
+
 
 # TinyMCE
 
@@ -185,5 +195,3 @@ TINYMCE_DEFAULT_CONFIG = {
     'theme': "advanced",
 
 }
-
-TINYMCE_JS_URL = '/static/js/tiny_mce/tiny_mce.js'
