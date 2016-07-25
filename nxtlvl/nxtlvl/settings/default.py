@@ -41,7 +41,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-PROJECT_DIR = os.path.dirname(__file__)
+PROJECT_DIR = os.path.dirname(BASE_DIR)
+# PROJECT_DIR = os.path.dirname(__file__)
 
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
@@ -81,7 +82,9 @@ ROOT_URLCONF = 'nxtlvl.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(PROJECT_DIR, 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -95,7 +98,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'nxtlvl.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
