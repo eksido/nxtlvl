@@ -168,6 +168,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+CSRF_COOKIE_NAME = 'csrftoken'
+
+CSRF_HEADER_NAME = 'HTTP_X_CSRFTOKEN'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
