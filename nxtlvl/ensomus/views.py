@@ -1,3 +1,11 @@
+from django.http import HttpResponse, HttpResponseForbidden
 from django.shortcuts import render
 
-# Create your views here.
+
+def index(request):
+    context = {}
+    return render(request, 'index.html', context)
+
+def notimplemented(request):
+    return HttpResponse("NXTLVL Method not implemented yet", status=501)
+

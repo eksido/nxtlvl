@@ -41,7 +41,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-PROJECT_DIR = os.path.dirname(__file__)
+PROJECT_DIR = os.path.dirname(BASE_DIR)
+# PROJECT_DIR = os.path.dirname(__file__)
 
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
@@ -81,7 +82,10 @@ ROOT_URLCONF = 'nxtlvl.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(PROJECT_DIR, 'templates'),
+            STATIC_ROOT
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -95,7 +99,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'nxtlvl.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -168,8 +171,20 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(STATIC_ROOT, 'styles'),
+    os.path.join(STATIC_ROOT, 'scripts'),
+)
+
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+)
+
 
 # TinyMCE
 
@@ -180,5 +195,3 @@ TINYMCE_DEFAULT_CONFIG = {
     'theme': "advanced",
 
 }
-
-TINYMCE_JS_URL = '/static/js/tiny_mce/tiny_mce.js'
